@@ -22,6 +22,7 @@ export default (props: PropsType) => {
         <div className="logo" />
         <Menu
           theme="light"
+          openKeys={defaultOpenKeys}
           onClick={goRouter}
           mode="inline"
           defaultOpenKeys={defaultOpenKeys}

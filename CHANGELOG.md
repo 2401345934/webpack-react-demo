@@ -1,4 +1,4 @@
-## <small>1.1.9 (2022-12-04)</small>
+## 1.2.0 (2022-12-04)
 
 - ✨ 新增(components): 新增 组件 warp page page 和 businesscomponen ([7c75119](https://github.com/2401345934/webpack-react-demo/commit/7c75119))
 - ✨ 新增(components): layout 完善类型编程 ([26f67b6](https://github.com/2401345934/webpack-react-demo/commit/26f67b6))
@@ -29,6 +29,7 @@
 - ✨ 新增(typescript): 工程化维护 ([3e96241](https://github.com/2401345934/webpack-react-demo/commit/3e96241))
 - ✨ 新增(typescript): 首页 router 纪录 path ([78251c2](https://github.com/2401345934/webpack-react-demo/commit/78251c2))
 - ✨ 新增(typescript): antd router 搭建 ([1c8ef42](https://github.com/2401345934/webpack-react-demo/commit/1c8ef42))
+- ✨ 新增(utils): 封装公用 localStorage ([afc4443](https://github.com/2401345934/webpack-react-demo/commit/afc4443))
 - ✨ 新增(utils): 新增 utils 工具 ([eb3a647](https://github.com/2401345934/webpack-react-demo/commit/eb3a647))
 - ✨ 新增(webpack): 新增 babel 自动添加 try-catch ([c3bf7b2](https://github.com/2401345934/webpack-react-demo/commit/c3bf7b2))
 - ✨ 新增(webpack): 修改 webpack 配置 ([6c961bd](https://github.com/2401345934/webpack-react-demo/commit/6c961bd))

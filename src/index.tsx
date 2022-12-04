@@ -37,6 +37,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
   const goRouter = (e: { key: string; keyPath: string[] }): void => {
     setCurrentPath(e.key)
     navigate(e.key)
+    setDefaultOpenKeys(e.keyPath)
   }
 
   // 选择的颜色
@@ -72,6 +73,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
             <WarpHeader
               changeTheme={changeTheme}
               updateTheme={updateTheme}
+              setDefaultOpenKeys={setDefaultOpenKeys}
               setCollapsed={setCollapsed}
               collapsed={collapsed}
             ></WarpHeader>
