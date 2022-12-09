@@ -65,6 +65,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
           <WarpMenu
             goRouter={goRouter}
             defaultOpenKeys={defaultOpenKeys}
+            setDefaultOpenKeys={setDefaultOpenKeys}
             currentPath={currentPath}
             collapsed={collapsed}
           ></WarpMenu>

@@ -8,9 +8,19 @@ type PropsType = {
   currentPath: string
   defaultOpenKeys: string[]
   goRouter: (e: { key: string; keyPath: string[] }) => void
+  setDefaultOpenKeys: (e: string[]) => void
 }
 export default (props: PropsType) => {
-  const { currentPath, goRouter, collapsed, defaultOpenKeys } = props
+  const {
+    currentPath,
+    goRouter,
+    collapsed,
+    defaultOpenKeys,
+    setDefaultOpenKeys
+  } = props
+  const onOpenChange = (openKeys: string[]) => {
+    setDefaultOpenKeys(openKeys)
+  }
   return (
     <Fragment>
       <Sider
@@ -23,6 +33,7 @@ export default (props: PropsType) => {
         <Menu
           theme="light"
           openKeys={defaultOpenKeys}
+          onOpenChange={onOpenChange}
           onClick={goRouter}
           mode="inline"
           defaultOpenKeys={defaultOpenKeys}

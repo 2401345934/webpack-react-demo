@@ -1,4 +1,4 @@
-## <small>1.2.1 (2022-12-04)</small>
+## <small>1.2.2 (2022-12-09)</small>
 
 - ✨ 新增(components): 新增 组件 warp page page 和 businesscomponen ([7c75119](https://github.com/2401345934/webpack-react-demo/commit/7c75119))
 - ✨ 新增(components): 新增面包屑 ([6794bea](https://github.com/2401345934/webpack-react-demo/commit/6794bea))
@@ -44,6 +44,7 @@
 - ✨ 新增(webpack): wepback 配置修改 ([0e5aebb](https://github.com/2401345934/webpack-react-demo/commit/0e5aebb))
 - 🐛 修复(pages): 修复启动项目没有自动定位到 第一个菜单 ([46fc166](https://github.com/2401345934/webpack-react-demo/commit/46fc166))
 - 🐛 修复(webpack): 修复重复声明 pstcss ([599c87f](https://github.com/2401345934/webpack-react-demo/commit/599c87f))
+- 💄 格式(custom): 格式修复 ([601e53b](https://github.com/2401345934/webpack-react-demo/commit/601e53b))
 - 💄 格式(custom): lint style ([d1811e3](https://github.com/2401345934/webpack-react-demo/commit/d1811e3))
 - 💄 格式(pages): 新增 style 文件 增加初始化 less 和 常用 mixins ([224ea3b](https://github.com/2401345934/webpack-react-demo/commit/224ea3b))
 - 💄 格式(pages): delete use lesscode ([625ec4a](https://github.com/2401345934/webpack-react-demo/commit/625ec4a))
