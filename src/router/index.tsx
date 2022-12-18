@@ -8,6 +8,7 @@ const Wecome = lazy(() => import('@/pages/Wecome'))
 const NotPage = lazy(() => import('@/pages/404'))
 const Todo = lazy(() => import('@/pages/Todo'))
 const AntdTable = lazy(() => import('@/pages/AntdTable'))
+const Cms = lazy(() => import('@/pages/Cms'))
 
 export type RouterType = {
   path?: string
@@ -76,6 +77,15 @@ const initRouter: RouterType[] = [
         element: (
           <Suspense fallback={<Loading />}>
             <AntdTable />
+          </Suspense>
+        )
+      },
+      {
+        path: 'cms',
+        label: 'CMS内容中心',
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Cms />
           </Suspense>
         )
       }
