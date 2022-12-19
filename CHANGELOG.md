@@ -1,4 +1,8 @@
-## <small>1.2.3 (2022-12-18)</small>
+## <small>1.2.4 (2022-12-19)</small>
+
+- ✨ 新增(pages): 完成 cms 配置 ([1ad67e7](https://github.com/2401345934/webpack-react-demo/commit/1ad67e7))
+
+## 1.0.0 (2022-12-09)
 
 - ✨ 新增(components): 新增 组件 warp page page 和 businesscomponen ([7c75119](https://github.com/2401345934/webpack-react-demo/commit/7c75119))
 - ✨ 新增(components): 新增面包屑 ([6794bea](https://github.com/2401345934/webpack-react-demo/commit/6794bea))

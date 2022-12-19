@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Component: React.FC = (): JSX.Element => {
-  return <></>
+  return <div></div>
 }
 
 export default Component
