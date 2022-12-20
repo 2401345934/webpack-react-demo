@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { COMPONENTS_TYPE } from '../../helper/dict'
+import React from 'react'
+import { COMPONENTS_TYPE } from '../../../helper/dict'
 import styles from './styles.module.less'
 
 const Component: React.FC = (): JSX.Element => {

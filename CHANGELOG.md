@@ -1,6 +1,7 @@
-## <small>1.2.4 (2022-12-19)</small>
+## <small>1.2.4 (2022-12-20)</small>
 
 - ✨ 新增(pages): 完成 cms 配置 ([1ad67e7](https://github.com/2401345934/webpack-react-demo/commit/1ad67e7))
+- ✨ 新增(pages): 完成拖拽获取数据 ([b3da08b](https://github.com/2401345934/webpack-react-demo/commit/b3da08b))
 
 ## 1.0.0 (2022-12-09)
 
