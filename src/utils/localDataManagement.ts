@@ -1,3 +1,4 @@
+import utils from '@/utils'
 class localDataManagement {
   static #prefix: string = `${process.env.NODE_ENV}-minghui`
   static #timeSign: string = `|${localDataManagement.#prefix}|`
@@ -16,7 +17,7 @@ class localDataManagement {
       let time = +value.slice(0, index)
       // 判断时间是否已过期
       if (time > Date.now()) {
-        value = JSON.parse(
+        value = utils.JSONPase(
           value.slice(index + localDataManagement.#timeSign.length)
         )
       } else {
@@ -37,7 +38,7 @@ class localDataManagement {
       : Date.now() + localDataManagement.initExpirationTime
     localStorage.setItem(
       key,
-      `${time}${localDataManagement.#timeSign}${JSON.stringify(value)}`
+      `${time}${localDataManagement.#timeSign}${utils.JSONStringify(value)}`
     )
   }
 

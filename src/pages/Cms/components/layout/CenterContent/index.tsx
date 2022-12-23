@@ -1,5 +1,6 @@
 import { Context } from '@/pages/Cms'
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useRef } from 'react'
+import utils from '@/utils'
 import { COMPONENTS_MAPPER } from '../../../helper/dict'
 import styles from './styles.module.less'
 
@@ -7,7 +8,7 @@ const Component: React.FC = (): JSX.Element => {
   const { sourceData, setSourceData }: any = useContext(Context)
   const dropRef = useRef(null)
   const handleDrop = (event: any) => {
-    const data = JSON.parse(event.dataTransfer.getData('text/plain'))
+    const data = utils.JSONPase(event.dataTransfer.getData('text/plain'))
     setSourceData([{ type: data.type }, ...sourceData])
   }
   const handleDragOver = (event: any) => {

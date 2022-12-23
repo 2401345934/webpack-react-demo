@@ -1,5 +1,6 @@
 import React from 'react'
 import { COMPONENTS_TYPE } from '../../../helper/dict'
+import utils from '@/utils'
 import styles from './styles.module.less'
 
 const Component: React.FC = (): JSX.Element => {
@@ -11,7 +12,7 @@ const Component: React.FC = (): JSX.Element => {
     const data = {
       type
     }
-    event.dataTransfer.setData('text/plain', JSON.stringify(data))
+    event.dataTransfer.setData('text/plain', utils.JSONStringify(data))
   }
   return (
     <div className={styles.warp}>
