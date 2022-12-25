@@ -5,7 +5,8 @@ import { COMPONENTS_MAPPER } from '../../../helper/dict'
 import styles from './styles.module.less'
 
 const Component: React.FC = (): JSX.Element => {
-  const { sourceData, setSourceData }: any = useContext(Context)
+  const { sourceData, setSourceData, currentIndex, setCurrentIndx }: any =
+    useContext(Context)
   const dropRef = useRef(null)
   const handleDrop = (event: any) => {
     const data = utils.JSONPase(event.dataTransfer.getData('text/plain'))
@@ -13,6 +14,9 @@ const Component: React.FC = (): JSX.Element => {
   }
   const handleDragOver = (event: any) => {
     event.preventDefault()
+  }
+  const updateCurrentIndex = (index: number) => {
+    setCurrentIndx(index)
   }
   return (
     <div
@@ -22,8 +26,12 @@ const Component: React.FC = (): JSX.Element => {
       onDragOver={handleDragOver}
     >
       {sourceData.map((item: any, index: number) => (
-        <div key={index} className={styles.item}>
-          {COMPONENTS_MAPPER[item.type]}
+        <div
+          key={index}
+          onClick={() => updateCurrentIndex(index)}
+          className={index === currentIndex ? styles.current : ''}
+        >
+          <div className={styles.item}>{COMPONENTS_MAPPER[item.type]}</div>
         </div>
       ))}
     </div>

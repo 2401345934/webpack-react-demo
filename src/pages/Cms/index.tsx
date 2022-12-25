@@ -12,13 +12,16 @@ export const Context: any = createContext({
 
 const Component: React.FC = (): JSX.Element => {
   const [sourceData, setSourceData] = useState<any[]>([])
+  const [currentIndex, setCurrentIndx] = useState<number>(0)
 
   return (
     <PageWarp>
       <Context.Provider
         value={{
           sourceData,
-          setSourceData
+          setSourceData,
+          currentIndex,
+          setCurrentIndx
         }}
       >
         <div className={styles.warp}>

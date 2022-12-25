@@ -1,8 +1,9 @@
-## <small>1.2.7 (2022-12-25)</small>
+## <small>1.2.8 (2022-12-25)</small>
 
 - ✨ 新增(pages): 拓展 utils json 方法 ([bd86e95](https://github.com/2401345934/webpack-react-demo/commit/bd86e95))
 - ✨ 新增(pages): 完成 cms 配置 ([1ad67e7](https://github.com/2401345934/webpack-react-demo/commit/1ad67e7))
 - ✨ 新增(pages): 完成拖拽获取数据 ([b3da08b](https://github.com/2401345934/webpack-react-demo/commit/b3da08b))
+- ✨ 新增(pages): 一行一视频 ([94a3c72](https://github.com/2401345934/webpack-react-demo/commit/94a3c72))
 - ✨ 新增(pages): cms 配置 拖拽渲染数据完成 ([abfff6a](https://github.com/2401345934/webpack-react-demo/commit/abfff6a))
 - 📝 文档(webpack): 变更代码格式 ([a5d3c9c](https://github.com/2401345934/webpack-react-demo/commit/a5d3c9c))
 
