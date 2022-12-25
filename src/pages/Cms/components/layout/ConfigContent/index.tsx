@@ -8,7 +8,9 @@ const Component: React.FC = (): JSX.Element => {
   return (
     <div>
       {!!sourceData.length &&
-        CONFIG_COMPONENT_MAPPER[sourceData[currentIndex].type]}
+        CONFIG_COMPONENT_MAPPER[sourceData[currentIndex].type](
+          sourceData[currentIndex]
+        )}
     </div>
   )
 }

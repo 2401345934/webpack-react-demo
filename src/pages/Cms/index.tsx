@@ -11,7 +11,9 @@ export const Context: any = createContext({
 })
 
 const Component: React.FC = (): JSX.Element => {
+  // 所有的souce 数据
   const [sourceData, setSourceData] = useState<any[]>([])
+  // 当前的索引
   const [currentIndex, setCurrentIndx] = useState<number>(0)
 
   return (

@@ -1,5 +1,6 @@
-## <small>1.2.8 (2022-12-25)</small>
+## <small>1.2.9 (2022-12-25)</small>
 
+- ✨ 新增(config): 新增 cms config ([4071b60](https://github.com/2401345934/webpack-react-demo/commit/4071b60))
 - ✨ 新增(pages): 拓展 utils json 方法 ([bd86e95](https://github.com/2401345934/webpack-react-demo/commit/bd86e95))
 - ✨ 新增(pages): 完成 cms 配置 ([1ad67e7](https://github.com/2401345934/webpack-react-demo/commit/1ad67e7))
 - ✨ 新增(pages): 完成拖拽获取数据 ([b3da08b](https://github.com/2401345934/webpack-react-demo/commit/b3da08b))

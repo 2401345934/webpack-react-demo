@@ -1,7 +1,7 @@
 import { Context } from '@/pages/Cms'
 import React, { useContext, useRef } from 'react'
 import utils from '@/utils'
-import { COMPONENTS_MAPPER } from '../../../helper/dict'
+import { COMPONENTS_MAPPER, INIT_PARAMS } from '../../../helper/dict'
 import styles from './styles.module.less'
 
 const Component: React.FC = (): JSX.Element => {
@@ -10,7 +10,7 @@ const Component: React.FC = (): JSX.Element => {
   const dropRef = useRef(null)
   const handleDrop = (event: any) => {
     const data = utils.JSONPase(event.dataTransfer.getData('text/plain'))
-    setSourceData([...sourceData, { type: data.type }])
+    setSourceData([...sourceData, { ...INIT_PARAMS, type: data.type }])
   }
   const handleDragOver = (event: any) => {
     event.preventDefault()
@@ -31,7 +31,9 @@ const Component: React.FC = (): JSX.Element => {
           onClick={() => updateCurrentIndex(index)}
           className={index === currentIndex ? styles.current : ''}
         >
-          <div className={styles.item}>{COMPONENTS_MAPPER[item.type]}</div>
+          <div className={styles.item}>
+            {COMPONENTS_MAPPER[item.type](item)}
+          </div>
         </div>
       ))}
     </div>
