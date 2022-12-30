@@ -10,6 +10,7 @@ const Component: React.FC = (): JSX.Element => {
   const dropRef = useRef(null)
   const handleDrop = (event: any) => {
     const data = utils.JSONPase(event.dataTransfer.getData('text/plain'))
+    if (!data.type) return
     setSourceData([...sourceData, { ...INIT_PARAMS, type: data.type }])
   }
   const handleDragOver = (event: any) => {
