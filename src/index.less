@@ -5,8 +5,13 @@
 
 .layout-sider {
   min-height: 100vh;
-  background: #fff;
+  background: var(--menuBackground);
+
+  .ant-menu {
+    background: var(--menuBackground);
+  }
 }
+
 
 body {
   color: var(--textMainColor);
@@ -26,7 +31,7 @@ body {
   display: flex;
   align-items: center;
   padding: 0 24px;
-  background-color: #fff !important;
+  background-color: var(--headerBackground) !important;
 }
 
 .layout-warp-header {

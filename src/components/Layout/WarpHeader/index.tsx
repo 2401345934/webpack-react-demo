@@ -29,16 +29,16 @@ export default (props: PropsType) => {
     navigate(path)
     setDefaultOpenKeys(path)
   }
-  function itemRender(route: any, params: any, routes: any, paths: any) {
+  function itemRender(route: any) {
     return route.children ? (
-      <Tag className={styles.hover} color="default">
+      <Tag className={styles.hover} color="var(--mainColor)">
         {route.label}
       </Tag>
     ) : (
       <Tag
         className={styles.hover}
         onClick={() => handleRouter(route.path)}
-        color="success"
+        color="var(--mainColor)"
       >
         {route.label}
       </Tag>
@@ -47,20 +47,22 @@ export default (props: PropsType) => {
   return (
     <div className="layout-warp-header">
       <Header className="site-layout-Header">
-        <Space>
-          {React.createElement(
-            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-            {
-              className: 'trigger',
-              onClick: () => setCollapsed(!collapsed)
-            }
-          )}
-          <div>
-            <Breadcrumb
-              itemRender={itemRender}
-              routes={routerList}
-            ></Breadcrumb>
-          </div>
+        <div className={styles.layoutHeaderWarp}>
+          <Space>
+            {React.createElement(
+              collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+              {
+                className: 'trigger',
+                onClick: () => setCollapsed(!collapsed)
+              }
+            )}
+            <div>
+              <Breadcrumb
+                itemRender={itemRender}
+                routes={routerList}
+              ></Breadcrumb>
+            </div>
+          </Space>
           <div className={styles.theme}>
             选择主题颜色
             <input
@@ -70,7 +72,7 @@ export default (props: PropsType) => {
             />
             <Button onClick={() => updateTheme()}>切换主题</Button>
           </div>
-        </Space>
+        </div>
       </Header>
     </div>
   )
