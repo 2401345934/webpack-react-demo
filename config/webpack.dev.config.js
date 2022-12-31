@@ -12,9 +12,9 @@ module.exports = {
     historyApiFallback: true // 解决BrowserRouter路由跳转之后刷新浏览器按钮报404的情况
   },
   // // 按需编译
-  // experiments: {
-  //   lazyCompilation: true
-  // },
+  experiments: {
+    lazyCompilation: true
+  },
   // 并行压缩
   optimization: {
     removeAvailableModules: false,

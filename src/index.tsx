@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import WarpComponent from '@/components/Layout/WarpComponent'
 import WarpMenu from '@/components/Layout/WarpMenu'
 import WarpHeader from '@/components/Layout/WarpHeader'
+import utils from '@/utils'
 
 const Component: React.FunctionComponent = (): JSX.Element => {
   const navigate = useNavigate()
@@ -49,6 +50,9 @@ const Component: React.FunctionComponent = (): JSX.Element => {
   const updateTheme = () => {
     if (selectColor === themeColor) return
     setThemeColor(selectColor)
+    utils.updateCustomCssVar({
+      mainColor: selectColor
+    })
   }
 
   return (
@@ -58,6 +62,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
           colorPrimary: themeColor
         }
       }}
+      csp={{ nonce: 'YourNonceCode' }}
     >
       <div className="layout-warp">
         <div className="warp">

@@ -1,4 +1,4 @@
-## 1.3.0 (2022-12-30)
+## <small>1.3.1 (2022-12-31)</small>
 
 - ✨ 新增(config): 新增 cms config ([4071b60](https://github.com/2401345934/webpack-react-demo/commit/4071b60))
 - ✨ 新增(pages): 拓展 utils json 方法 ([bd86e95](https://github.com/2401345934/webpack-react-demo/commit/bd86e95))
@@ -7,6 +7,7 @@
 - ✨ 新增(pages): 一行一视频 ([94a3c72](https://github.com/2401345934/webpack-react-demo/commit/94a3c72))
 - ✨ 新增(pages): cms 配置 拖拽渲染数据完成 ([abfff6a](https://github.com/2401345934/webpack-react-demo/commit/abfff6a))
 - ✨ 新增(pages): cms 组件开发模式基本确定 ([16b875e](https://github.com/2401345934/webpack-react-demo/commit/16b875e))
+- 🐛 修复(pages): 修复拖拽没有 type 不执行 ([5770c9b](https://github.com/2401345934/webpack-react-demo/commit/5770c9b))
 - 📝 文档(webpack): 变更代码格式 ([a5d3c9c](https://github.com/2401345934/webpack-react-demo/commit/a5d3c9c))
 
 ## 1.0.0 (2022-12-09)

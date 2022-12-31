@@ -9,6 +9,7 @@ import utilsJson from './utils/utils-json'
 import utilsString from './utils/utils-string'
 import utilsRule from './utils/utils-rule'
 import utilsUrl from './utils/utils-url'
+import utilsSystem from './utils/utils-system'
 
 export default {
   ...utilsFn,
@@ -21,5 +22,6 @@ export default {
   ...utilsJson,
   ...utilsString,
   ...utilsRule,
-  ...utilsUrl
+  ...utilsUrl,
+  ...utilsSystem
 }

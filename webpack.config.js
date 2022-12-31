@@ -19,7 +19,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 // 性能分析
 const StatoscopeWebpackPlugin = require('@statoscope/webpack-plugin').default
 // 压缩
-// const CompressionPlugin = require('compression-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 // build 前 清理 dist
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 // 合并配置
@@ -59,9 +59,9 @@ const config = {
     // 压缩 css
     new MiniCssExtractPlugin({ filename: '[name]-[contenthash].css' }),
     // 计算性能
-    new StatoscopeWebpackPlugin()
+    new StatoscopeWebpackPlugin(),
     // 压缩
-    // new CompressionPlugin()
+    new CompressionPlugin()
   ],
   module: {
     rules: [...images, ...scripts, ...styles]

@@ -1,10 +1,15 @@
 @import './styles/base.less';
 @import './styles/mixins.less';
 @import 'antd/dist/reset.css';
+@import './styles/rootCssVar.less';
 
 .layout-sider {
   min-height: 100vh;
   background: #fff;
+}
+
+body {
+  color: var(--textMainColor);
 }
 
 .warp {
