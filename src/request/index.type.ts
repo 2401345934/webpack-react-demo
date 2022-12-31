@@ -4,7 +4,7 @@ export type RequestType = {
   url: string
   method: Method
   data: object
-  config: AxiosRequestConfig
+  config?: AxiosRequestConfig
 }
 
 export type ResponseData<R> = {

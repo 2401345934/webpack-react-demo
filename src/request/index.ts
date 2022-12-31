@@ -2,6 +2,8 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import requestInterceptors from './interceptors/request/index'
 import responseInterceptors from './interceptors/response/index'
 import type { RequestType, ResponseData } from './index.type'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 
 const instance: AxiosInstance = axios.create({
   baseURL: 'https://some-domain.com/api/',
@@ -18,10 +20,12 @@ instance.interceptors.request.use(
       // eslint-disable-next-line no-await-in-loop
       config = await Promise.resolve(fn.call(this, config))
     }
+    NProgress.start()
     return config
   },
   function (error) {
     // 对请求错误做些什么
+    NProgress.done()
     return Promise.reject(error)
   }
 )
@@ -34,24 +38,24 @@ instance.interceptors.response.use(
     for (const fn of responseInterceptors) {
       response = await Promise.resolve(fn(response))
     }
+    NProgress.done()
     return response
   },
   function (error) {
     // 超出 2xx 范围的状态码都会触发该函数。
     // 对响应错误做点什么
+    NProgress.done()
     return Promise.reject(error)
   }
 )
 
 // request 请求方法
 const request = <T>(params: RequestType) => {
-  const { url, method, data, config } = params
-
+  const { url, method, data } = params
   return instance.request<T, ResponseData<T>>({
     url,
     method,
-    [method.toLocaleLowerCase() === 'get' ? 'params' : 'data']: data,
-    ...config
+    [method.toLocaleLowerCase() === 'get' ? 'params' : 'data']: data
   })
 }
 

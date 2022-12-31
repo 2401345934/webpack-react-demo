@@ -6,7 +6,6 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import styles from './styles.module.less'
 import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons'
 import utils from '@/utils'
-
 type PropsType = {
   children?: React.ReactNode
   [key: string]: any

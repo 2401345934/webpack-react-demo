@@ -3,6 +3,7 @@ declare module '*.less' {
   export default content
 }
 declare module '*.less'
+declare module 'nprogress'
 declare module '*.module.less' {
   const classes: { [className: string]: string }
   export default classes

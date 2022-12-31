@@ -5,6 +5,7 @@ import WarpComponent from '@/components/Layout/WarpComponent'
 import WarpMenu from '@/components/Layout/WarpMenu'
 import WarpHeader from '@/components/Layout/WarpHeader'
 import utils from '@/utils'
+import request from '@/request'
 
 const Component: React.FunctionComponent = (): JSX.Element => {
   const navigate = useNavigate()
