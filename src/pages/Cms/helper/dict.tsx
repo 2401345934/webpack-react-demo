@@ -1,12 +1,11 @@
+import { TypeObjStr } from '@/utils/utilsTypes.type'
 import LinePicture from '../components/components/LinePicture/center'
 import LinePictureConfig from '../components/components/LinePicture/config'
 
 import LineVideo from '../components/components/LineVideo/center'
 import LineVideoConfig from '../components/components/LineVideo/config'
 
-type COMPONENTS_TYPE_TYPE = {
-  [key: string]: string
-}
+type COMPONENTS_TYPE_TYPE = TypeObjStr
 type COMPONENTS_MAPPER_TYPE = {
   [key: string]: (props: any) => JSX.Element
 }

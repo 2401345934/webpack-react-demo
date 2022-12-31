@@ -5,7 +5,7 @@ import WarpComponent from '@/components/Layout/WarpComponent'
 import WarpMenu from '@/components/Layout/WarpMenu'
 import WarpHeader from '@/components/Layout/WarpHeader'
 import utils from '@/utils'
-import request from '@/request'
+// import request from '@/request'
 
 const Component: React.FunctionComponent = (): JSX.Element => {
   const navigate = useNavigate()
@@ -13,8 +13,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
   const ref = useRef<{
     routerChange: () => void
   }>(null)
-  const key: string =
-    location.pathname.slice(1, location.pathname.length) || 'wecome'
+  const key: string = location.pathname.slice(1, location.pathname.length) || ''
   const keyList: string[] = key.split('/')
   const assembleKey: string = keyList[keyList.length - 1]
   const [collapsed, setCollapsed] = useState<boolean>(false)
@@ -33,6 +32,14 @@ const Component: React.FunctionComponent = (): JSX.Element => {
   // 处理刷新页面重定向 menu key
   useEffect(() => {
     navigate(key)
+    // request({
+    //   url: 'https://api.qa.lululemon.cn/estore/api/v4/estore-auth/auth/manage/onLogin',
+    //   method: 'POST',
+    //   data: {
+    //     password: 'f46bdbaf704f698c99bcba1a813c20a0',
+    //     username: 'lululemon'
+    //   }
+    // })
   }, [])
 
   // 路由跳转
@@ -43,8 +50,9 @@ const Component: React.FunctionComponent = (): JSX.Element => {
   }
 
   // 选择的颜色
-  const changeTheme = (event: { target: { value: string } }) => {
-    setSelectColor(event.target.value)
+  const changeTheme = (value: string) => {
+    setSelectColor(value)
+    setThemeColor(value)
   }
 
   // 改变主题
