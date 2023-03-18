@@ -1,0 +1,17 @@
+.loading-warp {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .single {
+    transform: scale(0.6) rotate(0);
+    animation: spin 2s ease-in-out infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: scale(0.6) rotate(1turn);
+    }
+  }
+}

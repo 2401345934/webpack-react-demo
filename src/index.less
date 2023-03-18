@@ -1,0 +1,44 @@
+@import './styles/base.less';
+@import './styles/mixins.less';
+@import 'antd/dist/reset.css';
+@import './styles/rootCssVar.less';
+
+.layout-sider {
+  min-height: 100vh;
+  background: var(--menuBackground);
+
+  .ant-menu {
+    background: var(--menuBackground);
+  }
+
+  .ant-menu-item-selected {
+    background-color: var(--activeMenuBackgroundColor) !important;
+  }
+}
+
+body {
+  color: var(--textMainColor);
+}
+
+.warp {
+  display: flex;
+}
+
+.logo {
+  margin: 16px;
+  height: 32px;
+  background: rgba(105, 98, 98, 0.3);
+}
+
+.site-layout-Header {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  background-color: var(--headerBackground) !important;
+}
+
+.layout-warp-header {
+  .ant-layout-header {
+    padding: 0;
+  }
+}

@@ -1,0 +1,65 @@
+// 这是 tsconfig.json 配置文件
+// 说明：所有的配置项都可以通过鼠标移入的方式，来查看配置项的解释说明
+// tsconfig 文档链接（https://www.typescriptlang.org/tsconfig）
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@": ["/src"]
+    },
+    // 编译选项
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ],
+    "noImplicitThis": false, // 忽略 this 的类型检查, Raise error on this expressions with an implied any type.
+    "target": "ESNext", // 生成代码的语言版本
+    "lib": ["dom", "dom.iterable", "esnext"], // 指定要包含在编译中的library
+    "allowJs": true, // 允许 ts 编译器编译 js 文件
+    "experimentalDecorators": true,
+    "skipLibCheck": true, // 跳过声明文件的类型检查
+    "esModuleInterop": true, // es 模块互操作，屏蔽 ESModule和CommonJS之间的差异
+    "allowSyntheticDefaultImports": true,
+    // 允许通过import x from 'y' 即使模块没有显式指定 default 导出
+    "strict": true, // 开启严格模式
+    "forceConsistentCasingInFileNames": true, // 对文件名称强制区分大小写
+    "noFallthroughCasesInSwitch": true, // 为 switch 语句启用错误报告
+    "module": "esnext", // 生成代码的模块化标准
+    "moduleResolution": "node", // 模块解析（查找）策略
+    "resolveJsonModule": true, // 允许导入扩展名为 .json 的模块
+    "isolatedModules": true,
+    // 是否将没有 import/export 的文件视为旧（全局而非模块化）脚本文件。
+    "noEmit": true, // 编译时不生成任何文件（只进行类型检查）
+    "jsx": "react-jsx" // 指定将 JSX 编译成什么形式
+  },
+  "rules": {
+    /* JSX */
+    "react/prop-types": [
+      1,
+      {
+        "ignore": ["className", "children", "location", "params", "location*"]
+      }
+    ],
+    "no-param-reassign": [
+      0,
+      {
+        "props": false
+      }
+    ],
+    "prefer-rest-params": 1,
+    "arrow-body-style": 0,
+    "prefer-template": 0,
+    "react/prefer-stateless-function": 1,
+    "react/jsx-no-bind": [
+      0,
+      {
+        "ignoreRefs": false,
+        "allowArrowFunctions": false,
+        "allowBind": true
+      }
+    ]
+  },
+  "include": ["src"] // 指定允许 ts 处理的目录
+}
