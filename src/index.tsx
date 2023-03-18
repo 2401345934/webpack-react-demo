@@ -36,6 +36,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
 
   // 路由跳转
   const goRouter = (e: { key: string; keyPath: string[] }): void => {
+    if (e.key === currentPath) return
     setCurrentPath(e.key)
     navigate(e.key)
     setDefaultOpenKeys(e.keyPath)
@@ -79,6 +80,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
             {/* headers */}
             <WarpHeader
               changeTheme={changeTheme}
+              goRouter={goRouter}
               updateTheme={updateTheme}
               setDefaultOpenKeys={setDefaultOpenKeys}
               setCollapsed={setCollapsed}

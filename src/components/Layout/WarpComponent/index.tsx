@@ -1,7 +1,7 @@
 import { Fragment, forwardRef, useState, useImperativeHandle } from 'react'
 import { Tabs } from 'antd'
 import React from 'react'
-import { deepFlatRouter, RouterType, initRoute, InitRouteType } from '@/router'
+import { deepFlatRouter, RouterType, initRoute } from '@/router'
 import { useLocation, useNavigate } from 'react-router-dom'
 import styles from './styles.module.less'
 import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons'
@@ -10,15 +10,13 @@ type PropsType = {
   children?: React.ReactNode
   [key: string]: any
 }
-
 export default forwardRef((props: PropsType, ref): JSX.Element => {
   const { children, ...rest } = props
   const location = useLocation()
   const navigate = useNavigate()
-  const [activeKey, setActiveKey] = useState<string>(initRoute[0].key)
-  const [items, setItems] = useState<InitRouteType[]>(initRoute)
+  const [activeKey, setActiveKey] = useState<string>(initRoute.path)
+  const [items, setItems] = useState<any[]>([initRoute])
   const [fullscreenFlag, setFullscreenFlag] = useState<boolean>(false)
-
   // 对外暴露 routerChange 方法
   useImperativeHandle(ref, () => ({
     routerChange
@@ -52,7 +50,7 @@ export default forwardRef((props: PropsType, ref): JSX.Element => {
   // 删除页签
   const onEdit = (e: React.MouseEvent | React.KeyboardEvent | string) => {
     const newItems = items.filter(item => item.key !== e)
-    const lastkey = newItems[newItems.length - 1].key
+    const lastkey: string = newItems[newItems.length - 1].key!
     setItems(newItems)
     setActiveKey(lastkey)
     navigate(lastkey)

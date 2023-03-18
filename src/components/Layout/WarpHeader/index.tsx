@@ -1,22 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import {
-  Breadcrumb,
-  Button,
-  Col,
-  Drawer,
-  Form,
-  Input,
-  Layout,
-  Row,
-  Space,
-  Tag
-} from 'antd'
+import { Button, Col, Drawer, Form, Input, Layout, Row, Space, Tag } from 'antd'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import styles from './styles.module.less'
-import { routerList } from '@/router'
-import { useNavigate } from 'react-router-dom'
 import utils from '@/utils'
 import { TypeObjStr } from '@/utils/utilsTypes.type'
+import { initialValueList } from './dict'
 
 const { Header } = Layout
 
@@ -26,45 +14,13 @@ type PropsType = {
   updateTheme: () => void
   setCollapsed: (e: boolean) => void
   setDefaultOpenKeys: (e: string[]) => void
+  goRouter: (e: { key: string; keyPath: string[] }) => void
 }
-const initialValueList = [
-  {
-    key: 'mainColor',
-    initColor: '#000000',
-    label: '主题色'
-  },
-  {
-    key: 'textMainColor',
-    initColor: '#000000',
-    label: '文字主题色'
-  },
-  {
-    key: 'borderMainColor',
-    initColor: '#ff0000',
-    label: '边框主题色'
-  },
-  {
-    key: 'headerBackground',
-    initColor: '#ffffff',
-    label: 'header 主题色'
-  },
-  {
-    key: 'menuBackground',
-    initColor: '#ffffff',
-    label: 'menu 主题色'
-  },
-  {
-    key: 'activeMenuBackgroundColor',
-    initColor: '#e09a9a',
-    label: 'menu 激活背景色'
-  }
-]
 
 export default (props: PropsType): JSX.Element => {
-  const navigate = useNavigate()
   const [form] = Form.useForm()
   const [open, setOpen] = useState<boolean>(false)
-  const { changeTheme, setCollapsed, collapsed, setDefaultOpenKeys } = props
+  const { changeTheme, setCollapsed, collapsed, goRouter } = props
   useEffect(() => {
     const initValues: TypeObjStr = {}
     initialValueList.forEach(item => {
@@ -73,10 +29,6 @@ export default (props: PropsType): JSX.Element => {
     form.setFieldsValue(initValues)
   }, [])
 
-  const handleRouter = (path: any) => {
-    navigate(path)
-    setDefaultOpenKeys(path)
-  }
   const onClose = () => {
     setOpen(false)
   }
@@ -89,21 +41,6 @@ export default (props: PropsType): JSX.Element => {
     utils.updateCustomCssVar(values)
   }
 
-  const itemRender = (route: any) => {
-    return route.children ? (
-      <Tag className={styles.hover} color="var(--mainColor)">
-        {route.label}
-      </Tag>
-    ) : (
-      <Tag
-        className={styles.hover}
-        onClick={() => handleRouter(route.path)}
-        color="var(--mainColor)"
-      >
-        {route.label}
-      </Tag>
-    )
-  }
   return (
     <div className="layout-warp-header">
       <Header className="site-layout-Header">
@@ -116,12 +53,6 @@ export default (props: PropsType): JSX.Element => {
                 onClick: () => setCollapsed(!collapsed)
               }
             )}
-            <div>
-              <Breadcrumb
-                itemRender={itemRender}
-                items={routerList}
-              ></Breadcrumb>
-            </div>
           </Space>
           <div className={styles.theme}>
             <Button onClick={() => handleOpen()}>切换主题</Button>

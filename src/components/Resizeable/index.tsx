@@ -38,7 +38,6 @@ class ResizeableTitle extends React.Component {
 class ResizeableTable extends React.PureComponent {
   constructor(props: any) {
     super(props)
-
     this.state = {
       columns: props.columns
     }
@@ -65,7 +64,7 @@ class ResizeableTable extends React.PureComponent {
     const columns = this.state.columns.map((col, index) => ({
       ...col,
       onHeaderCell: column => ({
-        width: column.width,
+        width: column.width || 200,
         onResize: this.handleResize(index)
       })
     }))

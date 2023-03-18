@@ -177,7 +177,8 @@ const Component: React.FC = (): JSX.Element => {
     formProps,
     actions,
     requestProps,
-    ref
+    ref,
+    tableResize: true
   }
 
   return <QueryTable {...config}></QueryTable>

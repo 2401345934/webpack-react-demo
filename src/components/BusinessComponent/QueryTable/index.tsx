@@ -3,6 +3,7 @@ import { Table, TableProps } from 'antd'
 import styles from './styles.module.less'
 import { useRef, useImperativeHandle, forwardRef, useEffect } from 'react'
 import { RequestType } from '@/request/index.type'
+import ResizeableTable from '@/components/Resizeable'
 import request from '@/request'
 
 type QueryTablePropsType = {
@@ -17,6 +18,7 @@ type QueryTablePropsType = {
       props?: any
     }>
   }
+  tableResize?: boolean
   initFetch?: boolean
   searchCallback?: (v: any) => void
   resetCallback?: () => void
@@ -29,7 +31,8 @@ function QueryTable(props: QueryTablePropsType, ref: any): JSX.Element {
     searchCallback,
     resetCallback,
     requestProps,
-    initFetch = true
+    initFetch = true,
+    tableResize = false
   } = props
   const tableRef = useRef<HTMLTableElement>(null)
   const formRef = useRef<HTMLFormElement>(null)
@@ -68,7 +71,11 @@ function QueryTable(props: QueryTablePropsType, ref: any): JSX.Element {
             {/* actions */}
             {actions && <div className={styles.actions}>{actions}</div>}
             {/* table */}
-            <Table {...tableProps} ref={tableRef}></Table>
+            {tableResize ? (
+              <ResizeableTable {...tableProps}></ResizeableTable>
+            ) : (
+              <Table {...tableProps} ref={tableRef}></Table>
+            )}
           </>
         )}
     </>
