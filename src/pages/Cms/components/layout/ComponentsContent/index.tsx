@@ -10,7 +10,8 @@ const Component: React.FC = (): JSX.Element => {
     // 获取被放置元素的类型
     const type = droppedElement.getAttribute('data-type')
     const data = {
-      type
+      type,
+      uuid: utils.uuid()
     }
     event.dataTransfer.setData('text/plain', utils.JSONStringify(data))
   }

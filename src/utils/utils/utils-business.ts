@@ -51,7 +51,11 @@ const toggleFullscreen = ({
   }
 }
 
+function uuid() {
+  return URL.createObjectURL(new Blob()).substr(-36)
+}
 export default {
+  uuid,
   getFirstScreenRenderingTime,
   getSelectedText,
   toggleFullscreen

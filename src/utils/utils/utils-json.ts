@@ -3,7 +3,14 @@ const JSONPase = (str: string) => {
   if (!str || typeof str != 'string') {
     return str
   }
-  return JSON.parse(str)
+  let result: string | any = str
+
+  try {
+    result = JSON.parse(str)
+  } catch {
+    result = {}
+  }
+  return result
 }
 
 const JSONStringify = (str: any) => {
