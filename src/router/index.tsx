@@ -3,7 +3,6 @@ import { createHashRouter } from 'react-router-dom'
 import Loading from '@/components/Loading'
 import IncludesSubmenusWarp from '@/components/IncludesSubmenusWarp'
 import { generateRouterItemKey, flattenRouter } from './helper'
-import LineVscode from '@/pages/LineVscode'
 import {
   AlertTwoTone,
   BuildTwoTone,
@@ -19,6 +18,7 @@ const Todo = lazy(() => import('@/pages/Todo'))
 const AntdTable = lazy(() => import('@/pages/AntdTable'))
 const Cms = lazy(() => import('@/pages/Cms'))
 const QueryTable = lazy(() => import('@/pages/QueryTable'))
+const Tree = lazy(() => import('@/pages/Tree'))
 
 const initRoute: RouterType = {
   path: 'wecome',
@@ -109,12 +109,12 @@ const initRouter: RouterType[] = [
         )
       },
       {
-        path: 'lineVscode',
-        label: '线上 vscode',
+        path: 'tree',
+        label: 'Tree',
         icon: <BuildTwoTone />,
         element: (
           <Suspense fallback={<Loading />}>
-            <LineVscode />
+            <Tree />
           </Suspense>
         )
       }

@@ -1,0 +1,67 @@
+@horizontalLineWidth: 14px;
+@treeStyleTitlePadding: 6px;
+@indentUnit: 24px;
+
+.tree-container {
+  width: 500px;
+  height: 532px;
+  margin: 16px;
+  padding: 16px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+}
+
+.tree-container .vui-tree .vui-group-container {
+  height: 500px;
+}
+
+.vui-tree {
+  box-sizing: border-box;
+
+  ul,
+  li,
+  p {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .vui-group-container {
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    overflow-anchor: none;
+
+    > ul.vui-tree-group {
+      overflow: hidden;
+    }
+  }
+
+  .vui-tree-item {
+    min-width: 100%;
+    width: max-content;
+  }
+
+  .vui-tree-item-title {
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    font-size: 12px;
+    -webkit-font-smoothing: auto;
+    white-space: pre;
+    font-size: 14px;
+    min-width: 100%;
+    width: max-content;
+    cursor: pointer;
+
+    .next-icon,
+    .next-checkbox-wrapper {
+      margin-right: 4px;
+      font-size: 12px;
+    }
+
+    &:hover {
+      background-color: #e8f2ff;
+    }
+  }
+}
