@@ -8,7 +8,7 @@ const TypedReactHooksDemo = () => {
 
   React.useEffect(() => {
     const options = {
-      strings: ['Wecome alan'],
+      strings: ['我是你typed'],
       typeSpeed: 50,
       backSpeed: 50
     }
@@ -26,7 +26,7 @@ const TypedReactHooksDemo = () => {
   return (
     <div className="wrap">
       <div className="type-wrap">
-        <span style={{ whiteSpace: 'pre', fontSize: 100 }} ref={el} />
+        <span style={{ whiteSpace: 'pre' }} ref={el} />
       </div>
     </div>
   )

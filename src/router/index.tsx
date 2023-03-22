@@ -49,7 +49,16 @@ const initRouter: RouterType[] = [
       </Suspense>
     ),
     children: [
-      initRoute,
+      {
+        path: 'wecome',
+        label: '首页',
+        icon: <AlertTwoTone />,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Wecome />
+          </Suspense>
+        )
+      },
       {
         path: 'todo',
         label: '代办事项',
@@ -63,16 +72,6 @@ const initRouter: RouterType[] = [
             element: (
               <Suspense fallback={<Loading />}>
                 <Todo />
-              </Suspense>
-            )
-          },
-          {
-            path: 'wecome3',
-            label: '表格',
-            icon: <TabletTwoTone />,
-            element: (
-              <Suspense fallback={<Loading />}>
-                <AntdTable />
               </Suspense>
             )
           }

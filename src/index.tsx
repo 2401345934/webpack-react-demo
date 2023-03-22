@@ -31,7 +31,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
   }, [location])
   // 处理刷新页面重定向 menu key
   useEffect(() => {
-    navigate(key)
+    navigate(`/${key}`)
   }, [])
 
   // 路由跳转
