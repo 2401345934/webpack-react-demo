@@ -8,7 +8,6 @@ import {
   BuildTwoTone,
   SafetyCertificateTwoTone,
   SoundTwoTone,
-  TabletTwoTone,
   TagsTwoTone
 } from '@ant-design/icons'
 const BaseLayout = lazy(() => import('@/index'))
@@ -19,6 +18,7 @@ const AntdTable = lazy(() => import('@/pages/AntdTable'))
 const Cms = lazy(() => import('@/pages/Cms'))
 const QueryTable = lazy(() => import('@/pages/QueryTable'))
 const Tree = lazy(() => import('@/pages/Tree'))
+const NetWrok = lazy(() => import('@/pages/NetWrok'))
 
 const initRoute: RouterType = {
   path: 'wecome',
@@ -114,6 +114,16 @@ const initRouter: RouterType[] = [
         element: (
           <Suspense fallback={<Loading />}>
             <Tree />
+          </Suspense>
+        )
+      },
+      {
+        path: 'network',
+        label: 'network',
+        icon: <BuildTwoTone />,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <NetWrok />
           </Suspense>
         )
       }

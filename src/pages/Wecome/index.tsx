@@ -1,5 +1,6 @@
 import React from 'react'
 import Typed from 'typed.js'
+import styles from './index.module.less'
 const TypedReactHooksDemo = () => {
   // Create reference to store the DOM element containing the animation
   const el = React.useRef(null)
@@ -24,7 +25,7 @@ const TypedReactHooksDemo = () => {
   }, [])
 
   return (
-    <div className="wrap">
+    <div className={styles.warp}>
       <div className="type-wrap">
         <span style={{ whiteSpace: 'pre', fontSize: 100 }} ref={el} />
       </div>

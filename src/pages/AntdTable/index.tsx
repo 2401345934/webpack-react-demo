@@ -53,7 +53,7 @@ const columns: any = [
 const Component: React.FC = (): JSX.Element => {
   return (
     <PageWarp>
-      <h1> Antd Table</h1>
+      <h1 class="wrap"> Antd Table</h1>
       <ResizeableTable columns={columns} dataSource={data} />
     </PageWarp>
   )
