@@ -10,6 +10,7 @@ import {
   SoundTwoTone,
   TagsTwoTone
 } from '@ant-design/icons'
+import resultPage from './resultPage'
 const BaseLayout = lazy(() => import('@/index'))
 const Wecome = lazy(() => import('@/pages/Wecome'))
 const NotPage = lazy(() => import('@/pages/404'))
@@ -126,7 +127,8 @@ const initRouter: RouterType[] = [
             <NetWrok />
           </Suspense>
         )
-      }
+      },
+      ...resultPage
     ]
   },
   {
