@@ -75,7 +75,6 @@ export default forwardRef((props: PropsType, ref): JSX.Element => {
           activeKey={activeKey}
           items={items}
         />
-
         {/* 全屏功能 */}
         <div
           className={styles.fullscreenOutlined}

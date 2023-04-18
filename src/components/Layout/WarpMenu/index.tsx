@@ -9,6 +9,7 @@ type PropsType = {
   defaultOpenKeys: string[]
   goRouter: (e: { key: string; keyPath: string[] }) => void
   setDefaultOpenKeys: (e: string[]) => void
+  menuLayout: string
 }
 export default (props: PropsType): JSX.Element => {
   const {
@@ -16,7 +17,8 @@ export default (props: PropsType): JSX.Element => {
     goRouter,
     collapsed,
     defaultOpenKeys,
-    setDefaultOpenKeys
+    setDefaultOpenKeys,
+    menuLayout
   } = props
   const onOpenChange = (openKeys: string[]) => {
     setDefaultOpenKeys(openKeys)
@@ -27,19 +29,23 @@ export default (props: PropsType): JSX.Element => {
         className="layout-sider"
         trigger={null}
         collapsible
+        collapsedWidth={70}
         collapsed={collapsed}
       >
         <div className="logo" />
-        <Menu
-          theme="light"
-          openKeys={defaultOpenKeys}
-          onOpenChange={onOpenChange}
-          onClick={goRouter}
-          mode="inline"
-          defaultOpenKeys={defaultOpenKeys}
-          selectedKeys={[currentPath]}
-          items={routerList}
-        />
+        {menuLayout === 'slide' && (
+          <Menu
+            theme="light"
+            openKeys={defaultOpenKeys}
+            onOpenChange={onOpenChange}
+            inlineCollapsed={collapsed}
+            onClick={goRouter}
+            mode="inline"
+            defaultOpenKeys={defaultOpenKeys}
+            selectedKeys={[currentPath]}
+            items={routerList}
+          />
+        )}
       </Sider>
     </Fragment>
   )

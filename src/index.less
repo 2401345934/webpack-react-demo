@@ -6,6 +6,7 @@
 .layout-sider {
   min-height: 100vh;
   background: var(--menuBackground);
+  transition: .3s;
 
   .ant-menu {
     background: var(--menuBackground);
@@ -14,6 +15,13 @@
   .ant-menu-item-selected {
     background-color: var(--activeMenuBackgroundColor) !important;
   }
+}
+
+.global-setting {
+  position: fixed;
+  right: 30px;
+  bottom: 200px;
+  z-index: 11;
 }
 
 body {
@@ -27,6 +35,9 @@ body {
 .logo {
   margin: 16px;
   height: 32px;
+  width: 160px;
+  min-width: 160px;
+  display: inline-block;
   background: rgba(105, 98, 98, 0.3);
 }
 

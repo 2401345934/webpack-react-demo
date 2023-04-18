@@ -5,6 +5,9 @@ import WarpComponent from '@/components/Layout/WarpComponent'
 import WarpMenu from '@/components/Layout/WarpMenu'
 import WarpHeader from '@/components/Layout/WarpHeader'
 import utils from '@/utils'
+import zhCN from 'antd/locale/zh_CN'
+import { Locale } from 'antd/es/locale'
+import GlobalSetting from './components/GlobalSetting'
 // import request from '@/request'
 
 const Component: React.FunctionComponent = (): JSX.Element => {
@@ -16,6 +19,8 @@ const Component: React.FunctionComponent = (): JSX.Element => {
   const key: string = location.pathname.slice(1, location.pathname.length) || ''
   const keyList: string[] = key.split('/')
   const assembleKey: string = keyList[keyList.length - 1]
+  const [locale] = useState<Locale>(zhCN)
+  const [menuLayout, setMenuLayout] = useState<string>('slide')
   const [collapsed, setCollapsed] = useState<boolean>(false)
   const [currentPath, setCurrentPath] = useState<string>(assembleKey)
   const [themeColor, setThemeColor] = useState<string>('')
@@ -64,18 +69,31 @@ const Component: React.FunctionComponent = (): JSX.Element => {
           colorPrimary: themeColor
         }
       }}
+      locale={locale}
       csp={{ nonce: 'YourNonceCode' }}
     >
+      {/* global setting */}
+      <div className="global-setting">
+        <GlobalSetting
+          setMenuLayout={setMenuLayout}
+          menuLayout={menuLayout}
+        ></GlobalSetting>
+      </div>
+      {/* layout */}
       <div className="layout-warp">
         <div className="warp">
           {/* menu */}
-          <WarpMenu
-            goRouter={goRouter}
-            defaultOpenKeys={defaultOpenKeys}
-            setDefaultOpenKeys={setDefaultOpenKeys}
-            currentPath={currentPath}
-            collapsed={collapsed}
-          ></WarpMenu>
+          {menuLayout === 'slide' && (
+            <WarpMenu
+              goRouter={goRouter}
+              defaultOpenKeys={defaultOpenKeys}
+              setDefaultOpenKeys={setDefaultOpenKeys}
+              currentPath={currentPath}
+              menuLayout={menuLayout}
+              collapsed={collapsed}
+            ></WarpMenu>
+          )}
+
           <Layout className="site-layout">
             {/* headers */}
             <WarpHeader
@@ -85,6 +103,9 @@ const Component: React.FunctionComponent = (): JSX.Element => {
               setDefaultOpenKeys={setDefaultOpenKeys}
               setCollapsed={setCollapsed}
               collapsed={collapsed}
+              defaultOpenKeys={defaultOpenKeys}
+              menuLayout={menuLayout}
+              currentPath={currentPath}
             ></WarpHeader>
             {/* content */}
             <WarpComponent ref={ref}></WarpComponent>

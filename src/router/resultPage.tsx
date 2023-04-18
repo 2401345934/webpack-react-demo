@@ -1,6 +1,7 @@
 import { Suspense, lazy } from 'react'
 import Loading from '@/components/Loading'
 import { RouterType } from './index'
+import { AlertTwoTone } from '@ant-design/icons'
 const NotPage403 = lazy(() => import('@/pages/403'))
 const NotPage500 = lazy(() => import('@/pages/500'))
 const NotPage513 = lazy(() => import('@/pages/513'))
@@ -10,6 +11,7 @@ const BaseLayout = lazy(() => import('@/index'))
 const initRouter: RouterType[] = [
   {
     path: 'result',
+    icon: <AlertTwoTone />,
     label: '常见反馈页面',
     element: (
       <Suspense fallback={<Loading />}>

@@ -4,6 +4,8 @@
   ],
   "hints": {
     "no-inline-styles": "off",
-    "detect-css-reflows/layout": "off"
+    "detect-css-reflows/layout": "off",
+    "detect-css-reflows/paint": "off",
+    "detect-css-reflows/composite": "off"
   }
 }

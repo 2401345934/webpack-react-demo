@@ -1,15 +1,30 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Col, Drawer, Form, Input, Layout, Row, Space, Tag } from 'antd'
+import {
+  Button,
+  Col,
+  Drawer,
+  Form,
+  Input,
+  Layout,
+  Menu,
+  Row,
+  Space,
+  Tag
+} from 'antd'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import styles from './styles.module.less'
 import utils from '@/utils'
 import { TypeObjStr } from '@/utils/utilsTypes.type'
 import { initialValueList } from './dict'
+import { routerList } from '@/router'
 
 const { Header } = Layout
 
 type PropsType = {
   collapsed: boolean
+  defaultOpenKeys: string[]
+  currentPath: string
+  menuLayout: string
   changeTheme: (value: string) => void
   updateTheme: () => void
   setCollapsed: (e: boolean) => void
@@ -20,7 +35,16 @@ type PropsType = {
 export default (props: PropsType): JSX.Element => {
   const [form] = Form.useForm()
   const [open, setOpen] = useState<boolean>(false)
-  const { changeTheme, setCollapsed, collapsed, goRouter } = props
+  const {
+    changeTheme,
+    setCollapsed,
+    currentPath,
+    goRouter,
+    collapsed,
+    defaultOpenKeys,
+    setDefaultOpenKeys,
+    menuLayout
+  } = props
   useEffect(() => {
     const initValues: TypeObjStr = {}
     initialValueList.forEach(item => {
@@ -28,7 +52,9 @@ export default (props: PropsType): JSX.Element => {
     })
     form.setFieldsValue(initValues)
   }, [])
-
+  const onOpenChange = (openKeys: string[]) => {
+    setDefaultOpenKeys(openKeys)
+  }
   const onClose = () => {
     setOpen(false)
   }
@@ -44,20 +70,38 @@ export default (props: PropsType): JSX.Element => {
   return (
     <div className="layout-warp-header">
       <Header className="site-layout-Header">
-        <div className={styles.layoutHeaderWarp}>
-          <Space>
-            {React.createElement(
-              collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-              {
-                className: 'trigger',
-                onClick: () => setCollapsed(!collapsed)
-              }
-            )}
-          </Space>
-          <div className={styles.theme}>
-            <Button onClick={() => handleOpen()}>切换主题</Button>
+        {menuLayout === 'header' && (
+          <>
+            <div className="logo"></div>
+            <Menu
+              theme="light"
+              openKeys={defaultOpenKeys}
+              onOpenChange={onOpenChange}
+              inlineCollapsed={collapsed}
+              onClick={goRouter}
+              mode="horizontal"
+              defaultOpenKeys={defaultOpenKeys}
+              selectedKeys={[currentPath]}
+              items={routerList}
+            />
+          </>
+        )}
+        {menuLayout === 'slide' && (
+          <div className={styles.layoutHeaderWarp}>
+            <Space>
+              {React.createElement(
+                collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+                {
+                  className: 'trigger',
+                  onClick: () => setCollapsed(!collapsed)
+                }
+              )}
+            </Space>
+            <div className={styles.theme}>
+              <Button onClick={() => handleOpen()}>切换主题</Button>
+            </div>
           </div>
-        </div>
+        )}
       </Header>
       <Drawer
         title="修改主题"
