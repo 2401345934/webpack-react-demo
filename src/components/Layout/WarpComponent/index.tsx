@@ -1,4 +1,10 @@
-import { Fragment, forwardRef, useState, useImperativeHandle } from 'react'
+import {
+  Fragment,
+  forwardRef,
+  useState,
+  useImperativeHandle,
+  useEffect
+} from 'react'
 import { Tabs } from 'antd'
 import React from 'react'
 import { deepFlatRouter, RouterType, initRoute } from '@/router'
@@ -6,21 +12,32 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import styles from './styles.module.less'
 import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons'
 import utils from '@/utils'
+
 type PropsType = {
   children?: React.ReactNode
   [key: string]: any
 }
 export default forwardRef((props: PropsType, ref): JSX.Element => {
-  const { children, ...rest } = props
+  const { children, initItems, ...rest } = props
   const location = useLocation()
   const navigate = useNavigate()
   const [activeKey, setActiveKey] = useState<string>(initRoute.path)
-  const [items, setItems] = useState<any[]>([initRoute])
+  const [items, setItems] = useState<any[]>(initItems)
   const [fullscreenFlag, setFullscreenFlag] = useState<boolean>(false)
   // 对外暴露 routerChange 方法
   useImperativeHandle(ref, () => ({
     routerChange
   }))
+
+  useEffect(() => {
+    if (initItems.length) {
+      setItems(initItems)
+      setActiveKey(initItems[initItems.length - 1].key)
+    } else {
+      setItems([initRoute])
+      setActiveKey(initRoute.path)
+    }
+  }, [])
 
   const routerChange = () => {
     const key = location.pathname
@@ -30,15 +47,17 @@ export default forwardRef((props: PropsType, ref): JSX.Element => {
     if (!routerItem) return
     setActiveKey(routerItem.key)
     if (items.find(route => `/${route.key}` === key)) return
-    setItems([
-      ...items,
-      {
-        key: routerItem.key,
-        label: routerItem.menuLabel || routerItem.label,
-        closable: true,
-        children: routerItem.element
-      }
-    ])
+    setItems(val => {
+      return [
+        ...val,
+        {
+          key: routerItem.key,
+          label: routerItem.menuLabel || routerItem.label,
+          closable: true,
+          children: routerItem.element
+        }
+      ]
+    })
   }
 
   // 标签页切换

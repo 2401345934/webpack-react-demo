@@ -1,6 +1,7 @@
-## <small>1.5.3 (2023-04-18)</small>
+## <small>1.5.4 (2023-04-21)</small>
 
 - ✨ 新增(components): 新增百万级数据量 tree 组件 ([b6eed4f](https://github.com/2401345934/webpack-react-demo/commit/b6eed4f))
+- ✨ 新增(components): 新增导航栏布局模式 ([e0df959](https://github.com/2401345934/webpack-react-demo/commit/e0df959))
 - ✨ 新增(hook): useNetowrk ([8972cff](https://github.com/2401345934/webpack-react-demo/commit/8972cff))
 - ✨ 新增(package): 更新最新依赖 ([d689b71](https://github.com/2401345934/webpack-react-demo/commit/d689b71))
 - ✨ 新增(pages): 新增 typed ([2cc37f7](https://github.com/2401345934/webpack-react-demo/commit/2cc37f7))

@@ -8,8 +8,9 @@ import utils from '@/utils'
 import zhCN from 'antd/locale/zh_CN'
 import { Locale } from 'antd/es/locale'
 import GlobalSetting from './components/GlobalSetting'
+import localDataManagement from '@/utils/localDataManagement'
 // import request from '@/request'
-
+import { RouterType, deepFlatRouter } from '@/router'
 const Component: React.FunctionComponent = (): JSX.Element => {
   const navigate = useNavigate()
   const location = useLocation()
@@ -28,8 +29,26 @@ const Component: React.FunctionComponent = (): JSX.Element => {
   const [defaultOpenKeys, setDefaultOpenKeys] = useState<string[]>(
     keyList.filter((key: string) => key !== assembleKey)
   )
+  const [initItems, setInitItems] = useState<any>(false)
+
   useEffect(() => {
     setCurrentPath(location.pathname.slice(1))
+    const uuid = location.pathname + location.search
+    const routerItem = deepFlatRouter.find(
+      (route: RouterType) => `/${route.path}` === location.pathname
+    )
+    let routerList: any = localDataManagement.getItem('routerList') || '[]'
+    routerList = JSON.parse(routerList)
+    if (!routerList.find((item: any) => item.uuid === uuid) && routerItem) {
+      routerList.push({
+        key: routerItem.key,
+        label: routerItem.menuLabel || routerItem.label,
+        closable: true,
+        children: routerItem.element,
+        uuid
+      })
+      localDataManagement.setItem('routerList', JSON.stringify(routerList))
+    }
     if (ref?.current) {
       ref?.current?.routerChange()
     }
@@ -37,6 +56,27 @@ const Component: React.FunctionComponent = (): JSX.Element => {
   // 处理刷新页面重定向 menu key
   useEffect(() => {
     navigate(`/${key}`)
+  }, [])
+  useEffect(() => {
+    let routerList: any = localDataManagement.getItem('routerList') || '[]'
+    routerList = JSON.parse(routerList)
+    let originItems: any = []
+    if (routerList.length) {
+      routerList.forEach((item: any) => {
+        const routerItem = deepFlatRouter.find(
+          (route: RouterType) => route.path === item.key
+        )
+        originItems.push({
+          key: routerItem.key,
+          label: routerItem.menuLabel || routerItem.label,
+          closable: true,
+          children: routerItem.element
+        })
+      })
+      setInitItems([...originItems])
+    } else {
+      setInitItems([])
+    }
   }, [])
 
   // 路由跳转
@@ -108,7 +148,9 @@ const Component: React.FunctionComponent = (): JSX.Element => {
               currentPath={currentPath}
             ></WarpHeader>
             {/* content */}
-            <WarpComponent ref={ref}></WarpComponent>
+            {Array.isArray(initItems) && (
+              <WarpComponent ref={ref} initItems={initItems}></WarpComponent>
+            )}
           </Layout>
         </div>
       </div>
