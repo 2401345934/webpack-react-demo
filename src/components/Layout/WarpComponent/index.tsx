@@ -12,6 +12,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import styles from './styles.module.less'
 import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons'
 import utils from '@/utils'
+import { DELETE_CATCH_TAB } from '../cacheTabHelper'
 
 type PropsType = {
   children?: React.ReactNode
@@ -69,10 +70,11 @@ export default forwardRef((props: PropsType, ref): JSX.Element => {
   // 删除页签
   const onEdit = (e: React.MouseEvent | React.KeyboardEvent | string) => {
     const newItems = items.filter(item => item.key !== e)
-    const lastkey: string = newItems[newItems.length - 1].key!
-    setItems(newItems)
-    setActiveKey(lastkey)
-    navigate(lastkey)
+    const lastkey: string = newItems[newItems.length - 1]?.key!
+    setItems(newItems.length ? newItems : [initRoute])
+    setActiveKey(lastkey || initRoute.path)
+    navigate(lastkey || initRoute.path)
+    DELETE_CATCH_TAB(location.pathname + location.search)
   }
 
   // 切换全屏

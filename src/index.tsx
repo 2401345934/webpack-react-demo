@@ -11,6 +11,10 @@ import GlobalSetting from './components/GlobalSetting'
 import localDataManagement from '@/utils/localDataManagement'
 // import request from '@/request'
 import { RouterType, deepFlatRouter } from '@/router'
+import {
+  ADD_CATCH_TAB,
+  GET_CATCH_TAB
+} from './components/Layout/cacheTabHelper'
 const Component: React.FunctionComponent = (): JSX.Element => {
   const navigate = useNavigate()
   const location = useLocation()
@@ -33,22 +37,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
 
   useEffect(() => {
     setCurrentPath(location.pathname.slice(1))
-    const uuid = location.pathname + location.search
-    const routerItem = deepFlatRouter.find(
-      (route: RouterType) => `/${route.path}` === location.pathname
-    )
-    let routerList: any = localDataManagement.getItem('routerList') || '[]'
-    routerList = JSON.parse(routerList)
-    if (!routerList.find((item: any) => item.uuid === uuid) && routerItem) {
-      routerList.push({
-        key: routerItem.key,
-        label: routerItem.menuLabel || routerItem.label,
-        closable: true,
-        children: routerItem.element,
-        uuid
-      })
-      localDataManagement.setItem('routerList', JSON.stringify(routerList))
-    }
+    ADD_CATCH_TAB(location)
     if (ref?.current) {
       ref?.current?.routerChange()
     }
@@ -58,25 +47,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
     navigate(`/${key}`)
   }, [])
   useEffect(() => {
-    let routerList: any = localDataManagement.getItem('routerList') || '[]'
-    routerList = JSON.parse(routerList)
-    let originItems: any = []
-    if (routerList.length) {
-      routerList.forEach((item: any) => {
-        const routerItem = deepFlatRouter.find(
-          (route: RouterType) => route.path === item.key
-        )
-        originItems.push({
-          key: routerItem.key,
-          label: routerItem.menuLabel || routerItem.label,
-          closable: true,
-          children: routerItem.element
-        })
-      })
-      setInitItems([...originItems])
-    } else {
-      setInitItems([])
-    }
+    setInitItems(GET_CATCH_TAB())
   }, [])
 
   // 路由跳转
