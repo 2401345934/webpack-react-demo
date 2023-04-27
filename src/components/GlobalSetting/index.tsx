@@ -10,17 +10,6 @@ type PropsType = {
 export default (props: PropsType) => {
   const { menuLayout, setMenuLayout } = props
   const [open, setOpen] = useState<boolean>(false)
-  const [tabs, setTabs] = useState([
-    {
-      label: `Slide`,
-      key: 'slide'
-    },
-    {
-      label: `Header`,
-      key: 'header'
-    }
-  ])
-
   const handleToggleSetting = (): void => {
     setOpen(!open)
   }
@@ -39,6 +28,7 @@ export default (props: PropsType) => {
         <Radio.Group value={menuLayout} onChange={changeTabPosition}>
           <Radio.Button value="slide">SLIDE</Radio.Button>
           <Radio.Button value="header">HEADER</Radio.Button>
+          <Radio.Button value="slideAndHeader">SLIDEANDHEADER</Radio.Button>
         </Radio.Group>
       </Drawer>
       <div className={styles.settingWarp}>

@@ -23,9 +23,21 @@ const NetWrok = lazy(() => import('@/pages/NetWrok'))
 
 const initRoute: RouterType = {
   path: 'wecome',
+  key: 'wecome',
   label: '首页',
   icon: <AlertTwoTone />,
   element: (
+    <Suspense fallback={<Loading />}>
+      <Wecome />
+    </Suspense>
+  )
+}
+const initTabItem = {
+  path: 'wecome',
+  key: 'wecome',
+  label: '首页',
+  icon: <AlertTwoTone />,
+  children: (
     <Suspense fallback={<Loading />}>
       <Wecome />
     </Suspense>
@@ -137,8 +149,24 @@ const initRouter: RouterType[] = [
   }
 ]
 
+// 生成路由
 const router = createHashRouter(initRouter)
+// 生成路由key段列表
 const routerList: any[] = generateRouterItemKey(initRouter[0].children || [])
+// 扁平化路由
 const deepFlatRouter: any[] = flattenRouter(routerList)
+// 一级路由
+const firstRouterList: any[] =
+  routerList.map((route: RouterType) => ({
+    ...route,
+    children: []
+  })) || []
 
-export { router, routerList, initRoute, deepFlatRouter }
+export {
+  router,
+  routerList,
+  initRoute,
+  deepFlatRouter,
+  firstRouterList,
+  initTabItem
+}

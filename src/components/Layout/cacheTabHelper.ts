@@ -1,5 +1,6 @@
-import { RouterType, deepFlatRouter } from '@/router'
+import { RouterType, deepFlatRouter, initTabItem } from '@/router'
 import localDataManagement from '@/utils/localDataManagement'
+import GLOBAL_CONFIG from '../../../config/globalConfig'
 
 type LocationType = {
   hash: string
@@ -11,6 +12,7 @@ type LocationType = {
 
 // 获取
 export const GET_CATCH_TAB = () => {
+  if (!GLOBAL_CONFIG.TAB_CATCH_OPEN) return []
   const routerList: any = JSON.parse(
     localDataManagement.getItem('routerList') || '[]'
   )
@@ -28,10 +30,11 @@ export const GET_CATCH_TAB = () => {
       })
     })
   }
-  return originItems || []
+  return originItems || [initTabItem]
 }
 // 新增
 export const ADD_CATCH_TAB = (location: LocationType) => {
+  if (!GLOBAL_CONFIG.TAB_CATCH_OPEN) return
   const uuid: string = location.pathname + location.search
   const routerItem: RouterType = deepFlatRouter.find(
     (route: RouterType) => `/${route.path}` === location.pathname
@@ -54,6 +57,7 @@ export const ADD_CATCH_TAB = (location: LocationType) => {
 // 修改状态
 // 删除
 export const DELETE_CATCH_TAB = (uuid: string) => {
+  if (!GLOBAL_CONFIG.TAB_CATCH_OPEN) return
   let routerList: any[] = JSON.parse(
     localDataManagement.getItem('routerList') || '[]'
   )
@@ -63,5 +67,6 @@ export const DELETE_CATCH_TAB = (uuid: string) => {
 
 // 清空
 export const CLEAR_CATCH_TAB = () => {
+  if (!GLOBAL_CONFIG.TAB_CATCH_OPEN) return
   localDataManagement.setItem('routerList', JSON.stringify([]))
 }

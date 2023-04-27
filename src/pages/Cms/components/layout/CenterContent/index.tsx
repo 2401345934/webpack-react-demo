@@ -18,17 +18,20 @@ const Component: React.FC = (): JSX.Element => {
   }
   const handleDragOverParent = (event: any) => {
     event.preventDefault()
+    event.target.style.opacity = '1'
   }
   const updateCurrentIndex = (index: number) => {
     setCurrentIndx(index)
   }
   function handleDragStart(e: any) {
+    e.target.style.opacity = '0.5'
     // 设置数据
     e.dataTransfer.setData('text/plain', e.target.id)
   }
 
   function handleDragOver(e: any) {
     e.preventDefault()
+    e.target.style.opacity = '1'
     // 设置拖拽时的光标样式
     e.dataTransfer.dropEffect = 'move'
   }

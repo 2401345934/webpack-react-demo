@@ -3,27 +3,29 @@ import {
   forwardRef,
   useState,
   useImperativeHandle,
-  useEffect
+  useEffect,
+  memo
 } from 'react'
 import { Tabs } from 'antd'
 import React from 'react'
-import { deepFlatRouter, RouterType, initRoute } from '@/router'
+import { deepFlatRouter, RouterType, initTabItem } from '@/router'
 import { useLocation, useNavigate } from 'react-router-dom'
 import styles from './styles.module.less'
 import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons'
 import utils from '@/utils'
 import { DELETE_CATCH_TAB } from '../cacheTabHelper'
+import { useGetState } from 'ahooks'
 
 type PropsType = {
   children?: React.ReactNode
   [key: string]: any
 }
-export default forwardRef((props: PropsType, ref): JSX.Element => {
+const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
   const { children, initItems, ...rest } = props
   const location = useLocation()
   const navigate = useNavigate()
-  const [activeKey, setActiveKey] = useState<string>(initRoute.path)
-  const [items, setItems] = useState<any[]>(initItems)
+  const [activeKey, setActiveKey] = useGetState<string>(initTabItem.path)
+  const [items, setItems, getItems] = useGetState<any[]>(initItems)
   const [fullscreenFlag, setFullscreenFlag] = useState<boolean>(false)
   // 对外暴露 routerChange 方法
   useImperativeHandle(ref, () => ({
@@ -35,8 +37,8 @@ export default forwardRef((props: PropsType, ref): JSX.Element => {
       setItems(initItems)
       setActiveKey(initItems[initItems.length - 1].key)
     } else {
-      setItems([initRoute])
-      setActiveKey(initRoute.path)
+      setItems([initTabItem])
+      setActiveKey(initTabItem.path)
     }
   }, [])
 
@@ -47,7 +49,7 @@ export default forwardRef((props: PropsType, ref): JSX.Element => {
     )
     if (!routerItem) return
     setActiveKey(routerItem.key)
-    if (items.find(route => `/${route.key}` === key)) return
+    if (getItems().find(route => `/${route.key}` === key)) return
     setItems(val => {
       return [
         ...val,
@@ -71,9 +73,9 @@ export default forwardRef((props: PropsType, ref): JSX.Element => {
   const onEdit = (e: React.MouseEvent | React.KeyboardEvent | string) => {
     const newItems = items.filter(item => item.key !== e)
     const lastkey: string = newItems[newItems.length - 1]?.key!
-    setItems(newItems.length ? newItems : [initRoute])
-    setActiveKey(lastkey || initRoute.path)
-    navigate(lastkey || initRoute.path)
+    setItems(newItems.length ? newItems : [initTabItem])
+    setActiveKey(lastkey || initTabItem.path)
+    navigate(lastkey || initTabItem.path)
     DELETE_CATCH_TAB(location.pathname + location.search)
   }
 
@@ -85,6 +87,7 @@ export default forwardRef((props: PropsType, ref): JSX.Element => {
     })
     setFullscreenFlag(!fullscreenFlag)
   }
+
   return (
     <Fragment>
       <div className={styles.warpComponent} {...rest}>
@@ -107,3 +110,4 @@ export default forwardRef((props: PropsType, ref): JSX.Element => {
     </Fragment>
   )
 })
+export default memo(WarpComponent)

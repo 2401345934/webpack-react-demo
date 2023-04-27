@@ -8,28 +8,31 @@ import utils from '@/utils'
 import zhCN from 'antd/locale/zh_CN'
 import { Locale } from 'antd/es/locale'
 import GlobalSetting from './components/GlobalSetting'
-import localDataManagement from '@/utils/localDataManagement'
 // import request from '@/request'
-import { RouterType, deepFlatRouter } from '@/router'
 import {
   ADD_CATCH_TAB,
   GET_CATCH_TAB
 } from './components/Layout/cacheTabHelper'
+import { RouterType, deepFlatRouter, initTabItem } from './router'
 const Component: React.FunctionComponent = (): JSX.Element => {
   const navigate = useNavigate()
   const location = useLocation()
-  const ref = useRef<{
+  const componentRef = useRef<{
     routerChange: () => void
+  }>(null)
+  const headerRef = useRef<{
+    findRouterPath: () => void
   }>(null)
   const key: string = location.pathname.slice(1, location.pathname.length) || ''
   const keyList: string[] = key.split('/')
   const assembleKey: string = keyList[keyList.length - 1]
   const [locale] = useState<Locale>(zhCN)
-  const [menuLayout, setMenuLayout] = useState<string>('slide')
+  const [menuLayout, setMenuLayout] = useState<string>('slideAndHeader')
   const [collapsed, setCollapsed] = useState<boolean>(false)
   const [currentPath, setCurrentPath] = useState<string>(assembleKey)
   const [themeColor, setThemeColor] = useState<string>('')
   const [selectColor, setSelectColor] = useState<string>('')
+  const [childrenRouterList, setChildrenRouterList] = useState<any[]>([])
   const [defaultOpenKeys, setDefaultOpenKeys] = useState<string[]>(
     keyList.filter((key: string) => key !== assembleKey)
   )
@@ -38,16 +41,38 @@ const Component: React.FunctionComponent = (): JSX.Element => {
   useEffect(() => {
     setCurrentPath(location.pathname.slice(1))
     ADD_CATCH_TAB(location)
-    if (ref?.current) {
-      ref?.current?.routerChange()
+    // component 触发 header 切换
+    if (componentRef?.current) {
+      componentRef?.current?.routerChange()
+    }
+    if (headerRef?.current) {
+      headerRef?.current?.findRouterPath()
     }
   }, [location])
+
   // 处理刷新页面重定向 menu key
   useEffect(() => {
-    navigate(`/${key}`)
-  }, [])
-  useEffect(() => {
-    setInitItems(GET_CATCH_TAB())
+    navigate(`${location.pathname}`)
+    const initRouter = GET_CATCH_TAB()
+    if (!initRouter.length) {
+      const routerItem = deepFlatRouter.find(
+        (route: RouterType) => `/${route.path}` === location.pathname
+      )
+      if (!routerItem) {
+        setInitItems([initTabItem])
+        return
+      }
+      setInitItems([
+        {
+          key: routerItem.key,
+          label: routerItem.menuLabel || routerItem.label,
+          closable: true,
+          children: routerItem.element
+        }
+      ])
+    } else {
+      setInitItems(initRouter)
+    }
   }, [])
 
   // 路由跳转
@@ -94,7 +119,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
       <div className="layout-warp">
         <div className="warp">
           {/* menu */}
-          {menuLayout === 'slide' && (
+          {(menuLayout === 'slide' || menuLayout === 'slideAndHeader') && (
             <WarpMenu
               goRouter={goRouter}
               defaultOpenKeys={defaultOpenKeys}
@@ -102,6 +127,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
               currentPath={currentPath}
               menuLayout={menuLayout}
               collapsed={collapsed}
+              childrenRouterList={childrenRouterList}
             ></WarpMenu>
           )}
 
@@ -110,8 +136,10 @@ const Component: React.FunctionComponent = (): JSX.Element => {
             <WarpHeader
               changeTheme={changeTheme}
               goRouter={goRouter}
+              ref={headerRef}
               updateTheme={updateTheme}
               setDefaultOpenKeys={setDefaultOpenKeys}
+              setChildrenRouterList={setChildrenRouterList}
               setCollapsed={setCollapsed}
               collapsed={collapsed}
               defaultOpenKeys={defaultOpenKeys}
@@ -120,7 +148,10 @@ const Component: React.FunctionComponent = (): JSX.Element => {
             ></WarpHeader>
             {/* content */}
             {Array.isArray(initItems) && (
-              <WarpComponent ref={ref} initItems={initItems}></WarpComponent>
+              <WarpComponent
+                ref={componentRef}
+                initItems={initItems}
+              ></WarpComponent>
             )}
           </Layout>
         </div>

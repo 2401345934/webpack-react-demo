@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, memo } from 'react'
 import Sider from 'antd/lib/layout/Sider'
 import { Menu } from 'antd'
 import { routerList } from '@/router'
@@ -10,15 +10,18 @@ type PropsType = {
   goRouter: (e: { key: string; keyPath: string[] }) => void
   setDefaultOpenKeys: (e: string[]) => void
   menuLayout: string
+  childrenRouterList: any[]
 }
-export default (props: PropsType): JSX.Element => {
+
+const WarpMenu = (props: PropsType): JSX.Element => {
   const {
     currentPath,
     goRouter,
     collapsed,
     defaultOpenKeys,
     setDefaultOpenKeys,
-    menuLayout
+    menuLayout,
+    childrenRouterList
   } = props
   const onOpenChange = (openKeys: string[]) => {
     setDefaultOpenKeys(openKeys)
@@ -46,7 +49,22 @@ export default (props: PropsType): JSX.Element => {
             items={routerList}
           />
         )}
+        {menuLayout === 'slideAndHeader' && (
+          <Menu
+            theme="light"
+            openKeys={defaultOpenKeys}
+            onOpenChange={onOpenChange}
+            inlineCollapsed={collapsed}
+            onClick={goRouter}
+            mode="inline"
+            defaultOpenKeys={defaultOpenKeys}
+            selectedKeys={[currentPath]}
+            items={childrenRouterList}
+          />
+        )}
       </Sider>
     </Fragment>
   )
 }
+
+export default memo(WarpMenu)

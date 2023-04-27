@@ -1,4 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, {
+  forwardRef,
+  memo,
+  useEffect,
+  useImperativeHandle,
+  useState
+} from 'react'
 import {
   Button,
   Col,
@@ -8,15 +14,15 @@ import {
   Layout,
   Menu,
   Row,
-  Space,
-  Tag
+  Space
 } from 'antd'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import styles from './styles.module.less'
 import utils from '@/utils'
 import { TypeObjStr } from '@/utils/utilsTypes.type'
 import { initialValueList } from './dict'
-import { routerList } from '@/router'
+import { RouterType, firstRouterList, routerList } from '@/router'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const { Header } = Layout
 
@@ -29,14 +35,19 @@ type PropsType = {
   updateTheme: () => void
   setCollapsed: (e: boolean) => void
   setDefaultOpenKeys: (e: string[]) => void
+  setChildrenRouterList: (e: any[]) => void
   goRouter: (e: { key: string; keyPath: string[] }) => void
 }
 
-export default (props: PropsType): JSX.Element => {
+const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
+  const navigate = useNavigate()
+  const location = useLocation()
   const [form] = Form.useForm()
   const [open, setOpen] = useState<boolean>(false)
+  const [key, setKey] = useState<string[]>([])
   const {
     changeTheme,
+    setChildrenRouterList,
     setCollapsed,
     currentPath,
     goRouter,
@@ -45,6 +56,12 @@ export default (props: PropsType): JSX.Element => {
     setDefaultOpenKeys,
     menuLayout
   } = props
+  const initTabPath = currentPath ? currentPath.split('/')[0] : ''
+  // 对外暴露 routerChange 方法
+  useImperativeHandle(ref, () => ({
+    findRouterPath
+  }))
+
   useEffect(() => {
     const initValues: TypeObjStr = {}
     initialValueList.forEach(item => {
@@ -52,6 +69,22 @@ export default (props: PropsType): JSX.Element => {
     })
     form.setFieldsValue(initValues)
   }, [])
+
+  const findRouterPath = () => {
+    const key: string =
+      location.pathname.slice(1, location.pathname.length) || ''
+    const keyList: string[] = key.split('/')
+    const itemRouter: RouterType = routerList.find(
+      (item: RouterType) => item.key === keyList[0]
+    )!
+    setKey([keyList[0]])
+    if (itemRouter.children) {
+      setChildrenRouterList(itemRouter.children)
+    } else {
+      setChildrenRouterList([])
+    }
+  }
+
   const onOpenChange = (openKeys: string[]) => {
     setDefaultOpenKeys(openKeys)
   }
@@ -67,9 +100,41 @@ export default (props: PropsType): JSX.Element => {
     utils.updateCustomCssVar(values)
   }
 
+  const handleChangeMenu = (strArr: string[]) => {
+    if (!strArr.length) return
+    setKey(strArr)
+    const itemRouter: RouterType = routerList.find(
+      (item: RouterType) => item.key === strArr[0]
+    )!
+    if (itemRouter) {
+      if (itemRouter.children) {
+        if (itemRouter.children[0]) {
+          navigate(`/${itemRouter.children[0].path}`)
+        }
+        setChildrenRouterList(itemRouter.children)
+      } else {
+        navigate(`/${strArr[0]}`)
+        setChildrenRouterList([])
+      }
+    }
+  }
+
   return (
     <div className="layout-warp-header">
       <Header className="site-layout-Header">
+        {menuLayout === 'slideAndHeader' && (
+          <>
+            <Menu
+              theme="light"
+              inlineCollapsed={collapsed}
+              onOpenChange={handleChangeMenu}
+              mode="horizontal"
+              triggerSubMenuAction="click"
+              selectedKeys={key.length ? key : [initTabPath]}
+              items={firstRouterList}
+            />
+          </>
+        )}
         {menuLayout === 'header' && (
           <>
             <div className="logo"></div>
@@ -132,4 +197,5 @@ export default (props: PropsType): JSX.Element => {
       </Drawer>
     </div>
   )
-}
+})
+export default memo(WarpHeader)

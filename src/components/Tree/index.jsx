@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import { PureComponent } from 'react'
 import TreeNodeItem from './TreeNodeItem'
 
 import './index.less'
