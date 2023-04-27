@@ -8,12 +8,14 @@ import utils from '@/utils'
 import zhCN from 'antd/locale/zh_CN'
 import { Locale } from 'antd/es/locale'
 import GlobalSetting from './components/GlobalSetting'
+import GLOBAL_CONFIG from '../config/globalConfig'
 // import request from '@/request'
 import {
   ADD_CATCH_TAB,
   GET_CATCH_TAB
 } from './components/Layout/cacheTabHelper'
 import { RouterType, deepFlatRouter, initRoute, initTabItem } from './router'
+import { useMount } from 'ahooks'
 const Component: React.FunctionComponent = (): JSX.Element => {
   const navigate = useNavigate()
   const location = useLocation()
@@ -63,7 +65,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
   }, [location])
 
   // 处理刷新页面重定向 menu key
-  useEffect(() => {
+  useMount(() => {
     navigate(`${location.pathname}`)
     const initRouter = GET_CATCH_TAB()
     if (!initRouter.length) {
@@ -85,7 +87,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
     } else {
       setInitItems(initRouter)
     }
-  }, [])
+  })
 
   // 路由跳转
   const goRouter = (e: { key: string; keyPath: string[] }): void => {
@@ -121,12 +123,16 @@ const Component: React.FunctionComponent = (): JSX.Element => {
       csp={{ nonce: 'YourNonceCode' }}
     >
       {/* global setting */}
-      <div className="global-setting">
-        <GlobalSetting
-          setMenuLayout={setMenuLayout}
-          menuLayout={menuLayout}
-        ></GlobalSetting>
-      </div>
+      {/* 全局配置 */}
+      {GLOBAL_CONFIG.UPDATE_SETTING_OPEN && (
+        <div className="global-setting">
+          <GlobalSetting
+            setMenuLayout={setMenuLayout}
+            menuLayout={menuLayout}
+          ></GlobalSetting>
+        </div>
+      )}
+
       {/* layout */}
       <div className="layout-warp">
         <div className="warp">

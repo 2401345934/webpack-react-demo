@@ -1,4 +1,4 @@
-## <small>1.5.7 (2023-04-27)</small>
+## <small>1.5.8 (2023-04-27)</small>
 
 - ✨ 新增(components): 抽离优化多页签缓存方法 ([7399b7e](https://github.com/2401345934/webpack-react-demo/commit/7399b7e))
 - ✨ 新增(components): 导航栏多种模式支持 代码待优化 ([e9565d1](https://github.com/2401345934/webpack-react-demo/commit/e9565d1))
@@ -10,6 +10,7 @@
 - ✨ 新增(pages): 新增 typed ([2cc37f7](https://github.com/2401345934/webpack-react-demo/commit/2cc37f7))
 - ✨ 新增(pages): 新增常见反馈页面 ([c46776e](https://github.com/2401345934/webpack-react-demo/commit/c46776e))
 - ✨ 新增(pages): 原生简单拖拽实现排序 ([f8818de](https://github.com/2401345934/webpack-react-demo/commit/f8818de))
+- ✨ 新增(pages): 注释补充 ([22210be](https://github.com/2401345934/webpack-react-demo/commit/22210be))
 - 🐛 修复(pages): router ([2045786](https://github.com/2401345934/webpack-react-demo/commit/2045786))
 - init ([d7ddb87](https://github.com/2401345934/webpack-react-demo/commit/d7ddb87))
 - not auth plubsh ([cdfce05](https://github.com/2401345934/webpack-react-demo/commit/cdfce05))

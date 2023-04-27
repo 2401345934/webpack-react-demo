@@ -14,7 +14,7 @@ import styles from './styles.module.less'
 import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons'
 import utils from '@/utils'
 import { DELETE_CATCH_TAB } from '../cacheTabHelper'
-import { useGetState } from 'ahooks'
+import { useGetState, useMount } from 'ahooks'
 
 type PropsType = {
   children?: React.ReactNode
@@ -32,7 +32,7 @@ const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
     routerChange
   }))
 
-  useEffect(() => {
+  useMount(() => {
     if (initItems.length) {
       setItems(initItems)
       setActiveKey(initItems[initItems.length - 1].key)
@@ -40,7 +40,7 @@ const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
       setItems([initTabItem])
       setActiveKey(initTabItem.path)
     }
-  }, [])
+  })
 
   //  路由变化
   const routerChange = () => {

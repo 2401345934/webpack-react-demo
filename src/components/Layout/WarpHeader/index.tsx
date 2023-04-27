@@ -1,21 +1,5 @@
-import React, {
-  forwardRef,
-  memo,
-  useEffect,
-  useImperativeHandle,
-  useState
-} from 'react'
-import {
-  Button,
-  Col,
-  Drawer,
-  Form,
-  Input,
-  Layout,
-  Menu,
-  Row,
-  Space
-} from 'antd'
+import React, { forwardRef, memo, useImperativeHandle, useState } from 'react'
+import { Button, Form, Layout, Menu, Space } from 'antd'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import styles from './styles.module.less'
 import utils from '@/utils'
@@ -23,6 +7,9 @@ import { TypeObjStr } from '@/utils/utilsTypes.type'
 import { initialValueList } from './dict'
 import { RouterType, firstRouterList, routerList } from '@/router'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { useMount } from 'ahooks'
+import UpdateTheme from '../UpdateTheme'
+import GLOBAL_CONFIG from '../../../../config/globalConfig'
 
 const { Header } = Layout
 
@@ -66,13 +53,13 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
     findRouterPath
   }))
 
-  useEffect(() => {
+  useMount(() => {
     const initValues: TypeObjStr = {}
     initialValueList.forEach(item => {
       initValues[item.key] = item.initColor
     })
     form.setFieldsValue(initValues)
-  }, [])
+  })
 
   //  根据当前路由找到对应的菜单
   const findRouterPath = () => {
@@ -178,33 +165,16 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
           </div>
         )}
       </Header>
-      <Drawer
-        title="修改主题"
-        width={720}
-        onClose={onClose}
-        open={open}
-        bodyStyle={{ paddingBottom: 80 }}
-        extra={
-          <Space>
-            <Button onClick={onClose}>关闭</Button>
-            <Button onClick={handleSubmit} type="primary">
-              变更
-            </Button>
-          </Space>
-        }
-      >
-        <Form form={form}>
-          <Row gutter={16}>
-            {initialValueList.map(item => (
-              <Col span={24} key={item.key}>
-                <Form.Item name={item.key} label={item.label}>
-                  <Input type="color" />
-                </Form.Item>
-              </Col>
-            ))}
-          </Row>
-        </Form>
-      </Drawer>
+      {/* 修改主题色 */}
+      {GLOBAL_CONFIG.UPDATE_THEME_OPEN && (
+        <UpdateTheme
+          open={open}
+          onClose={onClose}
+          handleSubmit={handleSubmit}
+          form={form}
+          initialValueList={initialValueList}
+        ></UpdateTheme>
+      )}
     </div>
   )
 })
