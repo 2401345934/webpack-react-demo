@@ -42,6 +42,7 @@ const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
     }
   }, [])
 
+  //  路由变化
   const routerChange = () => {
     const key = location.pathname
     const routerItem = deepFlatRouter.find(

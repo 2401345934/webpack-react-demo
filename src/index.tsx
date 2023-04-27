@@ -13,7 +13,7 @@ import {
   ADD_CATCH_TAB,
   GET_CATCH_TAB
 } from './components/Layout/cacheTabHelper'
-import { RouterType, deepFlatRouter, initTabItem } from './router'
+import { RouterType, deepFlatRouter, initRoute, initTabItem } from './router'
 const Component: React.FunctionComponent = (): JSX.Element => {
   const navigate = useNavigate()
   const location = useLocation()
@@ -23,23 +23,35 @@ const Component: React.FunctionComponent = (): JSX.Element => {
   const headerRef = useRef<{
     findRouterPath: () => void
   }>(null)
+  // 路由 key
   const key: string = location.pathname.slice(1, location.pathname.length) || ''
+  // 路由 key 列表
   const keyList: string[] = key.split('/')
+  // 路由最后一个 key
   const assembleKey: string = keyList[keyList.length - 1]
+  //  国际化 语言
   const [locale] = useState<Locale>(zhCN)
-  const [menuLayout, setMenuLayout] = useState<string>('slideAndHeader')
+  // 导航栏布局
+  const [menuLayout, setMenuLayout] = useState<string>('slide')
+  //  侧边栏收起状态
   const [collapsed, setCollapsed] = useState<boolean>(false)
+  // header 当前 path
   const [currentPath, setCurrentPath] = useState<string>(assembleKey)
+  // 主题色
   const [themeColor, setThemeColor] = useState<string>('')
+  //  选择的颜色
   const [selectColor, setSelectColor] = useState<string>('')
+  //  左侧子菜单列表
   const [childrenRouterList, setChildrenRouterList] = useState<any[]>([])
+  //  默认展开的菜单
   const [defaultOpenKeys, setDefaultOpenKeys] = useState<string[]>(
     keyList.filter((key: string) => key !== assembleKey)
   )
+  //  是否展开全局设置
   const [initItems, setInitItems] = useState<any>(false)
 
   useEffect(() => {
-    setCurrentPath(location.pathname.slice(1))
+    setCurrentPath(location.pathname.slice(1) || initRoute.path)
     ADD_CATCH_TAB(location)
     // component 触发 header 切换
     if (componentRef?.current) {

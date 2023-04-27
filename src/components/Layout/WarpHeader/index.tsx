@@ -40,11 +40,6 @@ type PropsType = {
 }
 
 const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
-  const navigate = useNavigate()
-  const location = useLocation()
-  const [form] = Form.useForm()
-  const [open, setOpen] = useState<boolean>(false)
-  const [key, setKey] = useState<string[]>([])
   const {
     changeTheme,
     setChildrenRouterList,
@@ -56,6 +51,15 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
     setDefaultOpenKeys,
     menuLayout
   } = props
+  const navigate = useNavigate()
+  const location = useLocation()
+  //  表单
+  const [form] = Form.useForm()
+  //  是否展开全局设置
+  const [open, setOpen] = useState<boolean>(false)
+  //  当前选中的 key
+  const [key, setKey] = useState<string[]>([])
+  //  默认选中的 path
   const initTabPath = currentPath ? currentPath.split('/')[0] : ''
   // 对外暴露 routerChange 方法
   useImperativeHandle(ref, () => ({
@@ -70,6 +74,7 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
     form.setFieldsValue(initValues)
   }, [])
 
+  //  根据当前路由找到对应的菜单
   const findRouterPath = () => {
     const key: string =
       location.pathname.slice(1, location.pathname.length) || ''
@@ -78,28 +83,33 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
       (item: RouterType) => item.key === keyList[0]
     )!
     setKey([keyList[0]])
-    if (itemRouter.children) {
+    if (itemRouter?.children) {
       setChildrenRouterList(itemRouter.children)
     } else {
       setChildrenRouterList([])
     }
   }
 
+  //  菜单展开收起
   const onOpenChange = (openKeys: string[]) => {
     setDefaultOpenKeys(openKeys)
   }
+  //  关闭全局设置
   const onClose = () => {
     setOpen(false)
   }
+  //  打开全局设置
   const handleOpen = () => {
     setOpen(true)
   }
+  //  切换主题色
   const handleSubmit = () => {
     const values = form.getFieldsValue()
     changeTheme(values.mainColor)
     utils.updateCustomCssVar(values)
   }
 
+  //  切换菜单
   const handleChangeMenu = (strArr: string[]) => {
     if (!strArr.length) return
     setKey(strArr)
