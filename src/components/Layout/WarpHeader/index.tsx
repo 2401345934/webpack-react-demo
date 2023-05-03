@@ -9,7 +9,7 @@ import { RouterType, firstRouterList, routerList } from '@/router'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useMount } from 'ahooks'
 import UpdateTheme from '../UpdateTheme'
-import GLOBAL_CONFIG from '../../../../config/globalConfig'
+import GLOBAL_CONFIG from '@globalConfig'
 
 const { Header } = Layout
 

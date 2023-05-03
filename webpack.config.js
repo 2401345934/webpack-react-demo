@@ -26,7 +26,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { merge } = require('webpack-merge')
 
 const alias = {
-  '@': path.resolve(__dirname, 'src')
+  '@': path.resolve(__dirname, 'src'),
+  '@globalConfig': path.resolve(__dirname, 'config/globalConfig')
 }
 
 const config = {

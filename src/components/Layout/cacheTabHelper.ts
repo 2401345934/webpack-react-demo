@@ -1,6 +1,6 @@
 import { RouterType, deepFlatRouter, initTabItem } from '@/router'
 import localDataManagement from '@/utils/localDataManagement'
-import GLOBAL_CONFIG from '../../../config/globalConfig'
+import GLOBAL_CONFIG from '@globalConfig'
 
 type LocationType = {
   hash: string

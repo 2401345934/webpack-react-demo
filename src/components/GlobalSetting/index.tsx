@@ -2,6 +2,7 @@ import { SettingTwoTone } from '@ant-design/icons'
 import styles from './index.module.less'
 import { Divider, Drawer, Radio } from 'antd'
 import { useState } from 'react'
+import GLOBAL_CONFIG from '@globalConfig'
 
 type PropsType = {
   menuLayout: string
@@ -24,12 +25,18 @@ export default (props: PropsType) => {
         onClose={handleToggleSetting}
         open={open}
       >
-        <Divider plain>导航栏模式</Divider>
-        <Radio.Group value={menuLayout} onChange={changeTabPosition}>
-          <Radio.Button value="slide">SLIDE</Radio.Button>
-          <Radio.Button value="header">HEADER</Radio.Button>
-          <Radio.Button value="slideAndHeader">SLIDEANDHEADER</Radio.Button>
-        </Radio.Group>
+        {GLOBAL_CONFIG.IS_OPEN_MENU_ACTIVE_CHANGE && (
+          <>
+            <Divider plain>导航栏模式</Divider>
+            <Radio.Group value={menuLayout} onChange={changeTabPosition}>
+              {GLOBAL_CONFIG.MENU_LAYOUT_LIST.map(item => {
+                return (
+                  <Radio.Button value={item.value}>{item.title}</Radio.Button>
+                )
+              })}
+            </Radio.Group>
+          </>
+        )}
       </Drawer>
       <div className={styles.settingWarp}>
         <SettingTwoTone

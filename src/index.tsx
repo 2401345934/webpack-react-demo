@@ -8,7 +8,7 @@ import utils from '@/utils'
 import zhCN from 'antd/locale/zh_CN'
 import { Locale } from 'antd/es/locale'
 import GlobalSetting from './components/GlobalSetting'
-import GLOBAL_CONFIG from '../config/globalConfig'
+import GLOBAL_CONFIG from '@globalConfig'
 // import request from '@/request'
 import {
   ADD_CATCH_TAB,
@@ -34,7 +34,9 @@ const Component: React.FunctionComponent = (): JSX.Element => {
   //  国际化 语言
   const [locale] = useState<Locale>(zhCN)
   // 导航栏布局
-  const [menuLayout, setMenuLayout] = useState<string>('slide')
+  const [menuLayout, setMenuLayout] = useState<string>(
+    GLOBAL_CONFIG.MENU_LAYOUT_LIST[0].value
+  )
   //  侧边栏收起状态
   const [collapsed, setCollapsed] = useState<boolean>(false)
   // header 当前 path
