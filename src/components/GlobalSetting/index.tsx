@@ -31,7 +31,9 @@ export default (props: PropsType) => {
             <Radio.Group value={menuLayout} onChange={changeTabPosition}>
               {GLOBAL_CONFIG.MENU_LAYOUT_LIST.map(item => {
                 return (
-                  <Radio.Button value={item.value}>{item.title}</Radio.Button>
+                  <Radio.Button key={item.value} value={item.value}>
+                    {item.title}
+                  </Radio.Button>
                 )
               })}
             </Radio.Group>

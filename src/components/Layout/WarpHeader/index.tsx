@@ -1,4 +1,10 @@
-import React, { forwardRef, memo, useImperativeHandle, useState } from 'react'
+import React, {
+  forwardRef,
+  memo,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react'
 import { Button, Form, Layout, Menu, Space } from 'antd'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import styles from './styles.module.less'
@@ -40,8 +46,10 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
   } = props
   const navigate = useNavigate()
   const location = useLocation()
-  //  表单
-  const [form] = Form.useForm()
+
+  const updateThemeRef = useRef<{
+    form: any
+  }>(null)
   //  是否展开全局设置
   const [open, setOpen] = useState<boolean>(false)
   //  当前选中的 key
@@ -58,7 +66,9 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
     initialThemeValueList.forEach(item => {
       initValues[item.key] = item.initColor
     })
-    form.setFieldsValue(initValues)
+    if (updateThemeRef?.current) {
+      updateThemeRef.current.form.setFieldsValue(initValues)
+    }
   })
 
   //  根据当前路由找到对应的菜单
@@ -91,9 +101,11 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
   }
   //  切换主题色
   const handleSubmit = () => {
-    const values = form.getFieldsValue()
-    changeTheme(values.mainColor)
-    utils.updateCustomCssVar(values)
+    if (updateThemeRef?.current) {
+      const values = updateThemeRef.current.form.getFieldsValue()
+      changeTheme(values.mainColor)
+      utils.updateCustomCssVar(values)
+    }
   }
 
   //  切换菜单
@@ -175,7 +187,7 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
           open={open}
           onClose={onClose}
           handleSubmit={handleSubmit}
-          form={form}
+          ref={updateThemeRef}
           initialValueList={initialThemeValueList}
         ></UpdateTheme>
       )}

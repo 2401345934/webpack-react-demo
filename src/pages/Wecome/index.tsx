@@ -3,7 +3,6 @@ import Typed from 'typed.js'
 import styles from './index.module.less'
 const TypedReactHooksDemo = (props: any) => {
   // Create reference to store the DOM element containing the animation
-  console.log('props', props)
   const el = React.useRef(null)
   // Create reference to store the Typed instance itself
   const typed: any = React.useRef(null)
@@ -14,6 +13,7 @@ const TypedReactHooksDemo = (props: any) => {
       typeSpeed: 50,
       backSpeed: 50,
     }
+    console.log('props', props)
 
     // elRef refers to the <span> rendered below
     typed.current = new Typed(el.current, options)

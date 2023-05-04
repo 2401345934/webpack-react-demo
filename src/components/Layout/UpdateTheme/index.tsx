@@ -1,15 +1,21 @@
 import { Button, Col, Drawer, Form, Input, Row, Space } from 'antd'
+import { forwardRef, useImperativeHandle } from 'react'
 
 type UpdateThemeType = {
   open: boolean
   onClose: () => void
   handleSubmit: () => void
-  form: any
   initialValueList: any[]
 }
-export default function UpdateTheme(props: UpdateThemeType) {
-  const { open, onClose, handleSubmit, form, initialValueList } = props
+const UpdateTheme = forwardRef((props: UpdateThemeType, ref) => {
+  const { open, onClose, handleSubmit, initialValueList } = props
   //  表单
+  const [form] = Form.useForm()
+  // 对外暴露 form 方法
+  useImperativeHandle(ref, () => ({
+    form,
+  }))
+
   return (
     <>
       <Drawer
@@ -41,4 +47,5 @@ export default function UpdateTheme(props: UpdateThemeType) {
       </Drawer>
     </>
   )
-}
+})
+export default UpdateTheme

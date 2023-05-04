@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React from 'react'
+import React, { useEffect } from 'react'
 import ResizeableTable from '@/components/Resizeable'
 import PageWarp from '@/components/BusinessComponent/PageWarp'
 
@@ -51,7 +51,9 @@ const columns: any = [
 ]
 
 const Component: React.FC = (props: any): JSX.Element => {
-  console.log('props', props)
+  useEffect(() => {
+    console.log('props', props)
+  }, [])
   return (
     <PageWarp>
       <h1 className="wrap"> Antd Table</h1>
