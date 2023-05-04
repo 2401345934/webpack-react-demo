@@ -13,7 +13,7 @@ const initRouter: RouterType[] = [
     path: 'result',
     icon: <AlertTwoTone />,
     label: '常见反馈页面',
-    element: (
+    element: () => (
       <Suspense fallback={<Loading />}>
         <BaseLayout />
       </Suspense>
@@ -22,41 +22,41 @@ const initRouter: RouterType[] = [
       {
         path: '403',
         label: '403',
-        element: (
+        element: props => (
           <Suspense fallback={<Loading />}>
-            <NotPage403 />
+            <NotPage403 {...props} />
           </Suspense>
-        )
+        ),
       },
       {
         path: '404',
         label: '404',
-        element: (
+        element: props => (
           <Suspense fallback={<Loading />}>
-            <NotPage />
+            <NotPage {...props} />
           </Suspense>
-        )
+        ),
       },
       {
         path: '500',
         label: '500',
-        element: (
+        element: props => (
           <Suspense fallback={<Loading />}>
-            <NotPage500 />
+            <NotPage500 {...props} />
           </Suspense>
-        )
+        ),
       },
       {
         path: '513',
         label: '513',
-        element: (
+        element: props => (
           <Suspense fallback={<Loading />}>
-            <NotPage513 />
+            <NotPage513 {...props} />
           </Suspense>
-        )
-      }
-    ]
-  }
+        ),
+      },
+    ],
+  },
 ]
 
 export default initRouter

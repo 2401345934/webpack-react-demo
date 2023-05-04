@@ -8,7 +8,7 @@ import {
   BuildTwoTone,
   SafetyCertificateTwoTone,
   SoundTwoTone,
-  TagsTwoTone
+  TagsTwoTone,
 } from '@ant-design/icons'
 import resultPage from './resultPage'
 const BaseLayout = lazy(() => import('@/index'))
@@ -26,11 +26,11 @@ const initRoute: RouterType = {
   key: 'wecome',
   label: '首页',
   icon: <AlertTwoTone />,
-  element: (
+  element: (props: any) => (
     <Suspense fallback={<Loading />}>
-      <Wecome />
+      <Wecome {...props} />
     </Suspense>
-  )
+  ),
 }
 const initTabItem = {
   path: 'wecome',
@@ -41,24 +41,25 @@ const initTabItem = {
     <Suspense fallback={<Loading />}>
       <Wecome />
     </Suspense>
-  )
+  ),
 }
+
 export type RouterType = {
   path: string
   label?: string
   redirect?: string
   key?: string
   menuLabel?: string
-  element?: JSX.Element
+  element?: (props: any) => JSX.Element
   icon?: ReactNode
   children?: RouterType[]
 }
 const initRouter: RouterType[] = [
   {
     path: '/',
-    element: (
+    element: props => (
       <Suspense fallback={<Loading />}>
-        <BaseLayout />
+        <BaseLayout {...props} />
       </Suspense>
     ),
     children: [
@@ -66,91 +67,96 @@ const initRouter: RouterType[] = [
         path: 'wecome',
         label: '首页',
         icon: <AlertTwoTone />,
-        element: (
+        element: props => (
           <Suspense fallback={<Loading />}>
-            <Wecome />
+            <Wecome {...props} />
           </Suspense>
-        )
+        ),
       },
       {
         path: 'todo',
         label: '代办事项',
         icon: <TagsTwoTone />,
-        element: <IncludesSubmenusWarp />,
+        element: () => <IncludesSubmenusWarp />,
         children: [
           {
             path: 'wecome2',
             label: '代办事项',
             icon: <TagsTwoTone />,
-            element: (
+            element: props => (
               <Suspense fallback={<Loading />}>
-                <Todo />
+                <Todo {...props} />
               </Suspense>
-            )
-          }
-        ]
+            ),
+          },
+        ],
       },
       {
         path: 'antd-table',
         label: '表格',
         icon: <SafetyCertificateTwoTone />,
-        element: (
+        element: props => (
           <Suspense fallback={<Loading />}>
-            <AntdTable />
+            <AntdTable {...props} />
           </Suspense>
-        )
+        ),
       },
       {
         path: 'cms',
         label: 'CMS内容中心',
         icon: <SoundTwoTone />,
-        element: (
+        element: props => (
           <Suspense fallback={<Loading />}>
-            <Cms />
+            <Cms {...props} />
           </Suspense>
-        )
+        ),
       },
       {
         path: 'queryTable',
         label: 'QueryTable',
         icon: <SafetyCertificateTwoTone />,
-        element: (
+        element: props => (
           <Suspense fallback={<Loading />}>
-            <QueryTable />
+            <QueryTable {...props} />
           </Suspense>
-        )
+        ),
       },
       {
         path: 'tree',
         label: 'Tree',
         icon: <BuildTwoTone />,
-        element: (
+        element: props => (
           <Suspense fallback={<Loading />}>
-            <Tree />
+            <Tree {...props} />
           </Suspense>
-        )
+        ),
       },
       {
         path: 'network',
         label: 'network',
         icon: <BuildTwoTone />,
-        element: (
+        element: props => (
           <Suspense fallback={<Loading />}>
-            <NetWrok />
+            <NetWrok {...props} />
           </Suspense>
-        )
+        ),
       },
-      ...resultPage
-    ]
+      ...resultPage,
+    ],
   },
   {
     path: '*',
-    element: <NotPage />
-  }
+    element: (props: any) => <NotPage {...props} />,
+  },
 ]
 
 // 生成路由
-const router = createHashRouter(initRouter)
+const router = createHashRouter(
+  initRouter.map((route: any) => ({
+    ...route,
+    element: route.element(),
+  })),
+)
 // 生成路由key段列表
 const routerList: any[] = generateRouterItemKey(initRouter[0].children || [])
 // 扁平化路由
@@ -159,7 +165,7 @@ const deepFlatRouter: any[] = flattenRouter(routerList)
 const firstRouterList: any[] =
   routerList.map((route: RouterType) => ({
     ...route,
-    children: []
+    children: [],
   })) || []
 
 export {
@@ -168,5 +174,5 @@ export {
   initRoute,
   deepFlatRouter,
   firstRouterList,
-  initTabItem
+  initTabItem,
 }

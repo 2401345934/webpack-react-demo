@@ -4,7 +4,7 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import styles from './styles.module.less'
 import utils from '@/utils'
 import { TypeObjStr } from '@/utils/utilsTypes.type'
-import { initialValueList } from './dict'
+import { MENU_MODE, initialThemeValueList } from '@/dictionary/layoutDict'
 import { RouterType, firstRouterList, routerList } from '@/router'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useMount } from 'ahooks'
@@ -36,7 +36,7 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
     collapsed,
     defaultOpenKeys,
     setDefaultOpenKeys,
-    menuLayout
+    menuLayout,
   } = props
   const navigate = useNavigate()
   const location = useLocation()
@@ -45,17 +45,17 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
   //  是否展开全局设置
   const [open, setOpen] = useState<boolean>(false)
   //  当前选中的 key
-  const [key, setKey] = useState<string[]>([])
+  const [key, setKey] = useState<string[]>([`wecome`])
   //  默认选中的 path
   const initTabPath = currentPath ? currentPath.split('/')[0] : ''
   // 对外暴露 routerChange 方法
   useImperativeHandle(ref, () => ({
-    findRouterPath
+    findRouterPath,
   }))
 
   useMount(() => {
     const initValues: TypeObjStr = {}
-    initialValueList.forEach(item => {
+    initialThemeValueList.forEach(item => {
       initValues[item.key] = item.initColor
     })
     form.setFieldsValue(initValues)
@@ -67,7 +67,7 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
       location.pathname.slice(1, location.pathname.length) || ''
     const keyList: string[] = key.split('/')
     const itemRouter: RouterType = routerList.find(
-      (item: RouterType) => item.key === keyList[0]
+      (item: RouterType) => item.key === keyList[0],
     )!
     setKey([keyList[0]])
     if (itemRouter?.children) {
@@ -101,7 +101,7 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
     if (!strArr.length) return
     setKey(strArr)
     const itemRouter: RouterType = routerList.find(
-      (item: RouterType) => item.key === strArr[0]
+      (item: RouterType) => item.key === strArr[0],
     )!
     if (itemRouter) {
       if (itemRouter.children) {
@@ -119,7 +119,7 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
   return (
     <div className="layout-warp-header">
       <Header className="site-layout-Header">
-        {menuLayout === 'slideAndHeader' && (
+        {menuLayout === MENU_MODE.SLIDEANDHEADER && (
           <>
             <Menu
               theme="light"
@@ -132,7 +132,7 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
             />
           </>
         )}
-        {menuLayout === 'header' && (
+        {menuLayout === MENU_MODE.HEADER && (
           <>
             <div className="logo"></div>
             <Menu
@@ -148,15 +148,19 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
             />
           </>
         )}
-        {menuLayout === 'slide' && (
+        {menuLayout === MENU_MODE.SLIDE && (
           <div className={styles.layoutHeaderWarp}>
             <Space>
-              {React.createElement(
-                collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-                {
-                  className: 'trigger',
-                  onClick: () => setCollapsed(!collapsed)
-                }
+              {GLOBAL_CONFIG.IS_OPEN_MENU_TOGGLE_ACTIVE && (
+                <>
+                  {React.createElement(
+                    collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+                    {
+                      className: 'trigger',
+                      onClick: () => setCollapsed(!collapsed),
+                    },
+                  )}
+                </>
               )}
             </Space>
             <div className={styles.theme}>
@@ -172,7 +176,7 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
           onClose={onClose}
           handleSubmit={handleSubmit}
           form={form}
-          initialValueList={initialValueList}
+          initialValueList={initialThemeValueList}
         ></UpdateTheme>
       )}
     </div>

@@ -3,8 +3,7 @@ import {
   forwardRef,
   useState,
   useImperativeHandle,
-  useEffect,
-  memo
+  memo,
 } from 'react'
 import { Tabs } from 'antd'
 import React from 'react'
@@ -15,6 +14,7 @@ import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons'
 import utils from '@/utils'
 import { DELETE_CATCH_TAB } from '../cacheTabHelper'
 import { useGetState, useMount } from 'ahooks'
+import withGreeting from '../WithComponent'
 
 type PropsType = {
   children?: React.ReactNode
@@ -29,7 +29,7 @@ const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
   const [fullscreenFlag, setFullscreenFlag] = useState<boolean>(false)
   // 对外暴露 routerChange 方法
   useImperativeHandle(ref, () => ({
-    routerChange
+    routerChange,
   }))
 
   useMount(() => {
@@ -46,7 +46,7 @@ const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
   const routerChange = () => {
     const key = location.pathname
     const routerItem = deepFlatRouter.find(
-      (route: RouterType) => `/${route.path}` === key
+      (route: RouterType) => `/${route.path}` === key,
     )
     if (!routerItem) return
     setActiveKey(routerItem.key)
@@ -58,8 +58,8 @@ const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
           key: routerItem.key,
           label: routerItem.menuLabel || routerItem.label,
           closable: true,
-          children: routerItem.element
-        }
+          children: routerItem.element,
+        },
       ]
     })
   }
@@ -84,7 +84,7 @@ const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
   const toggleFullScreen = () => {
     utils.toggleFullscreen({
       fullscreenFlag,
-      className: styles.warpComponent
+      className: styles.warpComponent,
     })
     setFullscreenFlag(!fullscreenFlag)
   }
@@ -98,7 +98,12 @@ const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
           onChange={onChange}
           onEdit={onEdit}
           activeKey={activeKey}
-          items={items}
+          items={items.map(item => {
+            return {
+              ...item,
+              children: item.children({}),
+            }
+          })}
         />
         {/* 全屏功能 */}
         <div
@@ -111,4 +116,5 @@ const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
     </Fragment>
   )
 })
+
 export default memo(WarpComponent)

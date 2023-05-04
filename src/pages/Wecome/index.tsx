@@ -1,8 +1,9 @@
 import React from 'react'
 import Typed from 'typed.js'
 import styles from './index.module.less'
-const TypedReactHooksDemo = () => {
+const TypedReactHooksDemo = (props: any) => {
   // Create reference to store the DOM element containing the animation
+  console.log('props', props)
   const el = React.useRef(null)
   // Create reference to store the Typed instance itself
   const typed: any = React.useRef(null)
@@ -11,7 +12,7 @@ const TypedReactHooksDemo = () => {
     const options = {
       strings: ['Wecome alan'],
       typeSpeed: 50,
-      backSpeed: 50
+      backSpeed: 50,
     }
 
     // elRef refers to the <span> rendered below
@@ -25,7 +26,7 @@ const TypedReactHooksDemo = () => {
   }, [])
 
   return (
-    <div className={styles.warp}>
+    <div className={styles.wrap}>
       <div className="type-wrap">
         <span style={{ whiteSpace: 'pre', fontSize: 100 }} ref={el} />
       </div>
@@ -33,4 +34,4 @@ const TypedReactHooksDemo = () => {
   )
 }
 
-export default TypedReactHooksDemo
+export default React.memo(TypedReactHooksDemo)

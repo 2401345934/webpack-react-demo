@@ -9,48 +9,49 @@ const data: any = [
     date: '2018-02-11',
     amount: 120,
     type: 'income',
-    note: 'transfer'
+    note: 'transfer',
   },
   {
     key: 1,
     date: '2018-03-11',
     amount: 243,
     type: 'income',
-    note: 'transfer'
+    note: 'transfer',
   },
   {
     key: 2,
     date: '2018-04-11',
     amount: 98,
     type: 'income',
-    note: 'transfer'
-  }
+    note: 'transfer',
+  },
 ]
 
 const columns: any = [
   {
     title: 'Date',
     dataIndex: 'date',
-    width: 200
+    width: 200,
   },
   {
     title: 'Amount',
     dataIndex: 'amount',
-    width: 100
+    width: 100,
   },
   {
     title: 'Type',
     dataIndex: 'type',
-    width: 100
+    width: 100,
   },
   {
     title: 'Note',
     dataIndex: 'note',
-    width: 100
-  }
+    width: 100,
+  },
 ]
 
-const Component: React.FC = (): JSX.Element => {
+const Component: React.FC = (props: any): JSX.Element => {
+  console.log('props', props)
   return (
     <PageWarp>
       <h1 className="wrap"> Antd Table</h1>
@@ -59,4 +60,4 @@ const Component: React.FC = (): JSX.Element => {
   )
 }
 
-export default Component
+export default React.memo(Component)

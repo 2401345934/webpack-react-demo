@@ -12,10 +12,12 @@ import GLOBAL_CONFIG from '@globalConfig'
 // import request from '@/request'
 import {
   ADD_CATCH_TAB,
-  GET_CATCH_TAB
+  GET_CATCH_TAB,
 } from './components/Layout/cacheTabHelper'
 import { RouterType, deepFlatRouter, initRoute, initTabItem } from './router'
 import { useMount } from 'ahooks'
+import { MENU_MODE } from './dictionary/layoutDict'
+
 const Component: React.FunctionComponent = (): JSX.Element => {
   const navigate = useNavigate()
   const location = useLocation()
@@ -35,7 +37,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
   const [locale] = useState<Locale>(zhCN)
   // 导航栏布局
   const [menuLayout, setMenuLayout] = useState<string>(
-    GLOBAL_CONFIG.MENU_LAYOUT_LIST[0].value
+    GLOBAL_CONFIG.MENU_LAYOUT_LIST[0].value,
   )
   //  侧边栏收起状态
   const [collapsed, setCollapsed] = useState<boolean>(false)
@@ -49,7 +51,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
   const [childrenRouterList, setChildrenRouterList] = useState<any[]>([])
   //  默认展开的菜单
   const [defaultOpenKeys, setDefaultOpenKeys] = useState<string[]>(
-    keyList.filter((key: string) => key !== assembleKey)
+    keyList.filter((key: string) => key !== assembleKey),
   )
   //  是否展开全局设置
   const [initItems, setInitItems] = useState<any>(false)
@@ -72,7 +74,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
     const initRouter = GET_CATCH_TAB()
     if (!initRouter.length) {
       const routerItem = deepFlatRouter.find(
-        (route: RouterType) => `/${route.path}` === location.pathname
+        (route: RouterType) => `/${route.path}` === location.pathname,
       )
       if (!routerItem) {
         setInitItems([initTabItem])
@@ -83,8 +85,8 @@ const Component: React.FunctionComponent = (): JSX.Element => {
           key: routerItem.key,
           label: routerItem.menuLabel || routerItem.label,
           closable: true,
-          children: routerItem.element
-        }
+          children: routerItem.element,
+        },
       ])
     } else {
       setInitItems(initRouter)
@@ -110,7 +112,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
     if (selectColor === themeColor) return
     setThemeColor(selectColor)
     utils.updateCustomCssVar({
-      mainColor: selectColor
+      mainColor: selectColor,
     })
   }
 
@@ -118,8 +120,8 @@ const Component: React.FunctionComponent = (): JSX.Element => {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: themeColor
-        }
+          colorPrimary: themeColor,
+        },
       }}
       locale={locale}
       csp={{ nonce: 'YourNonceCode' }}
@@ -139,7 +141,8 @@ const Component: React.FunctionComponent = (): JSX.Element => {
       <div className="layout-warp">
         <div className="warp">
           {/* menu */}
-          {(menuLayout === 'slide' || menuLayout === 'slideAndHeader') && (
+          {(menuLayout === MENU_MODE.SLIDE ||
+            menuLayout === MENU_MODE.SLIDEANDHEADER) && (
             <WarpMenu
               goRouter={goRouter}
               defaultOpenKeys={defaultOpenKeys}
