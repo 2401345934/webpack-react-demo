@@ -10,6 +10,7 @@ import utilsString from './utils/utils-string'
 import utilsRule from './utils/utils-rule'
 import utilsUrl from './utils/utils-url'
 import utilsSystem from './utils/utils-system'
+import utilsCss from './utils/utils-css'
 export default {
   ...utilsFn,
   ...utilsBusiness,
@@ -23,4 +24,5 @@ export default {
   ...utilsRule,
   ...utilsUrl,
   ...utilsSystem,
+  ...utilsCss,
 }

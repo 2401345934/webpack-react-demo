@@ -9,7 +9,9 @@ interface GlobalConfig {
   UPDATE_THEME_OPEN: boolean
   IS_OPEN_MENU_ACTIVE_CHANGE: boolean
   IS_OPEN_MENU_TOGGLE_ACTIVE: boolean
+  IS_OPEN_LAYOUT_WIDTH: boolean
   MENU_LAYOUT_LIST: Array<MENU_LAYOUT_LIST_TYPE>
+  LAYOUT_LIST: Array<MENU_LAYOUT_LIST_TYPE>
 }
 
 const GLOBAL_CONFIG: GlobalConfig = {
@@ -23,6 +25,19 @@ const GLOBAL_CONFIG: GlobalConfig = {
   IS_OPEN_MENU_ACTIVE_CHANGE: true,
   // 是否支持展开收取menu
   IS_OPEN_MENU_TOGGLE_ACTIVE: true,
+  // 是否开启页面布局宽度切换
+  IS_OPEN_LAYOUT_WIDTH: true,
+  // 页面布局模式
+  LAYOUT_LIST: [
+    {
+      title: '满屏自适应',
+      value: '100vw',
+    },
+    {
+      title: '定宽居中',
+      value: '80vw',
+    },
+  ],
   // 导航栏模式
   MENU_LAYOUT_LIST: [
     {

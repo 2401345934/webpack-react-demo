@@ -117,69 +117,71 @@ const Component: React.FunctionComponent = (): JSX.Element => {
   }
 
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: themeColor,
-        },
-      }}
-      locale={locale}
-      csp={{ nonce: 'YourNonceCode' }}
-    >
-      {/* global setting */}
-      {/* 全局配置 */}
-      {GLOBAL_CONFIG.UPDATE_SETTING_OPEN && (
-        <div className="global-setting">
-          <GlobalSetting
-            setMenuLayout={setMenuLayout}
-            menuLayout={menuLayout}
-          ></GlobalSetting>
-        </div>
-      )}
-
-      {/* layout */}
-      <div className="layout-warp">
-        <div className="warp">
-          {/* menu */}
-          {(menuLayout === MENU_MODE.SLIDE ||
-            menuLayout === MENU_MODE.SLIDEANDHEADER) && (
-            <WarpMenu
-              goRouter={goRouter}
-              defaultOpenKeys={defaultOpenKeys}
-              setDefaultOpenKeys={setDefaultOpenKeys}
-              currentPath={currentPath}
+    <div className="root-wrap">
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: themeColor,
+          },
+        }}
+        locale={locale}
+        csp={{ nonce: 'YourNonceCode' }}
+      >
+        {/* global setting */}
+        {/* 全局配置 */}
+        {GLOBAL_CONFIG.UPDATE_SETTING_OPEN && (
+          <div className="global-setting">
+            <GlobalSetting
+              setMenuLayout={setMenuLayout}
               menuLayout={menuLayout}
-              collapsed={collapsed}
-              childrenRouterList={childrenRouterList}
-            ></WarpMenu>
-          )}
+            ></GlobalSetting>
+          </div>
+        )}
 
-          <Layout className="site-layout">
-            {/* headers */}
-            <WarpHeader
-              changeTheme={changeTheme}
-              goRouter={goRouter}
-              ref={headerRef}
-              updateTheme={updateTheme}
-              setDefaultOpenKeys={setDefaultOpenKeys}
-              setChildrenRouterList={setChildrenRouterList}
-              setCollapsed={setCollapsed}
-              collapsed={collapsed}
-              defaultOpenKeys={defaultOpenKeys}
-              menuLayout={menuLayout}
-              currentPath={currentPath}
-            ></WarpHeader>
-            {/* content */}
-            {Array.isArray(initItems) && (
-              <WarpComponent
-                ref={componentRef}
-                initItems={initItems}
-              ></WarpComponent>
+        {/* layout */}
+        <div className="layout-warp">
+          <div className="warp">
+            {/* menu */}
+            {(menuLayout === MENU_MODE.SLIDE ||
+              menuLayout === MENU_MODE.SLIDEANDHEADER) && (
+              <WarpMenu
+                goRouter={goRouter}
+                defaultOpenKeys={defaultOpenKeys}
+                setDefaultOpenKeys={setDefaultOpenKeys}
+                currentPath={currentPath}
+                menuLayout={menuLayout}
+                collapsed={collapsed}
+                childrenRouterList={childrenRouterList}
+              ></WarpMenu>
             )}
-          </Layout>
+
+            <Layout className="site-layout">
+              {/* headers */}
+              <WarpHeader
+                changeTheme={changeTheme}
+                goRouter={goRouter}
+                ref={headerRef}
+                updateTheme={updateTheme}
+                setDefaultOpenKeys={setDefaultOpenKeys}
+                setChildrenRouterList={setChildrenRouterList}
+                setCollapsed={setCollapsed}
+                collapsed={collapsed}
+                defaultOpenKeys={defaultOpenKeys}
+                menuLayout={menuLayout}
+                currentPath={currentPath}
+              ></WarpHeader>
+              {/* content */}
+              {Array.isArray(initItems) && (
+                <WarpComponent
+                  ref={componentRef}
+                  initItems={initItems}
+                ></WarpComponent>
+              )}
+            </Layout>
+          </div>
         </div>
-      </div>
-    </ConfigProvider>
+      </ConfigProvider>
+    </div>
   )
 }
 

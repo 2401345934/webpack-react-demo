@@ -3,6 +3,12 @@
 @import 'antd/dist/reset.css';
 @import './styles/rootCssVar.less';
 
+.root-wrap {
+  width: var(--max-layout-width);
+  margin: 0 auto;
+  transition: var(--transi-all);
+}
+
 .layout-sider {
   min-height: 100vh;
   background: var(--menuBackground);
@@ -49,6 +55,7 @@ body {
 }
 
 .layout-warp-header {
+
   .ant-layout-header {
     padding: 0;
   }
