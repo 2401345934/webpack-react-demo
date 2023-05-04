@@ -21,7 +21,7 @@ const WarpMenu = (props: PropsType): JSX.Element => {
     defaultOpenKeys,
     setDefaultOpenKeys,
     menuLayout,
-    childrenRouterList
+    childrenRouterList,
   } = props
 
   //  路由跳转

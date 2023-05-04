@@ -7,7 +7,7 @@ import { formPropsType, formItemTypes } from './types'
 
 const layout = {
   labelCol: { span: 8 },
-  wrapperCol: { span: 16 }
+  wrapperCol: { span: 16 },
 }
 
 function QueryFrom(props: formPropsType, ref: any): JSX.Element {
@@ -15,7 +15,7 @@ function QueryFrom(props: formPropsType, ref: any): JSX.Element {
   const [form] = Form.useForm()
   const [expand, setExpand] = useState<boolean>(false)
   useImperativeHandle(ref, () => ({
-    formRef: form
+    formRef: form,
   }))
   // 查询
   const handleSearch = (): void => {

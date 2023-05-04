@@ -19,5 +19,5 @@ export const sortType = (arr: any, type: number = 1) => {
 
 export default {
   average,
-  sortType
+  sortType,
 }

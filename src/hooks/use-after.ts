@@ -4,7 +4,7 @@
 const useAfter = (
   fn: Function,
   afterFn: Function | Array<Function>,
-  isSync = true
+  isSync = true,
 ) => {
   return async (...args: any[]) => {
     const ret = isSync ? await fn.apply(this, args) : fn.apply(this, args)

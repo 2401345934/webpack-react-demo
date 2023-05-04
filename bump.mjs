@@ -25,9 +25,9 @@ const questions = [
       { title: 'no-change: ' + sourcePatch, value: sourcePatch },
       { title: 'patch: ' + nextPatch, value: nextPatch },
       { title: 'minor: ' + nextMinor, value: nextMinor },
-      { title: 'major: ' + nextMajor, value: nextMajor }
-    ]
-  }
+      { title: 'major: ' + nextMajor, value: nextMajor },
+    ],
+  },
 ]
 const response = await prompts(questions)
 const newVersion = response.version
@@ -35,7 +35,7 @@ if (newVersion) {
   const data = await fs.readFile(filename)
   const content = String(data).replace(
     `"version": "${version}"`,
-    `"version": "${newVersion}"`
+    `"version": "${newVersion}"`,
   )
   await fs.writeFile(filename, content)
   console.log(chalk.green('`package.json` updated!'))

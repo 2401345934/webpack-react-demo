@@ -40,5 +40,5 @@ export default {
   batch,
   daysBetween,
   isEmptyObject,
-  random
+  random,
 }

@@ -12,11 +12,11 @@ module.exports = [
           disable: process.env.NODE_ENV === 'development',
           // jpeg 压缩配置
           mozjpeg: {
-            quality: 80
-          }
-        }
-      }
-    ]
+            quality: 80,
+          },
+        },
+      },
+    ],
   },
   {
     test: /\.(png|jpg)$/,
@@ -25,13 +25,13 @@ module.exports = [
       {
         loader: 'url-loader',
         options: {
-          limit: 1024
-        }
-      }
-    ]
+          limit: 1024,
+        },
+      },
+    ],
   },
   {
     test: /\.svg$/i,
-    use: ['raw-loader']
-  }
+    use: ['raw-loader'],
+  },
 ]

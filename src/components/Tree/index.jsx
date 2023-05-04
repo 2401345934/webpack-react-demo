@@ -18,7 +18,7 @@ class Tree extends PureComponent {
     // 可视区域的高度
     visibleHeight: 500,
     // 单行高度
-    itemHeight: 28
+    itemHeight: 28,
   }
 
   constructor(props) {
@@ -29,8 +29,8 @@ class Tree extends PureComponent {
       ...getNewState(props),
       // 记录原props传入的值，用于后面的数据对比
       props: {
-        data
-      }
+        data,
+      },
     }
   }
 
@@ -43,8 +43,8 @@ class Tree extends PureComponent {
       return {
         ...getNewState(props),
         props: {
-          data
-        }
+          data,
+        },
       }
     }
 
@@ -65,7 +65,7 @@ class Tree extends PureComponent {
 
     newState.props = {
       ...state.props,
-      ...stateProps
+      ...stateProps,
     }
 
     return newState
@@ -76,7 +76,7 @@ class Tree extends PureComponent {
     const { scrollTop = 0 } = e.target
 
     this.setState({
-      scrollTop
+      scrollTop,
     })
   }
 
@@ -106,7 +106,7 @@ class Tree extends PureComponent {
       this.setOnExpanded(record, isExpanded, expandedArrIds, e)
 
       this.setState({
-        expandedArrIds: expandedArrIds
+        expandedArrIds: expandedArrIds,
       })
     }
 
@@ -163,7 +163,7 @@ class Tree extends PureComponent {
     }
 
     this.setState({
-      checkedArrIds: checkedArrIds
+      checkedArrIds: checkedArrIds,
     })
 
     // 递归移除当前节点及其子孙节点
@@ -237,7 +237,7 @@ class Tree extends PureComponent {
       visibleHeight,
       itemHeight,
       expandedArrIds,
-      keysMap
+      keysMap,
     })
 
     const style = { height: `${String(height)}px` }
@@ -335,7 +335,7 @@ function resolveTreeDataToList(treeData, keysMap) {
           info[children],
           newParentIds,
           newParentNames,
-          levs
+          levs,
         )
       }
       return String(info[kId])
@@ -438,7 +438,7 @@ function getVisibleRange({
   visibleHeight,
   itemHeight,
   expandedArrIds,
-  keysMap
+  keysMap,
 }) {
   // idKey: id对应的键名；childrenKey: 子节点对应的键名
   const { id: idKey, children: childrenKey } = keysMap
@@ -484,7 +484,7 @@ function getVisibleRange({
   return {
     items,
     translateY,
-    height: totalHeight
+    height: totalHeight,
   }
 }
 

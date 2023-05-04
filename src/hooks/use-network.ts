@@ -35,7 +35,7 @@ const network = () => {
 
   return {
     ping,
-    jitter
+    jitter,
   }
 }
 

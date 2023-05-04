@@ -10,7 +10,7 @@ const TypedReactHooksDemo = () => {
     const options = {
       strings: ['我是你typed'],
       typeSpeed: 50,
-      backSpeed: 50
+      backSpeed: 50,
     }
 
     // elRef refers to the <span> rendered below

@@ -6,5 +6,5 @@ const base64ToFile = async (src: string, name: string) => {
 }
 
 export default {
-  base64ToFile
+  base64ToFile,
 }

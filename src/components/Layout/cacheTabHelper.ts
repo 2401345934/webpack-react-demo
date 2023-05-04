@@ -14,19 +14,19 @@ type LocationType = {
 export const GET_CATCH_TAB = () => {
   if (!GLOBAL_CONFIG.TAB_CATCH_OPEN) return []
   const routerList: any = JSON.parse(
-    localDataManagement.getItem('routerList') || '[]'
+    localDataManagement.getItem('routerList') || '[]',
   )
   const originItems: any = []
   if (routerList.length) {
     routerList.forEach((item: any) => {
       const routerItem = deepFlatRouter.find(
-        (route: RouterType) => route.path === item.key
+        (route: RouterType) => route.path === item.key,
       )
       originItems.push({
         key: routerItem.key,
         label: routerItem.menuLabel || routerItem.label,
         closable: true,
-        children: routerItem.element
+        children: routerItem.element,
       })
     })
   }
@@ -37,10 +37,10 @@ export const ADD_CATCH_TAB = (location: LocationType) => {
   if (!GLOBAL_CONFIG.TAB_CATCH_OPEN) return
   const uuid: string = location.pathname + location.search
   const routerItem: RouterType = deepFlatRouter.find(
-    (route: RouterType) => `/${route.path}` === location.pathname
+    (route: RouterType) => `/${route.path}` === location.pathname,
   )
   const routerList: any[] = JSON.parse(
-    localDataManagement.getItem('routerList') || '[]'
+    localDataManagement.getItem('routerList') || '[]',
   )
   if (!routerList.find((item: any) => item.uuid === uuid) && routerItem) {
     routerList.push({
@@ -48,7 +48,7 @@ export const ADD_CATCH_TAB = (location: LocationType) => {
       label: routerItem.menuLabel || routerItem.label,
       closable: true,
       children: routerItem.element,
-      uuid
+      uuid,
     })
     localDataManagement.setItem('routerList', JSON.stringify(routerList))
   }
@@ -59,7 +59,7 @@ export const ADD_CATCH_TAB = (location: LocationType) => {
 export const DELETE_CATCH_TAB = (uuid: string) => {
   if (!GLOBAL_CONFIG.TAB_CATCH_OPEN) return
   let routerList: any[] = JSON.parse(
-    localDataManagement.getItem('routerList') || '[]'
+    localDataManagement.getItem('routerList') || '[]',
   )
   routerList = routerList.filter((item: any) => item.uuid !== uuid)
   localDataManagement.setItem('routerList', JSON.stringify(routerList))

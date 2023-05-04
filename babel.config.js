@@ -5,8 +5,8 @@ module.exports = {
       {
         exclude: [], // 默认值 ['node_modules']
         include: ['src/utils/index.ts'], // 默认值 []
-        customLog: '' // 默认值 'Error'
-      }
-    ]
-  ]
+        customLog: '', // 默认值 'Error'
+      },
+    ],
+  ],
 }

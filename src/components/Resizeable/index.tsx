@@ -39,24 +39,24 @@ class ResizeableTable extends React.PureComponent {
   constructor(props: any) {
     super(props)
     this.state = {
-      columns: props.columns
+      columns: props.columns,
     }
   }
 
   components = {
     header: {
-      cell: ResizeableTitle
-    }
+      cell: ResizeableTitle,
+    },
   }
 
   componentDidMount() {
     const handlers = document.querySelectorAll(
-      '.react-resizable .react-resizable-handle'
+      '.react-resizable .react-resizable-handle',
     )
     handlers.forEach(handler =>
       handler.addEventListener('click', e => {
         return false
-      })
+      }),
     )
   }
 
@@ -65,8 +65,8 @@ class ResizeableTable extends React.PureComponent {
       ...col,
       onHeaderCell: column => ({
         width: column.width || 200,
-        onResize: this.handleResize(index)
-      })
+        onResize: this.handleResize(index),
+      }),
     }))
 
     const components = Object.assign({}, this.props.components, this.components)
@@ -90,7 +90,7 @@ class ResizeableTable extends React.PureComponent {
         const nextColumns = [...columns]
         nextColumns[index] = {
           ...nextColumns[index],
-          width: size.width
+          width: size.width,
         }
         return { columns: nextColumns }
       })

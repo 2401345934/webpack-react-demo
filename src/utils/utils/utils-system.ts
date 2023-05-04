@@ -7,5 +7,5 @@ const updateCustomCssVar = (cssVars: CSSVar) => {
   })
 }
 export default {
-  updateCustomCssVar
+  updateCustomCssVar,
 }

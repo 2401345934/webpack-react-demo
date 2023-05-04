@@ -29,7 +29,7 @@ class TreeNodeItem extends PureComponent {
     const iconProps = {
       className: isExpanded
         ? 'next-icon next-icon-arrow-down'
-        : 'next-icon next-icon-arrow-right'
+        : 'next-icon next-icon-arrow-right',
     }
 
     if (!(childrenData && childrenData.length)) {
@@ -44,7 +44,7 @@ class TreeNodeItem extends PureComponent {
     const { isChecked } = this.props
     const cProps = {
       checked: isChecked,
-      indeterminate: false
+      indeterminate: false,
     }
     if (isChecked === 'some') {
       cProps.checked = false

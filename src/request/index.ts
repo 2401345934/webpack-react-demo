@@ -1,7 +1,7 @@
 import axios, {
   AxiosInstance,
   InternalAxiosRequestConfig,
-  AxiosResponse
+  AxiosResponse,
 } from 'axios'
 import requestInterceptors from './interceptors/request/index'
 import responseInterceptors from './interceptors/response/index'
@@ -11,7 +11,7 @@ import 'nprogress/nprogress.css'
 
 const instance: AxiosInstance = axios.create({
   baseURL: 'https://some-domain.com/api/',
-  timeout: 5000
+  timeout: 5000,
 })
 
 // 添加请求拦截器
@@ -31,7 +31,7 @@ instance.interceptors.request.use(
     // 对请求错误做些什么
     NProgress.done()
     return Promise.reject(error)
-  }
+  },
 )
 
 // 添加响应拦截器
@@ -50,7 +50,7 @@ instance.interceptors.response.use(
     // 对响应错误做点什么
     NProgress.done()
     return Promise.reject(error)
-  }
+  },
 )
 
 // request 请求方法
@@ -59,7 +59,7 @@ const request = <T>(params: RequestType) => {
   return instance.request<T, ResponseData<T>>({
     url,
     method,
-    [method.toLocaleLowerCase() === 'get' ? 'params' : 'data']: data
+    [method.toLocaleLowerCase() === 'get' ? 'params' : 'data']: data,
   })
 }
 

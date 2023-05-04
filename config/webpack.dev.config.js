@@ -4,12 +4,12 @@ module.exports = {
   devtool: 'source-map',
   // 最小化监听
   watchOptions: {
-    ignored: /node_modules/
+    ignored: /node_modules/,
   },
   devServer: {
     hot: true,
     open: true,
-    historyApiFallback: true // 解决BrowserRouter路由跳转之后刷新浏览器按钮报404的情况
+    historyApiFallback: true, // 解决BrowserRouter路由跳转之后刷新浏览器按钮报404的情况
   },
   // // 按需编译
   experiments: {
@@ -17,7 +17,7 @@ module.exports = {
     // layers：启用模块和块层。
     // syncWebAssembly: 像 webpack 4 一样支持旧的 WebAssembly。
     // topLevelAwait: 支持Top Level Await Stage 3 proposal，它使模块await在顶层使用时成为异步模块。experiments.futureDefaults设置为 时默认启用true。
-    layers: true
+    layers: true,
     // import仅在使用时编译入口点和动态。它可以用于 Web 或 Node.js
     // lazyCompilation: true,
   },
@@ -31,8 +31,8 @@ module.exports = {
     usedExports: false,
     minimizer: [
       new TerserPlugin({
-        parallel: 2 // number | boolean
-      })
-    ]
-  }
+        parallel: 2, // number | boolean
+      }),
+    ],
+  },
 }

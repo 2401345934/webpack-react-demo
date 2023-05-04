@@ -22,5 +22,5 @@ export default {
   ...utilsString,
   ...utilsRule,
   ...utilsUrl,
-  ...utilsSystem
+  ...utilsSystem,
 }

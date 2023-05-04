@@ -9,5 +9,5 @@ const isObject = (obj: string) => {
 }
 export default {
   isEmptyObject,
-  isObject
+  isObject,
 }

@@ -7,5 +7,5 @@ function random(min: number, max: number) {
 }
 
 export default {
-  random
+  random,
 }

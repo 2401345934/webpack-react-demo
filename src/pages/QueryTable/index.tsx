@@ -8,45 +8,45 @@ const dataSource = [
     key: '1',
     name: '胡彦斌',
     age: 32,
-    address: '西湖区湖底公园1号'
+    address: '西湖区湖底公园1号',
   },
   {
     key: '2',
     name: '胡彦祖',
     age: 42,
-    address: '西湖区湖底公园1号'
-  }
+    address: '西湖区湖底公园1号',
+  },
 ]
 
 const columns = [
   {
     title: '姓名',
     dataIndex: 'name',
-    key: 'name'
+    key: 'name',
   },
   {
     title: '年龄',
     dataIndex: 'age',
-    key: 'age'
+    key: 'age',
   },
   {
     title: '住址',
     dataIndex: 'address',
-    key: 'address'
-  }
+    key: 'address',
+  },
 ]
 const initForm = [
   {
     label: '姓名',
     name: 'name',
     type: 'input',
-    props: {}
+    props: {},
   },
   {
     label: '年龄',
     name: 'age',
     type: 'inputnumber',
-    props: {}
+    props: {},
   },
   {
     label: '性别',
@@ -57,14 +57,14 @@ const initForm = [
       return [
         {
           label: '男',
-          value: '1'
+          value: '1',
         },
         {
           label: '女',
-          value: '2'
-        }
+          value: '2',
+        },
       ]
-    }
+    },
   },
   {
     label: '性别2',
@@ -75,14 +75,14 @@ const initForm = [
       return [
         {
           label: '男',
-          value: '1'
+          value: '1',
         },
         {
           label: '女',
-          value: '2'
-        }
+          value: '2',
+        },
       ]
-    }
+    },
   },
   {
     label: '喜好',
@@ -93,33 +93,33 @@ const initForm = [
       return [
         {
           label: '男',
-          value: '1'
+          value: '1',
         },
         {
           label: '女',
-          value: '2'
-        }
+          value: '2',
+        },
       ]
-    }
+    },
   },
   {
     label: '出生日期',
     name: 'time1',
     type: 'datepicker',
-    props: {}
+    props: {},
   },
   {
     label: '生日',
     name: 'time2',
     type: 'rangepicker',
-    props: {}
+    props: {},
   },
   {
     label: '个人介绍',
     name: 'textarea',
     type: 'textarea',
-    props: {}
-  }
+    props: {},
+  },
 ]
 const Component: React.FC = (): JSX.Element => {
   const ref = useRef<any>(null)
@@ -133,8 +133,8 @@ const Component: React.FC = (): JSX.Element => {
         {
           title: '动态天际的数据',
           dataIndex: '1',
-          key: '2'
-        }
+          key: '2',
+        },
       ])
       setFormItem([
         ...initForm,
@@ -142,23 +142,23 @@ const Component: React.FC = (): JSX.Element => {
           label: '姓名222',
           name: 'nam333e',
           type: 'input',
-          props: {}
-        }
+          props: {},
+        },
       ])
     }, 1000)
   })
 
   const tableProps = {
     dataSource,
-    columns: tableColumns
+    columns: tableColumns,
   }
 
   const formProps = {
-    formItems: formItem
+    formItems: formItem,
   }
   const requestProps = {
     url: 'xx',
-    method: 'GET'
+    method: 'GET',
   }
   const actions = (
     <Space>
@@ -178,7 +178,7 @@ const Component: React.FC = (): JSX.Element => {
     actions,
     requestProps,
     ref,
-    tableResize: true
+    tableResize: true,
   }
 
   return <QueryTable {...config}></QueryTable>

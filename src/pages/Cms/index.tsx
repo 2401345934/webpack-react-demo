@@ -7,7 +7,7 @@ import ComponentsContent from './components/layout/ComponentsContent'
 
 export const Context: any = createContext({
   sourceData: [],
-  setSourceData: () => {}
+  setSourceData: () => {},
 })
 
 const Component: React.FC = (): JSX.Element => {
@@ -23,7 +23,7 @@ const Component: React.FC = (): JSX.Element => {
           sourceData,
           setSourceData,
           currentIndex,
-          setCurrentIndx
+          setCurrentIndx,
         }}
       >
         <div className={styles.warp}>

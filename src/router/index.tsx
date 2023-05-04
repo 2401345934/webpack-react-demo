@@ -37,9 +37,9 @@ const initTabItem = {
   key: 'wecome',
   label: '首页',
   icon: <AlertTwoTone />,
-  children: (
+  children: (props: any) => (
     <Suspense fallback={<Loading />}>
-      <Wecome />
+      <Wecome {...props} />
     </Suspense>
   ),
 }

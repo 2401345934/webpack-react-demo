@@ -25,14 +25,14 @@ module.exports = {
         defaultVendors: {
           test: /[\\/]node_modules[\\/]/,
           priority: -10,
-          reuseExistingChunk: true
+          reuseExistingChunk: true,
         },
         default: {
           minChunks: 2,
           priority: -20,
-          reuseExistingChunk: true
-        }
-      }
+          reuseExistingChunk: true,
+        },
+      },
     },
     minimize: true,
     minimizer: [
@@ -42,14 +42,14 @@ module.exports = {
           // 折叠 Boolean 型属性
           collapseBooleanAttributes: true,
           // 使用精简 `doctype` 定义
-          useShortDoctype: true
+          useShortDoctype: true,
           // ...
-        }
+        },
       }),
       new TerserPlugin({
         parallel: 5, // number | boolean
-        exclude: ['node_modules']
-      })
-    ]
-  }
+        exclude: ['node_modules'],
+      }),
+    ],
+  },
 }

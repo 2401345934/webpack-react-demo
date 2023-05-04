@@ -37,7 +37,7 @@ export const generateRouterItemKey = (list: RouterType[]): RouterType[] => {
 export const flattenRouter = (arr: RouterType[]): RouterType[] => {
   return arr.reduce((prev: RouterType[], next: RouterType) => {
     return prev.concat(
-      Array.isArray(next.children) ? flattenRouter(next.children) : next
+      Array.isArray(next.children) ? flattenRouter(next.children) : next,
     )
   }, [])
 }

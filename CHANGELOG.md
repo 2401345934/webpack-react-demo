@@ -1,4 +1,4 @@
-## <small>1.5.10 (2023-05-04)</small>
+## 1.6.0 (2023-05-04)
 
 - ✨ 新增(components): 抽离优化多页签缓存方法 ([7399b7e](https://github.com/2401345934/webpack-react-demo/commit/7399b7e))
 - ✨ 新增(components): 导航栏多种模式支持 代码待优化 ([e9565d1](https://github.com/2401345934/webpack-react-demo/commit/e9565d1))
@@ -7,6 +7,7 @@
 - ✨ 新增(config): 拆分 config 新增 @globalConfig 快捷引入 ([aff7172](https://github.com/2401345934/webpack-react-demo/commit/aff7172))
 - ✨ 新增(hook): useNetowrk ([8972cff](https://github.com/2401345934/webpack-react-demo/commit/8972cff))
 - ✨ 新增(package): 更新最新依赖 ([d689b71](https://github.com/2401345934/webpack-react-demo/commit/d689b71))
+- ✨ 新增(pages): 改写 react router 函数写法 支持组件跨层级传参数 ([9b75de7](https://github.com/2401345934/webpack-react-demo/commit/9b75de7))
 - ✨ 新增(pages): 缓存多页签 ([c2b5ad5](https://github.com/2401345934/webpack-react-demo/commit/c2b5ad5))
 - ✨ 新增(pages): 新增 typed ([2cc37f7](https://github.com/2401345934/webpack-react-demo/commit/2cc37f7))
 - ✨ 新增(pages): 新增常见反馈页面 ([c46776e](https://github.com/2401345934/webpack-react-demo/commit/c46776e))

@@ -4,7 +4,7 @@
 const useBefore = (
   fn: Function,
   beforeFn: Array<Function> | Function,
-  isSync = true
+  isSync = true,
 ) => {
   return async (...args: any[]) => {
     if (!Array.isArray(beforeFn)) {

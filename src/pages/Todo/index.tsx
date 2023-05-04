@@ -18,7 +18,7 @@ const Component: React.FC = (): JSX.Element => {
       title: value,
       del: false,
       check: false,
-      id: URL.createObjectURL(new Blob()).substr(-36)
+      id: URL.createObjectURL(new Blob()).substr(-36),
     }
     setList([oneList, ...list])
   }

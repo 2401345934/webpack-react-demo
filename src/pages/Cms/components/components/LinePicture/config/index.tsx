@@ -13,12 +13,12 @@ const Component: React.FC = (): JSX.Element => {
   const { sourceData, currentIndex, setSourceData }: any = useContext(Context)
 
   const handleChange: UploadProps['onChange'] = (
-    info: UploadChangeParam<UploadFile>
+    info: UploadChangeParam<UploadFile>,
   ) => {
     getBase64(info.file.originFileObj as RcFile, url => {
       sourceData[currentIndex].config = {
         ...sourceData[currentIndex].config,
-        src: url
+        src: url,
       }
       setSourceData([...sourceData])
     })

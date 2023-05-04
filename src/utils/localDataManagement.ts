@@ -18,7 +18,7 @@ class localDataManagement {
       // 判断时间是否已过期
       if (time > Date.now()) {
         value = utils.JSONPase(
-          value.slice(index + localDataManagement.#timeSign.length)
+          value.slice(index + localDataManagement.#timeSign.length),
         )
       } else {
         value = null
@@ -38,7 +38,7 @@ class localDataManagement {
       : Date.now() + localDataManagement.initExpirationTime
     localStorage.setItem(
       key,
-      `${time}${localDataManagement.#timeSign}${utils.JSONStringify(value)}`
+      `${time}${localDataManagement.#timeSign}${utils.JSONStringify(value)}`,
     )
   }
 

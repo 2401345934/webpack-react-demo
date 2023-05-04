@@ -24,5 +24,5 @@ const urlDownload = (url: string) => {
   return true
 }
 export default {
-  urlDownload
+  urlDownload,
 }

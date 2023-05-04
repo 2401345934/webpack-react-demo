@@ -18,5 +18,5 @@ const JSONStringify = (str: any) => {
 }
 export default {
   JSONPase,
-  JSONStringify
+  JSONStringify,
 }

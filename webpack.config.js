@@ -27,20 +27,20 @@ const { merge } = require('webpack-merge')
 
 const alias = {
   '@': path.resolve(__dirname, 'src'),
-  '@globalConfig': path.resolve(__dirname, 'config/globalConfig')
+  '@globalConfig': path.resolve(__dirname, 'config/globalConfig'),
 }
 
 const config = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     modules: [path.resolve(__dirname, 'node_modules')],
-    alias
+    alias,
   },
   entry: path.join(__dirname, 'src', 'app.tsx'),
   // contenthash 内容变了才会更新
   output: {
     filename: '[name]-[contenthash].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
 
   plugins: [
@@ -51,7 +51,7 @@ const config = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      inject: 'head'
+      inject: 'head',
     }),
     // fork ts 检查
     new ForkTsCheckerWebpackPlugin(),
@@ -62,17 +62,17 @@ const config = {
     // 计算性能
     new StatoscopeWebpackPlugin(),
     // 压缩
-    new CompressionPlugin()
+    new CompressionPlugin(),
   ],
   module: {
-    rules: [...images, ...scripts, ...styles]
-  }
+    rules: [...images, ...scripts, ...styles],
+  },
 }
 
 // 环境配置
 const envConfig = {
   development,
-  production
+  production,
 }
 
 module.exports = function (e, v) {

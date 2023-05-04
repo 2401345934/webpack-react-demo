@@ -11,7 +11,7 @@ function treeData(path = '0', level = 3, count = 10) {
     const treeNode = {
       title: key,
       label: key,
-      key
+      key,
     }
 
     if (level === 1 && key === '0-0-0-0') {

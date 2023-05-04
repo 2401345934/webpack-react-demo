@@ -5,7 +5,7 @@ import {
   Select,
   DatePicker,
   InputNumber,
-  Checkbox
+  Checkbox,
 } from 'antd'
 import { formItemTypes } from './types'
 
@@ -19,7 +19,7 @@ const ANTD_TYPE_MAP = new Map([
       <Form.Item label={item.label} name={item.name} rules={item.rules}>
         <Input {...item.props} />
       </Form.Item>
-    )
+    ),
   ],
   [
     'textarea',
@@ -27,7 +27,7 @@ const ANTD_TYPE_MAP = new Map([
       <Form.Item label={item.label} name={item.name} rules={item.rules}>
         <TextArea {...item.props} />
       </Form.Item>
-    )
+    ),
   ],
   [
     'inputnumber',
@@ -35,7 +35,7 @@ const ANTD_TYPE_MAP = new Map([
       <Form.Item label={item.label} name={item.name} rules={item.rules}>
         <InputNumber style={{ width: '100%' }} {...item.props} />
       </Form.Item>
-    )
+    ),
   ],
   [
     'select',
@@ -56,7 +56,7 @@ const ANTD_TYPE_MAP = new Map([
             ))}
         </Select>
       </Form.Item>
-    )
+    ),
   ],
   [
     'radio',
@@ -77,7 +77,7 @@ const ANTD_TYPE_MAP = new Map([
             ))}
         </Radio.Group>
       </Form.Item>
-    )
+    ),
   ],
   [
     'checkbox',
@@ -98,7 +98,7 @@ const ANTD_TYPE_MAP = new Map([
             ))}
         </Checkbox.Group>
       </Form.Item>
-    )
+    ),
   ],
   [
     'datepicker',
@@ -106,7 +106,7 @@ const ANTD_TYPE_MAP = new Map([
       <Form.Item label={item.label} name={item.name} rules={item.rules}>
         <DatePicker style={{ width: '100%' }} {...item.props} />
       </Form.Item>
-    )
+    ),
   ],
   [
     'rangepicker',
@@ -114,8 +114,8 @@ const ANTD_TYPE_MAP = new Map([
       <Form.Item label={item.label} name={item.name} rules={item.rules}>
         <RangePicker style={{ width: '100%' }} {...item.props} />
       </Form.Item>
-    )
-  ]
+    ),
+  ],
 ])
 
 const createAntdComponent = (item: formItemTypes) => {

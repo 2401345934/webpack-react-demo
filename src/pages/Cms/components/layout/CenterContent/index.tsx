@@ -13,7 +13,7 @@ const Component: React.FC = (): JSX.Element => {
     if (!data.type) return
     setSourceData([
       ...sourceData,
-      { ...INIT_PARAMS, type: data.type, uuid: data.uuid }
+      { ...INIT_PARAMS, type: data.type, uuid: data.uuid },
     ])
   }
   const handleDragOverParent = (event: any) => {
@@ -45,10 +45,10 @@ const Component: React.FC = (): JSX.Element => {
     // 在拖拽源元素和目标元素之间交换位置
     if (sourceEl && targetEl) {
       const sourceIndex = sourceData.findIndex(
-        (d: { uuid: string }) => d.uuid === sourceEl.id
+        (d: { uuid: string }) => d.uuid === sourceEl.id,
       )
       const targetIndex = sourceData.findIndex(
-        (d: { uuid: string }) => d.uuid === targetEl.id
+        (d: { uuid: string }) => d.uuid === targetEl.id,
       )
       let temp = sourceData[sourceIndex]
       sourceData[sourceIndex] = sourceData[targetIndex]

@@ -11,7 +11,7 @@ const Component: React.FC = (): JSX.Element => {
     const type = droppedElement.getAttribute('data-type')
     const data = {
       type,
-      uuid: utils.uuid()
+      uuid: utils.uuid(),
     }
     event.dataTransfer.setData('text/plain', utils.JSONStringify(data))
   }

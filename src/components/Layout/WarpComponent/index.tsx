@@ -12,9 +12,8 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import styles from './styles.module.less'
 import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons'
 import utils from '@/utils'
-import { DELETE_CATCH_TAB } from '../cacheTabHelper'
+import { CLEAR_CATCH_TAB, DELETE_CATCH_TAB } from '../cacheTabHelper'
 import { useGetState, useMount } from 'ahooks'
-import withGreeting from '../WithComponent'
 
 type PropsType = {
   children?: React.ReactNode
@@ -89,6 +88,13 @@ const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
     setFullscreenFlag(!fullscreenFlag)
   }
 
+  const removeAll = () => {
+    setItems([initTabItem])
+    setActiveKey(initTabItem.path)
+    navigate(initTabItem.path)
+    CLEAR_CATCH_TAB()
+  }
+
   return (
     <Fragment>
       <div className={styles.warpComponent} {...rest}>
@@ -101,7 +107,11 @@ const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
           items={items.map(item => {
             return {
               ...item,
-              children: item.children({}),
+              children: item.children({
+                onTabEdit: onEdit,
+                onTabChange: onChange,
+                onTabRemoveAll: removeAll,
+              }),
             }
           })}
         />

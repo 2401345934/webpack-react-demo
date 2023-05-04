@@ -24,5 +24,5 @@ const camelTo_ = (str: string) => {
 export default {
   _toLittleCamel,
   _toBigCamel,
-  camelTo_
+  camelTo_,
 }

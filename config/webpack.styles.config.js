@@ -7,8 +7,8 @@ module.exports = [
       {
         loader: 'css-loader',
         options: {
-          importLoaders: 1
-        }
+          importLoaders: 1,
+        },
       },
       'less-loader',
       {
@@ -16,10 +16,10 @@ module.exports = [
         options: {
           postcssOptions: {
             // 添加 autoprefixer 插件
-            plugins: [require('autoprefixer')]
-          }
-        }
-      }
-    ]
-  }
+            plugins: [require('autoprefixer')],
+          },
+        },
+      },
+    ],
+  },
 ]

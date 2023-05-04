@@ -14,10 +14,10 @@ module.exports = [
             [
               '@babel/preset-react',
               {
-                runtime: 'automatic'
-              }
+                runtime: 'automatic',
+              },
             ],
-            '@babel/preset-typescript'
+            '@babel/preset-typescript',
           ],
           plugins: [
             [
@@ -27,14 +27,14 @@ module.exports = [
                 exclude: 'node_modules',
                 filetypes: {
                   '.less': {
-                    syntax: 'postcss-less'
-                  }
-                }
-              }
-            ]
-          ]
-        }
-      }
-    ]
-  }
+                    syntax: 'postcss-less',
+                  },
+                },
+              },
+            ],
+          ],
+        },
+      },
+    ],
+  },
 ]

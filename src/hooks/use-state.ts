@@ -20,7 +20,7 @@ class State {
   go(params: any) {
     // 当前集合中的状态依次执行
     this.currentState.forEach(
-      (k: any) => this.actions[k] && this.actions[k](params)
+      (k: any) => this.actions[k] && this.actions[k](params),
     )
     return this
   }

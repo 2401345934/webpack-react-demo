@@ -32,7 +32,7 @@ function QueryTable(props: QueryTablePropsType, ref: any): JSX.Element {
     resetCallback,
     requestProps,
     initFetch = true,
-    tableResize = false
+    tableResize = false,
   } = props
   const tableRef = useRef<HTMLTableElement>(null)
   const formRef = useRef<HTMLFormElement>(null)
@@ -52,7 +52,7 @@ function QueryTable(props: QueryTablePropsType, ref: any): JSX.Element {
 
   useImperativeHandle(ref, () => ({
     tableRef: tableRef.current,
-    formRef: formRef?.current?.formRef
+    formRef: formRef?.current?.formRef,
   }))
   return (
     <>

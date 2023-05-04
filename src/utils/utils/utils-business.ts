@@ -13,7 +13,7 @@ const getSelectedText = (): string | undefined => {
 
 const toggleFullscreen = ({
   fullscreenFlag,
-  className
+  className,
 }: {
   fullscreenFlag: boolean
   className: string
@@ -58,5 +58,5 @@ export default {
   uuid,
   getFirstScreenRenderingTime,
   getSelectedText,
-  toggleFullscreen
+  toggleFullscreen,
 }

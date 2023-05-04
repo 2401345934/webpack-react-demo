@@ -8,16 +8,16 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
       modules: true,
-      experimentalObjectRestSpread: true
-    }
+      experimentalObjectRestSpread: true,
+    },
   },
   plugins: ['@typescript-eslint'],
   overrides: [
     {
       files: ['*.js', '*.jsx'],
       rules: {
-        '@typescript-eslint/explicit-function-return-type': 'off'
-      }
-    }
-  ]
+        '@typescript-eslint/explicit-function-return-type': 'off',
+      },
+    },
+  ],
 }
