@@ -5,6 +5,7 @@
 - ✨ 新增(components): 导航栏多种模式支持 代码待优化 ([e9565d1](https://github.com/2401345934/webpack-react-demo/commit/e9565d1))
 - ✨ 新增(components): 新增百万级数据量 tree 组件 ([b6eed4f](https://github.com/2401345934/webpack-react-demo/commit/b6eed4f))
 - ✨ 新增(components): 新增导航栏布局模式 ([e0df959](https://github.com/2401345934/webpack-react-demo/commit/e0df959))
+- ✨ 新增(components): 新增通用组件 底部悬浮 button ([b25496e](https://github.com/2401345934/webpack-react-demo/commit/b25496e))
 - ✨ 新增(config): 拆分 config 新增 @globalConfig 快捷引入 ([aff7172](https://github.com/2401345934/webpack-react-demo/commit/aff7172))
 - ✨ 新增(hook): useNetowrk ([8972cff](https://github.com/2401345934/webpack-react-demo/commit/8972cff))
 - ✨ 新增(package): 更新最新依赖 ([d689b71](https://github.com/2401345934/webpack-react-demo/commit/d689b71))
