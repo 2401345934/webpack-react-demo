@@ -1,5 +1,5 @@
 // safeJsonParse JSON 转换
-const JSONPase = (str: string) => {
+const JSONPase = (str: string | null) => {
   if (!str || typeof str != 'string') {
     return str
   }

@@ -3,6 +3,7 @@ import { Fragment, useState } from 'react'
 import styles from './styles.module.less'
 import { useLocation } from 'react-router-dom'
 import { deepFlatRouter, initRoute } from '@/router'
+import localDataManagement from '@/utils/localDataManagement'
 
 type PageWarpType = {
   isTitle?: boolean
@@ -15,6 +16,9 @@ export default (props: PageWarpType): JSX.Element => {
   const [routerItem, setRouterItem] = useState<any>({})
 
   useMount(() => {
+    localDataManagement.setItem('a', 111)
+    const a = localDataManagement.getItem('a')
+    console.log('a', a)
     const item = deepFlatRouter.find(
       item => `/${item.path}` === location.pathname,
     )

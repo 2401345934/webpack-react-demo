@@ -1,6 +1,6 @@
 {
   "name": "webpack-react-test",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -101,6 +101,7 @@
     "babel-eslint": "^10.1.0",
     "babel-plugin-react-css-modules": "^5.2.6",
     "commitlint-config-cz": "^0.13.3",
+    "crypto-js": "^4.1.1",
     "css-loader": "^6.7.3",
     "cz-customizable": "^7.0.0",
     "dayjs": "^1.11.7",

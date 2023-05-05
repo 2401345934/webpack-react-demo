@@ -1,4 +1,4 @@
-## <small>1.6.3 (2023-05-05)</small>
+## <small>1.6.4 (2023-05-05)</small>
 
 - ♻️ 重构(pages): 优化代码结构 ([89a7221](https://github.com/2401345934/webpack-react-demo/commit/89a7221))
 - ✨ 新增(components): 抽离优化多页签缓存方法 ([7399b7e](https://github.com/2401345934/webpack-react-demo/commit/7399b7e))
@@ -18,6 +18,7 @@
 - ✨ 新增(pages): 原生简单拖拽实现排序 ([f8818de](https://github.com/2401345934/webpack-react-demo/commit/f8818de))
 - ✨ 新增(pages): 注释补充 ([22210be](https://github.com/2401345934/webpack-react-demo/commit/22210be))
 - ✨ 新增(router): 修改路由模式 修改为函数渲染 ([692c0e0](https://github.com/2401345934/webpack-react-demo/commit/692c0e0))
+- 🐛 修复(components): pagewarp 修复 ([2ca8760](https://github.com/2401345934/webpack-react-demo/commit/2ca8760))
 - 🐛 修复(pages): router ([2045786](https://github.com/2401345934/webpack-react-demo/commit/2045786))
 - 💄 格式(pages): 样式修复 ([95fa998](https://github.com/2401345934/webpack-react-demo/commit/95fa998))
 - init ([d7ddb87](https://github.com/2401345934/webpack-react-demo/commit/d7ddb87))
