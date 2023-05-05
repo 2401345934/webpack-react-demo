@@ -1,5 +1,34 @@
-import { Fragment } from 'react'
+import { useMount } from 'ahooks'
+import { Fragment, useState } from 'react'
+import styles from './styles.module.less'
+import { useLocation } from 'react-router-dom'
+import { deepFlatRouter } from '@/router'
 
-export default (props: any): JSX.Element => {
-  return <Fragment>{props.children}</Fragment>
+type PageWarpType = {
+  isTitle?: boolean
+  title?: string
+  children: any
+}
+export default (props: PageWarpType): JSX.Element => {
+  const { isTitle = true, title, children } = props
+  const location = useLocation()
+  const [routerItem, setRouterItem] = useState<any>({})
+
+  useMount(() => {
+    const item = deepFlatRouter.find(
+      item => `/${item.path}` === location.pathname,
+    )
+    setRouterItem(item)
+  })
+  return (
+    <Fragment>
+      <div className={styles.wrap}>
+        {/* title */}
+        {isTitle && (
+          <div className={styles.title}>{title || routerItem.label}</div>
+        )}
+        {children}
+      </div>
+    </Fragment>
+  )
 }

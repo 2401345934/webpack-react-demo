@@ -11,6 +11,7 @@ import {
   TagsTwoTone,
 } from '@ant-design/icons'
 import resultPage from './resultPage'
+import expandComponent from './expandComponent'
 const BaseLayout = lazy(() => import('@/index'))
 const Wecome = lazy(() => import('@/pages/Wecome'))
 const NotPage = lazy(() => import('@/pages/404'))
@@ -92,7 +93,7 @@ const initRouter: RouterType[] = [
         ],
       },
       {
-        path: 'antd-table',
+        path: 'antdTable',
         label: '表格',
         icon: <SafetyCertificateTwoTone />,
         element: props => (
@@ -142,6 +143,7 @@ const initRouter: RouterType[] = [
         ),
       },
       ...resultPage,
+      ...expandComponent,
     ],
   },
   {

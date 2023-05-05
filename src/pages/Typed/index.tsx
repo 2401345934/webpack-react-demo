@@ -1,3 +1,4 @@
+import PageWarp from '@/components/BusinessComponent/PageWarp'
 import React from 'react'
 import Typed from 'typed.js'
 const TypedReactHooksDemo = () => {
@@ -24,11 +25,13 @@ const TypedReactHooksDemo = () => {
   }, [])
 
   return (
-    <div className="wrap">
-      <div className="type-wrap">
-        <span style={{ whiteSpace: 'pre' }} ref={el} />
+    <PageWarp>
+      <div className="wrap">
+        <div className="type-wrap">
+          <span style={{ whiteSpace: 'pre' }} ref={el} />
+        </div>
       </div>
-    </div>
+    </PageWarp>
   )
 }
 

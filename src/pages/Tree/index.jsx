@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react'
 import Tree from '@/components/Tree'
 
 import './tree.css'
+import PageWarp from '@/components/BusinessComponent/PageWarp'
 
 // 生成4层（从0开始）结构，每层10个节点；除 '0-0-0-0' 节点外
 function treeData(path = '0', level = 3, count = 10) {
@@ -40,17 +41,19 @@ function App() {
   }, [])
 
   return (
-    <div className="tree-container">
-      <Tree
-        data={dataSource}
-        visibleHeight={500}
-        itemHeight={28}
-        expandedIds={expandedKeys}
-        checkedIds={checkedKeys}
-        onChecked={handleCheck}
-        onExpanded={handleExpand}
-      />
-    </div>
+    <PageWarp>
+      <div className="tree-container">
+        <Tree
+          data={dataSource}
+          visibleHeight={500}
+          itemHeight={28}
+          expandedIds={expandedKeys}
+          checkedIds={checkedKeys}
+          onChecked={handleCheck}
+          onExpanded={handleExpand}
+        />
+      </div>
+    </PageWarp>
   )
 }
 export default App

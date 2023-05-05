@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import QueryTable from '@/components/BusinessComponent/QueryTable'
 import { Space, Button } from 'antd'
 import { useMount } from 'ahooks'
+import PageWarp from '@/components/BusinessComponent/PageWarp'
 
 const dataSource = [
   {
@@ -181,7 +182,11 @@ const Component: React.FC = (): JSX.Element => {
     tableResize: true,
   }
 
-  return <QueryTable {...config}></QueryTable>
+  return (
+    <PageWarp>
+      <QueryTable {...config}></QueryTable>
+    </PageWarp>
+  )
 }
 
 export default Component
