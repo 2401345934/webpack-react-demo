@@ -2,7 +2,7 @@ import { useMount } from 'ahooks'
 import { Fragment, useState } from 'react'
 import styles from './styles.module.less'
 import { useLocation } from 'react-router-dom'
-import { deepFlatRouter } from '@/router'
+import { deepFlatRouter, initRoute } from '@/router'
 
 type PageWarpType = {
   isTitle?: boolean
@@ -18,14 +18,14 @@ export default (props: PageWarpType): JSX.Element => {
     const item = deepFlatRouter.find(
       item => `/${item.path}` === location.pathname,
     )
-    setRouterItem(item)
+    setRouterItem(item || initRoute)
   })
   return (
     <Fragment>
       <div className={styles.wrap}>
         {/* title */}
         {isTitle && (
-          <div className={styles.title}>{title || routerItem.label}</div>
+          <div className={styles.title}>{title || routerItem?.label}</div>
         )}
         {children}
       </div>

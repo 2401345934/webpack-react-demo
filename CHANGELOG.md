@@ -19,5 +19,6 @@
 - ✨ 新增(pages): 注释补充 ([22210be](https://github.com/2401345934/webpack-react-demo/commit/22210be))
 - ✨ 新增(router): 修改路由模式 修改为函数渲染 ([692c0e0](https://github.com/2401345934/webpack-react-demo/commit/692c0e0))
 - 🐛 修复(pages): router ([2045786](https://github.com/2401345934/webpack-react-demo/commit/2045786))
+- 💄 格式(pages): 样式修复 ([95fa998](https://github.com/2401345934/webpack-react-demo/commit/95fa998))
 - init ([d7ddb87](https://github.com/2401345934/webpack-react-demo/commit/d7ddb87))
 - not auth plubsh ([cdfce05](https://github.com/2401345934/webpack-react-demo/commit/cdfce05))
