@@ -1,5 +1,4 @@
-import React, { PureComponent } from 'react'
-import { Checkbox } from 'antd'
+import { PureComponent } from 'react'
 
 const indentUnit = 24
 

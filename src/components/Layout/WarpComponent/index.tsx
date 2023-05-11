@@ -1,12 +1,10 @@
 import { Fragment } from 'react'
-import { Tabs } from 'antd'
 import React from 'react'
 import { deepFlatRouter, RouterType, initTabItem } from '@/router'
 import styles from './styles.module.less'
 import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons'
 import utils from '@/utils'
 import { CLEAR_CATCH_TAB, DELETE_CATCH_TAB } from '../cacheTabHelper'
-import { useGetState, useMount } from 'ahooks'
 
 type PropsType = {
   children?: React.ReactNode

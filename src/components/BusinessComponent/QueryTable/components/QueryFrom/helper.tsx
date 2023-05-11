@@ -1,12 +1,3 @@
-import {
-  Form,
-  Input,
-  Radio,
-  Select,
-  DatePicker,
-  InputNumber,
-  Checkbox,
-} from 'antd'
 import { formItemTypes } from './types'
 
 const { RangePicker } = DatePicker

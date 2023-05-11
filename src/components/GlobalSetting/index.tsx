@@ -1,6 +1,5 @@
 import { SettingTwoTone } from '@ant-design/icons'
 import styles from './index.module.less'
-import { Divider, Drawer, Radio } from 'antd'
 import { useEffect, useState } from 'react'
 import GLOBAL_CONFIG from '@globalConfig'
 import utils from '@/utils'

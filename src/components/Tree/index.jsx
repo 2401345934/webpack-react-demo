@@ -5,7 +5,7 @@ import './index.less'
 
 const OFFSET_VERTICAL = 200
 
-class Tree extends PureComponent {
+class CustomTree extends PureComponent {
   static defaultProps = {
     /**
      * keys 用于指定数据字段映射
@@ -488,4 +488,4 @@ function getVisibleRange({
   }
 }
 
-export default Tree
+export default CustomTree

@@ -1,4 +1,3 @@
-import { Button, Checkbox } from 'antd'
 import type { listType } from '../../index'
 
 type propsHelper = {

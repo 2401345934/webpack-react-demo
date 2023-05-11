@@ -1,5 +1,5 @@
 import QueryFrom from './components/QueryFrom'
-import { Table, TableProps } from 'antd'
+import { TableProps } from 'antd'
 import styles from './styles.module.less'
 import { useRef, useImperativeHandle, forwardRef, useEffect } from 'react'
 import { RequestType } from '@/request/index.type'

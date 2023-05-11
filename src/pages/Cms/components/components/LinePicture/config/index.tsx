@@ -1,6 +1,6 @@
 import { Context } from '@/pages/Cms'
 import { PlusOutlined } from '@ant-design/icons'
-import { Upload, UploadFile, UploadProps } from 'antd'
+import { UploadFile, UploadProps } from 'antd'
 import { RcFile, UploadChangeParam } from 'antd/es/upload'
 import React, { useContext } from 'react'
 const getBase64 = (img: RcFile, callback: (url: string) => void) => {

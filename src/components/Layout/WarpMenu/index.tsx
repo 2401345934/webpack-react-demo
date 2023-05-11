@@ -1,6 +1,5 @@
 import { Fragment } from 'react'
 import Sider from 'antd/lib/layout/Sider'
-import { Menu } from 'antd'
 import { routerList } from '@/router'
 
 type PropsType = {

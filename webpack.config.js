@@ -8,7 +8,7 @@ const styles = require('./config/webpack.styles.config')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const AutoImport = require('unplugin-auto-import/webpack')
-
+const { antdComponents } = require('./config/antd-components-auto-import')
 // fork 线程 check ts type
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 // eslint 优化 plugins
@@ -66,7 +66,14 @@ const config = {
     // 压缩
     new CompressionPlugin(),
     AutoImport({
-      imports: ['react', 'react-router-dom'],
+      imports: [
+        'react',
+        'react-router-dom',
+        'ahooks',
+        {
+          antd: antdComponents,
+        },
+      ],
       include: [/\.[tj]sx?$/, /\.md$/],
       dts: 'src/auto-imports.d.ts',
     }),

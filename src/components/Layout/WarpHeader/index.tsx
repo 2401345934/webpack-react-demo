@@ -1,12 +1,10 @@
 import React from 'react'
-import { Button, Layout, Menu, Space } from 'antd'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import styles from './styles.module.less'
 import utils from '@/utils'
 import { TypeObjStr } from '@/utils/utilsTypes.type'
 import { MENU_MODE, initialThemeValueList } from '@/dictionary/layoutDict'
 import { RouterType, firstRouterList, routerList } from '@/router'
-import { useMount } from 'ahooks'
 import UpdateTheme from '../UpdateTheme'
 import GLOBAL_CONFIG from '@globalConfig'
 

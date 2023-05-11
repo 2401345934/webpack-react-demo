@@ -1,5 +1,3 @@
-import { Button, Col, Drawer, Form, Input, Row, Space } from 'antd'
-
 type UpdateThemeType = {
   open: boolean
   onClose: () => void

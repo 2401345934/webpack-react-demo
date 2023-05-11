@@ -1,6 +1,5 @@
 import PageWarp from '@/components/BusinessComponent/PageWarp'
 import FixedButton from '@/components/FixedButton'
-import { Button, Space } from 'antd'
 
 export default function index() {
   return (

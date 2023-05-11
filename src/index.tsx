@@ -1,4 +1,3 @@
-import { ConfigProvider, Layout } from 'antd'
 import WarpComponent from '@/components/Layout/WarpComponent'
 import WarpMenu from '@/components/Layout/WarpMenu'
 import WarpHeader from '@/components/Layout/WarpHeader'
@@ -13,7 +12,6 @@ import {
   GET_CATCH_TAB,
 } from './components/Layout/cacheTabHelper'
 import { RouterType, deepFlatRouter, initRoute, initTabItem } from './router'
-import { useMount } from 'ahooks'
 import { MENU_MODE } from './dictionary/layoutDict'
 
 const Component: React.FunctionComponent = (): JSX.Element => {
