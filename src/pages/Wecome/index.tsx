@@ -1,14 +1,13 @@
-import React from 'react'
 import Typed from 'typed.js'
 import styles from './index.module.less'
 import PageWarp from '@/components/BusinessComponent/PageWarp'
 const TypedReactHooksDemo = (props: any) => {
   // Create reference to store the DOM element containing the animation
-  const el = React.useRef(null)
+  const el = useRef(null)
   // Create reference to store the Typed instance itself
-  const typed: any = React.useRef(null)
+  const typed: any = useRef(null)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const options = {
       strings: ['Wecome alan'],
       typeSpeed: 50,
@@ -37,4 +36,4 @@ const TypedReactHooksDemo = (props: any) => {
   )
 }
 
-export default React.memo(TypedReactHooksDemo)
+export default memo(TypedReactHooksDemo)

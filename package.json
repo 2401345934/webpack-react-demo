@@ -118,6 +118,7 @@
     "scroxt": "^1.4.2",
     "style-loader": "^3.3.2",
     "typed.js": "^2.0.132",
+    "unplugin-auto-import": "^0.15.3",
     "webpack-dev-server": "^4.15.0"
   }
 }

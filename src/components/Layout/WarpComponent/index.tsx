@@ -1,14 +1,7 @@
-import {
-  Fragment,
-  forwardRef,
-  useState,
-  useImperativeHandle,
-  memo,
-} from 'react'
+import { Fragment } from 'react'
 import { Tabs } from 'antd'
 import React from 'react'
 import { deepFlatRouter, RouterType, initTabItem } from '@/router'
-import { useLocation, useNavigate } from 'react-router-dom'
 import styles from './styles.module.less'
 import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons'
 import utils from '@/utils'

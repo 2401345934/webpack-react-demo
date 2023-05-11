@@ -1,13 +1,12 @@
 import PageWarp from '@/components/BusinessComponent/PageWarp'
-import React from 'react'
 import Typed from 'typed.js'
 const TypedReactHooksDemo = () => {
   // Create reference to store the DOM element containing the animation
-  const el = React.useRef(null)
+  const el = useRef(null)
   // Create reference to store the Typed instance itself
-  const typed: any = React.useRef(null)
+  const typed: any = useRef(null)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const options = {
       strings: ['我是你typed'],
       typeSpeed: 50,

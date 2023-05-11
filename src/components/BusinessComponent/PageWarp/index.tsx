@@ -1,7 +1,6 @@
 import { useMount } from 'ahooks'
 import { Fragment, useState } from 'react'
 import styles from './styles.module.less'
-import { useLocation } from 'react-router-dom'
 import { deepFlatRouter, initRoute } from '@/router'
 import localDataManagement from '@/utils/localDataManagement'
 

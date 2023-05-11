@@ -1,5 +1,4 @@
 import { Context } from '@/pages/Cms'
-import React, { useContext } from 'react'
 import { CONFIG_COMPONENT_MAPPER } from '../../../helper/dict'
 
 const Component: React.FC = (): JSX.Element => {

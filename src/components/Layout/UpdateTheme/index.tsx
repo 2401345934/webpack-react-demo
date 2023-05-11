@@ -1,5 +1,4 @@
 import { Button, Col, Drawer, Form, Input, Row, Space } from 'antd'
-import { forwardRef, useImperativeHandle } from 'react'
 
 type UpdateThemeType = {
   open: boolean

@@ -1,6 +1,4 @@
 import { ConfigProvider, Layout } from 'antd'
-import React, { useEffect, useRef, useState } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
 import WarpComponent from '@/components/Layout/WarpComponent'
 import WarpMenu from '@/components/Layout/WarpMenu'
 import WarpHeader from '@/components/Layout/WarpHeader'

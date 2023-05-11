@@ -1,8 +1,7 @@
 import PageWarp from '@/components/BusinessComponent/PageWarp'
 import { useNetwork } from '@/hooks'
-import React from 'react'
 
-const NetWrok = React.memo(() => {
+const NetWrok = memo(() => {
   const { ping, jitter } = useNetwork()
 
   return (

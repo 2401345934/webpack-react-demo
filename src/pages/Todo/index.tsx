@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import Title from './components/title'
 import List from './components/List'
 import InputTodo from './components/input'

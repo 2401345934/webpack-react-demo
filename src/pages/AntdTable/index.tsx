@@ -1,5 +1,4 @@
 // @ts-nocheck
-import React, { useEffect } from 'react'
 import ResizeableTable from '@/components/Resizeable'
 import PageWarp from '@/components/BusinessComponent/PageWarp'
 
@@ -62,4 +61,4 @@ const Component: React.FC = (props: any): JSX.Element => {
   )
 }
 
-export default React.memo(Component)
+export default memo(Component)

@@ -1,4 +1,3 @@
-import React from 'react'
 import type { listType } from '../../index'
 import ReadonlyList from '../ReadonlyList'
 

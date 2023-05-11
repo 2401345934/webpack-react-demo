@@ -1,4 +1,3 @@
-import React from 'react'
 import { COMPONENTS_TYPE } from '../../../helper/dict'
 import utils from '@/utils'
 import styles from './styles.module.less'

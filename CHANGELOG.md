@@ -12,6 +12,7 @@
 - ✨ 新增(package): 新增 hot 参数 ([59a74eb](https://github.com/2401345934/webpack-react-demo/commit/59a74eb))
 - ✨ 新增(pages): 改写 react router 函数写法 支持组件跨层级传参数 ([9b75de7](https://github.com/2401345934/webpack-react-demo/commit/9b75de7))
 - ✨ 新增(pages): 缓存多页签 ([c2b5ad5](https://github.com/2401345934/webpack-react-demo/commit/c2b5ad5))
+- ✨ 新增(pages): 新增 pages 异常页面返回首页功能 ([0d82af0](https://github.com/2401345934/webpack-react-demo/commit/0d82af0))
 - ✨ 新增(pages): 新增 typed ([2cc37f7](https://github.com/2401345934/webpack-react-demo/commit/2cc37f7))
 - ✨ 新增(pages): 新增常见反馈页面 ([c46776e](https://github.com/2401345934/webpack-react-demo/commit/c46776e))
 - ✨ 新增(pages): 新增页面布局模式切换 ([97679cb](https://github.com/2401345934/webpack-react-demo/commit/97679cb))

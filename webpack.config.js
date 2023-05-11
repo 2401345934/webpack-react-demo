@@ -7,6 +7,8 @@ const styles = require('./config/webpack.styles.config')
 // 生成 htmlWebpackPlugin
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
+const AutoImport = require('unplugin-auto-import/webpack')
+
 // fork 线程 check ts type
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 // eslint 优化 plugins
@@ -63,6 +65,11 @@ const config = {
     new StatoscopeWebpackPlugin(),
     // 压缩
     new CompressionPlugin(),
+    AutoImport({
+      imports: ['react', 'react-router-dom'],
+      include: [/\.[tj]sx?$/, /\.md$/],
+      dts: 'src/auto-imports.d.ts',
+    }),
   ],
   module: {
     rules: [...images, ...scripts, ...styles],

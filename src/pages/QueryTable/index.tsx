@@ -1,4 +1,3 @@
-import React, { useRef, useState } from 'react'
 import QueryTable from '@/components/BusinessComponent/QueryTable'
 import { Space, Button } from 'antd'
 import { useMount } from 'ahooks'

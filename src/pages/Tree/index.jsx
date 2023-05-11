@@ -1,4 +1,3 @@
-import { useCallback, useState } from 'react'
 import Tree from '@/components/Tree'
 
 import './tree.css'

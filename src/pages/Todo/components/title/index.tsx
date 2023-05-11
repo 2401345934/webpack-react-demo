@@ -1,5 +1,3 @@
-import React, { memo } from 'react'
-
 const Component: React.FC = (): JSX.Element => {
   return (
     <>

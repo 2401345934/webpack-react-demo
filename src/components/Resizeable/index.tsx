@@ -1,5 +1,4 @@
 // @ts-nocheck
-import * as React from 'react'
 import { Table } from 'antd'
 import { Resizable } from 'react-resizable'
 import './resizeable-table.less'

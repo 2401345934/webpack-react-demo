@@ -1,5 +1,4 @@
 import { Context } from '@/pages/Cms'
-import React, { useContext, useRef } from 'react'
 import utils from '@/utils'
 import { COMPONENTS_MAPPER, INIT_PARAMS } from '../../../helper/dict'
 import styles from './styles.module.less'

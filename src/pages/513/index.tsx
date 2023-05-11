@@ -1,7 +1,6 @@
 import PageWarp from '@/components/BusinessComponent/PageWarp'
 import React from 'react'
 import { Button, Result } from 'antd'
-import { useNavigate } from 'react-router-dom'
 
 const Component: React.FC = (): JSX.Element => {
   const navigate = useNavigate()
