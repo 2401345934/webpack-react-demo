@@ -65,6 +65,9 @@ const antdComponents = [
   'TreeSelect',
   'Typography',
   'Upload',
+  'UploadFile',
+  'UploadProps',
+  'TableProps',
 ]
 
 module.exports = {

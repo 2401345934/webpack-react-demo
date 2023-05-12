@@ -1,7 +1,6 @@
 import QueryFrom from './components/QueryFrom'
 import { TableProps } from 'antd'
 import styles from './styles.module.less'
-import { useRef, useImperativeHandle, forwardRef, useEffect } from 'react'
 import { RequestType } from '@/request/index.type'
 import ResizeableTable from '@/components/Resizeable'
 import request from '@/request'

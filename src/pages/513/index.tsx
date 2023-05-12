@@ -1,5 +1,4 @@
 import PageWarp from '@/components/BusinessComponent/PageWarp'
-import React from 'react'
 
 const Component: React.FC = (): JSX.Element => {
   const navigate = useNavigate()

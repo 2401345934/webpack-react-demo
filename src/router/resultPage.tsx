@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react'
+import { Suspense } from 'react'
 import Loading from '@/components/Loading'
 import { RouterType } from './index'
 import { AlertTwoTone } from '@ant-design/icons'

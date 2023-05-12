@@ -1,5 +1,3 @@
-import { PureComponent } from 'react'
-
 const indentUnit = 24
 
 class TreeNodeItem extends PureComponent {

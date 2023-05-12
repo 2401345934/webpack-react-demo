@@ -1,5 +1,4 @@
 import { Fragment } from 'react'
-import React from 'react'
 import { deepFlatRouter, RouterType, initTabItem } from '@/router'
 import styles from './styles.module.less'
 import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons'

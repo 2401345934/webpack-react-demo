@@ -1,6 +1,5 @@
 import { SettingTwoTone } from '@ant-design/icons'
 import styles from './index.module.less'
-import { useEffect, useState } from 'react'
 import GLOBAL_CONFIG from '@globalConfig'
 import utils from '@/utils'
 

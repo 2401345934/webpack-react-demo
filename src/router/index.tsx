@@ -1,4 +1,4 @@
-import { ReactNode, Suspense, lazy } from 'react'
+import { ReactNode, Suspense } from 'react'
 import { createHashRouter } from 'react-router-dom'
 import Loading from '@/components/Loading'
 import IncludesSubmenusWarp from '@/components/IncludesSubmenusWarp'

@@ -1,4 +1,4 @@
-## <small>1.6.9 (2023-05-11)</small>
+## <small>1.6.9 (2023-05-12)</small>
 
 - ♻️ 重构(pages): 优化代码结构 ([89a7221](https://github.com/2401345934/webpack-react-demo/commit/89a7221))
 - ✨ 新增(components): 抽离优化多页签缓存方法 ([7399b7e](https://github.com/2401345934/webpack-react-demo/commit/7399b7e))
@@ -26,5 +26,6 @@
 - 🐛 修复(components): pagewarp 修复 ([2ca8760](https://github.com/2401345934/webpack-react-demo/commit/2ca8760))
 - 🐛 修复(pages): router ([2045786](https://github.com/2401345934/webpack-react-demo/commit/2045786))
 - 💄 格式(pages): 样式修复 ([95fa998](https://github.com/2401345934/webpack-react-demo/commit/95fa998))
+- 🔧 工具(package): 新增自动引入 antd react react-router-dom ([93114d1](https://github.com/2401345934/webpack-react-demo/commit/93114d1))
 - init ([d7ddb87](https://github.com/2401345934/webpack-react-demo/commit/d7ddb87))
 - not auth plubsh ([cdfce05](https://github.com/2401345934/webpack-react-demo/commit/cdfce05))

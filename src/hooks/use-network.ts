@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-
 const network = () => {
   const [count, setCount] = useState<number>(0)
   const [pingList, setPingList] = useState<number[]>([])

@@ -1,5 +1,4 @@
 // @ts-nocheck
-import React from 'react'
 import { Resizable } from 'react-resizable'
 import './resizeable-table.less'
 

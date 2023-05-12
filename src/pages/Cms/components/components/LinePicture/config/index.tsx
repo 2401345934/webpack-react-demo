@@ -2,7 +2,7 @@ import { Context } from '@/pages/Cms'
 import { PlusOutlined } from '@ant-design/icons'
 import { UploadFile, UploadProps } from 'antd'
 import { RcFile, UploadChangeParam } from 'antd/es/upload'
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 const getBase64 = (img: RcFile, callback: (url: string) => void) => {
   const reader = new FileReader()
   reader.addEventListener('load', () => callback(reader.result as string))

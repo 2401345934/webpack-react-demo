@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 const useLock = () => {
   const [locked, setLocked] = useState(false)
 

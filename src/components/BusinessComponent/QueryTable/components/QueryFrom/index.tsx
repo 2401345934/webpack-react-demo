@@ -1,4 +1,3 @@
-import { forwardRef, useImperativeHandle, useState } from 'react'
 import styles from './styles.module.less'
 import { DownOutlined, UpOutlined } from '@ant-design/icons'
 import helperAntdComponet from './helper'
@@ -20,12 +19,12 @@ function QueryFrom(props: formPropsType, ref: any): JSX.Element {
   const handleSearch = (): void => {
     form
       .validateFields()
-      .then(values => {
+      .then((values: any) => {
         // search values
         console.log('values', values)
         searchCallback && searchCallback(values)
       })
-      .catch(e => {
+      .catch((e: any) => {
         console.log('e', e)
         searchCallback && searchCallback(e)
       })
