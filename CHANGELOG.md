@@ -17,6 +17,7 @@
 - ✨ 新增(pages): 新增 typed ([2cc37f7](https://github.com/2401345934/webpack-react-demo/commit/2cc37f7))
 - ✨ 新增(pages): 新增常见反馈页面 ([c46776e](https://github.com/2401345934/webpack-react-demo/commit/c46776e))
 - ✨ 新增(pages): 新增页面布局模式切换 ([97679cb](https://github.com/2401345934/webpack-react-demo/commit/97679cb))
+- ✨ 新增(pages): 修复引入 react ([c7b5e74](https://github.com/2401345934/webpack-react-demo/commit/c7b5e74))
 - ✨ 新增(pages): 优化代码增加全局配置开关 ([a0a173a](https://github.com/2401345934/webpack-react-demo/commit/a0a173a))
 - ✨ 新增(pages): 原生简单拖拽实现排序 ([f8818de](https://github.com/2401345934/webpack-react-demo/commit/f8818de))
 - ✨ 新增(pages): 注释补充 ([22210be](https://github.com/2401345934/webpack-react-demo/commit/22210be))
