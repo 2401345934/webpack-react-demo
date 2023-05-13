@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { Resizable } from 'react-resizable'
+import React from 'react'
 import './resizeable-table.less'
 
 class ResizeableTitle extends React.Component {

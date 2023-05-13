@@ -1,4 +1,4 @@
-## <small>1.6.9 (2023-05-12)</small>
+## <small>1.6.9 (2023-05-13)</small>
 
 - ♻️ 重构(pages): 优化代码结构 ([89a7221](https://github.com/2401345934/webpack-react-demo/commit/89a7221))
 - ✨ 新增(components): 抽离优化多页签缓存方法 ([7399b7e](https://github.com/2401345934/webpack-react-demo/commit/7399b7e))
@@ -12,6 +12,7 @@
 - ✨ 新增(package): 新增 hot 参数 ([59a74eb](https://github.com/2401345934/webpack-react-demo/commit/59a74eb))
 - ✨ 新增(pages): 改写 react router 函数写法 支持组件跨层级传参数 ([9b75de7](https://github.com/2401345934/webpack-react-demo/commit/9b75de7))
 - ✨ 新增(pages): 缓存多页签 ([c2b5ad5](https://github.com/2401345934/webpack-react-demo/commit/c2b5ad5))
+- ✨ 新增(pages): 去掉多余的 import 导入 都走 auto import ([b4864bc](https://github.com/2401345934/webpack-react-demo/commit/b4864bc))
 - ✨ 新增(pages): 新增 pages 异常页面返回首页功能 ([0d82af0](https://github.com/2401345934/webpack-react-demo/commit/0d82af0))
 - ✨ 新增(pages): 新增 typed ([2cc37f7](https://github.com/2401345934/webpack-react-demo/commit/2cc37f7))
 - ✨ 新增(pages): 新增常见反馈页面 ([c46776e](https://github.com/2401345934/webpack-react-demo/commit/c46776e))

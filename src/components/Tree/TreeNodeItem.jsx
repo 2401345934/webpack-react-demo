@@ -1,6 +1,8 @@
+import React from 'react'
+
 const indentUnit = 24
 
-class TreeNodeItem extends PureComponent {
+class TreeNodeItem extends React.PureComponent {
   handleExpandIconClick = e => {
     e.stopPropagation()
 

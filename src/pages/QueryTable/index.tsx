@@ -177,6 +177,7 @@ const Component: React.FC = (): JSX.Element => {
     requestProps,
     ref,
     tableResize: true,
+    initFetch: false,
   }
 
   return (

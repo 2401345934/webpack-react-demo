@@ -1,10 +1,11 @@
 import TreeNodeItem from './TreeNodeItem'
+import React from 'react'
 
 import './index.less'
 
 const OFFSET_VERTICAL = 200
 
-class CustomTree extends PureComponent {
+class CustomTree extends React.PureComponent {
   static defaultProps = {
     /**
      * keys 用于指定数据字段映射

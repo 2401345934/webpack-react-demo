@@ -5,15 +5,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@globalConfig": [
-        "config/globalConfig.ts"
-      ],
-      "@": [
-        "/src"
-      ]
+      "@/*": ["src/*"],
+      "@globalConfig": ["config/globalConfig.ts"],
+      "@": ["/src"]
     },
     // 编译选项
     "plugins": [
@@ -23,11 +17,7 @@
     ],
     "noImplicitThis": false, // 忽略 this 的类型检查, Raise error on this expressions with an implied any type.
     "target": "ESNext", // 生成代码的语言版本
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ], // 指定要包含在编译中的library
+    "lib": ["dom", "dom.iterable", "esnext"], // 指定要包含在编译中的library
     "allowJs": true, // 允许 ts 编译器编译 js 文件
     "experimentalDecorators": true,
     "skipLibCheck": true, // 跳过声明文件的类型检查
@@ -50,13 +40,7 @@
     "react/prop-types": [
       1,
       {
-        "ignore": [
-          "className",
-          "children",
-          "location",
-          "params",
-          "location*"
-        ]
+        "ignore": ["className", "children", "location", "params", "location*"]
       }
     ],
     "no-param-reassign": [
@@ -78,7 +62,5 @@
       }
     ]
   },
-  "include": [
-    "src"
-  ] // 指定允许 ts 处理的目录
+  "include": ["src"] // 指定允许 ts 处理的目录
 }
