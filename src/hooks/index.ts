@@ -12,6 +12,10 @@ import network from './useNetwork'
 import useDebounce from './useDebouncet'
 import memoCallback from './useMemoCallback'
 
+import intersectionObserver from './useIntersectionObserver'
+import keyPress from './useKeyPress'
+import onlineStatus from './useOnlineStatus'
+
 export const useAfter = after
 export const useBefore = before
 export const useNetwork = network
@@ -20,8 +24,12 @@ export const useLock = lock
 export const useOnce = once
 export const useMiddleware = middleware
 export const useChain = chain
-export const useState = state
+export const useStateActions = state
 export const useDefer = defer
 export const useExecuteStrategy = executeStrategy
 export const useDebouncet = useDebounce
 export const useMemoCallback = memoCallback
+
+export const useIntersectionObserver = intersectionObserver
+export const useKeyPress = keyPress
+export const useOnlineStatus = onlineStatus
