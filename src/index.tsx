@@ -13,6 +13,7 @@ import {
 } from './components/Layout/cacheTabHelper'
 import { RouterType, deepFlatRouter, initRoute, initTabItem } from './router'
 import { MENU_MODE } from './dictionary/layoutDict'
+import GlobalSearch from './components/GlobalSearch'
 
 const Component: React.FunctionComponent = (): JSX.Element => {
   const navigate = useNavigate()
@@ -37,6 +38,8 @@ const Component: React.FunctionComponent = (): JSX.Element => {
   )
   //  侧边栏收起状态
   const [collapsed, setCollapsed] = useState<boolean>(false)
+  //  全局搜索
+  const [openSearch, setOpenSearch] = useState<boolean>(false)
   // header 当前 path
   const [currentPath, setCurrentPath] = useState<string>(assembleKey)
   // 主题色
@@ -63,6 +66,12 @@ const Component: React.FunctionComponent = (): JSX.Element => {
       headerRef?.current?.findRouterPath()
     }
   }, [location])
+
+  // 监听键盘 ctal + a  苹果的 cintrola + a
+  useKeyPress('ctrl.a', () => {
+    if (!GLOBAL_CONFIG.IS_OPEN_GLOBAL_SEARCH) return
+    setOpenSearch(!openSearch)
+  })
 
   // 处理刷新页面重定向 menu key
   useMount(() => {
@@ -134,6 +143,16 @@ const Component: React.FunctionComponent = (): JSX.Element => {
           </div>
         )}
 
+        {GLOBAL_CONFIG.IS_OPEN_GLOBAL_SEARCH && (
+          <>
+            {/* 搜索模块 */}
+            <GlobalSearch
+              openSearch={openSearch}
+              setOpenSearch={setOpenSearch}
+            ></GlobalSearch>
+          </>
+        )}
+
         {/* layout */}
         <div className="layout-warp">
           <div className="warp">
@@ -157,6 +176,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
                 changeTheme={changeTheme}
                 goRouter={goRouter}
                 ref={headerRef}
+                setOpenSearch={setOpenSearch}
                 updateTheme={updateTheme}
                 setDefaultOpenKeys={setDefaultOpenKeys}
                 setChildrenRouterList={setChildrenRouterList}

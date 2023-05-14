@@ -1,4 +1,4 @@
-## <small>1.6.9 (2023-05-13)</small>
+## <small>1.6.9 (2023-05-14)</small>
 
 - ♻️ 重构(pages): 优化代码结构 ([89a7221](https://github.com/2401345934/webpack-react-demo/commit/89a7221))
 - ✨ 新增(components): 抽离优化多页签缓存方法 ([7399b7e](https://github.com/2401345934/webpack-react-demo/commit/7399b7e))
@@ -7,6 +7,7 @@
 - ✨ 新增(components): 新增导航栏布局模式 ([e0df959](https://github.com/2401345934/webpack-react-demo/commit/e0df959))
 - ✨ 新增(components): 新增通用组件 底部悬浮 button ([b25496e](https://github.com/2401345934/webpack-react-demo/commit/b25496e))
 - ✨ 新增(config): 拆分 config 新增 @globalConfig 快捷引入 ([aff7172](https://github.com/2401345934/webpack-react-demo/commit/aff7172))
+- ✨ 新增(hook): 新增常用 hooks ([933f631](https://github.com/2401345934/webpack-react-demo/commit/933f631))
 - ✨ 新增(hook): hooks 格式修改 新增缓存函数 hooks ([3897e77](https://github.com/2401345934/webpack-react-demo/commit/3897e77))
 - ✨ 新增(hook): useNetowrk ([8972cff](https://github.com/2401345934/webpack-react-demo/commit/8972cff))
 - ✨ 新增(package): 更新最新依赖 ([d689b71](https://github.com/2401345934/webpack-react-demo/commit/d689b71))

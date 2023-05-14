@@ -1,5 +1,9 @@
 import React from 'react'
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  SearchOutlined,
+} from '@ant-design/icons'
 import styles from './styles.module.less'
 import utils from '@/utils'
 import { TypeObjStr } from '@/utils/utilsTypes.type'
@@ -20,6 +24,7 @@ type PropsType = {
   setCollapsed: (e: boolean) => void
   setDefaultOpenKeys: (e: string[]) => void
   setChildrenRouterList: (e: any[]) => void
+  setOpenSearch: (e: boolean) => void
   goRouter: (e: { key: string; keyPath: string[] }) => void
 }
 
@@ -34,6 +39,7 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
     defaultOpenKeys,
     setDefaultOpenKeys,
     menuLayout,
+    setOpenSearch,
   } = props
   const navigate = useNavigate()
   const location = useLocation()
@@ -97,6 +103,11 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
       changeTheme(values.mainColor)
       utils.updateCustomCssVar(values)
     }
+  }
+
+  // 搜索
+  const handleOpenSearch = () => {
+    setOpenSearch(true)
   }
 
   //  切换菜单
@@ -166,11 +177,23 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
                 </>
               )}
             </Space>
-            <div className={styles.theme}>
-              <Button onClick={() => handleOpen()}>切换主题</Button>
-            </div>
           </div>
         )}
+        <Space className={styles.actionsWrap}>
+          {GLOBAL_CONFIG.IS_OPEN_GLOBAL_SEARCH && (
+            <>
+              {/* 搜索 */}
+              <div className={styles.search}>
+                <SearchOutlined onClick={handleOpenSearch} />
+              </div>
+            </>
+          )}
+
+          {/* 切换主题色 */}
+          <div className={styles.theme}>
+            <Button onClick={() => handleOpen()}>切换主题</Button>
+          </div>
+        </Space>
       </Header>
       {/* 修改主题色 */}
       {GLOBAL_CONFIG.UPDATE_THEME_OPEN && (
