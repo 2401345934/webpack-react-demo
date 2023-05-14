@@ -50,9 +50,6 @@ const columns: any = [
 ]
 
 const Component: React.FC = (props: any): JSX.Element => {
-  useEffect(() => {
-    console.log('props', props)
-  }, [])
   return (
     <PageWarp>
       <h1 className="wrap"> Antd Table</h1>

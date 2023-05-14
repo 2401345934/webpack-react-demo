@@ -14,9 +14,6 @@ export default (props: PageWarpType): JSX.Element => {
   const [routerItem, setRouterItem] = useState<any>({})
 
   useMount(() => {
-    localDataManagement.setItem('a', 111)
-    const a = localDataManagement.getItem('a')
-    console.log('a', a)
     const item = deepFlatRouter.find(
       item => `/${item.path}` === location.pathname,
     )

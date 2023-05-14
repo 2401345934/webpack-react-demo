@@ -67,8 +67,8 @@ const Component: React.FunctionComponent = (): JSX.Element => {
     }
   }, [location])
 
-  // 监听键盘 ctal + a  苹果的 cintrola + a
-  useKeyPress('ctrl.a', () => {
+  // 监听键盘 ctal + f  苹果的 cintrola + f
+  useKeyPress('ctrl.f', () => {
     if (!GLOBAL_CONFIG.IS_OPEN_GLOBAL_SEARCH) return
     setOpenSearch(!openSearch)
   })
@@ -147,6 +147,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
           <>
             {/* 搜索模块 */}
             <GlobalSearch
+              componentRef={componentRef}
               openSearch={openSearch}
               setOpenSearch={setOpenSearch}
             ></GlobalSearch>

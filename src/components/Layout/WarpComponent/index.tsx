@@ -19,6 +19,7 @@ const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
   // 对外暴露 routerChange 方法
   useImperativeHandle(ref, () => ({
     routerChange,
+    getItems,
   }))
 
   useMount(() => {

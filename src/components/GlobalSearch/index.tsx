@@ -1,4 +1,5 @@
 import { deepFlatRouter } from '@/router'
+import { RadioChangeEvent } from 'antd'
 export interface OptionProps {
   value?: string
   key?: string
@@ -10,18 +11,19 @@ export interface OptionProps {
 type PropsType = {
   openSearch: boolean
   setOpenSearch: (e: boolean) => void
+  componentRef: any
 }
 type OptionsType = {
   label: string
   value: string
 }
 export default (props: PropsType) => {
-  const { openSearch, setOpenSearch } = props
+  const { openSearch, setOpenSearch, componentRef } = props
   const navigate = useNavigate()
   const [options, setOptions] = useState<OptionsType[]>([])
   const [value, setValue] = useState<string>('')
   const ref: any = useRef(null)
-
+  const [radioValue, setRadioValue] = useState<string>('1')
   // 监听键盘 @
   useKeyPress('shift.2', () => {
     ref?.current?.focus()
@@ -32,9 +34,9 @@ export default (props: PropsType) => {
   useEffect(() => {
     if (openSearch) {
       resetStates()
-      ref?.current?.focus()
     }
   }, [openSearch])
+
   useMount(() => {
     setOptions(
       deepFlatRouter.map((item: any) => ({
@@ -45,6 +47,7 @@ export default (props: PropsType) => {
   })
   const resetStates = () => {
     setValue('')
+    ref?.current?.focus()
   }
   const onSelect = (option: OptionProps) => {
     setValue('')
@@ -55,6 +58,11 @@ export default (props: PropsType) => {
   const onChange = (text: string) => {
     setValue(text)
   }
+
+  const handleChangeRadio = (e: RadioChangeEvent) => {
+    setRadioValue(e.target.value)
+    resetStates()
+  }
   return (
     <>
       <Modal
@@ -63,14 +71,36 @@ export default (props: PropsType) => {
         open={openSearch}
         footer={[]}
       >
-        <Mentions
-          value={value}
-          ref={ref}
-          placeholder="请通过@来换起可查询路由"
-          onSelect={onSelect}
-          onChange={onChange}
-          options={options}
-        ></Mentions>
+        <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
+          <Radio.Group
+            value={radioValue}
+            onChange={handleChangeRadio}
+            buttonStyle="solid"
+          >
+            <Radio.Button value="1">全部页面</Radio.Button>
+            <Radio.Button value="2">已打开页面</Radio.Button>
+          </Radio.Group>
+          <div>
+            <Tag bordered={false} color="orange">
+              请通过@开头来查找{radioValue === '1' ? '全部页面' : '已打开页面'}
+            </Tag>
+          </div>
+          <Mentions
+            value={value}
+            ref={ref}
+            placeholder="请输入 @ 来输入"
+            onSelect={onSelect}
+            onChange={onChange}
+            options={
+              radioValue === '1'
+                ? options
+                : componentRef?.current?.getItems()?.map((item: any) => ({
+                    value: item.key,
+                    label: item.label,
+                  }))
+            }
+          ></Mentions>
+        </Space>
       </Modal>
     </>
   )

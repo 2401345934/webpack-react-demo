@@ -18,6 +18,11 @@ export default (props: PropsType) => {
     GLOBAL_CONFIG.LAYOUT_LIST[0].value,
   )
 
+  // 监听键盘 ctal + g  苹果的 cintrola + g
+  useKeyPress('ctrl.g', () => {
+    setOpen(!open)
+  })
+
   useEffect(() => {
     utils.updateCSSVar('max-layout-width', layoutMode)
   }, [layoutMode])

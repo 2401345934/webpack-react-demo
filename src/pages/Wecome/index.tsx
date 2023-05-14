@@ -13,7 +13,6 @@ const TypedReactHooksDemo = (props: any) => {
       typeSpeed: 50,
       backSpeed: 50,
     }
-    console.log('props', props)
 
     // elRef refers to the <span> rendered below
     typed.current = new Typed(el.current, options)
