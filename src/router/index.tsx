@@ -7,20 +7,15 @@ import {
   flattenRouter,
   generateRouterItemFnc,
 } from './helper'
-import {
-  AlertTwoTone,
-  BuildTwoTone,
-  SoundTwoTone,
-  TagsTwoTone,
-} from '@ant-design/icons'
+import { AlertTwoTone, SoundTwoTone, TagsTwoTone } from '@ant-design/icons'
 import resultPage from './resultPage'
 import expandComponent from './expandComponent'
+import inCommonUseHooks from './inCommonUseHooks'
 const BaseLayout = lazy(() => import('@/index'))
 const Wecome = lazy(() => import('@/pages/Wecome'))
 const NotPage = lazy(() => import('@/pages/404'))
 const Todo = lazy(() => import('@/pages/Todo'))
 const Cms = lazy(() => import('@/pages/Cms'))
-const NetWrok = lazy(() => import('@/pages/NetWrok'))
 
 const initRoute: RouterType = {
   path: 'wecome',
@@ -103,19 +98,12 @@ const initRouter: RouterType[] = [
           </Suspense>
         ),
       },
-
-      {
-        path: 'network',
-        label: 'network',
-        icon: <BuildTwoTone />,
-        element: props => (
-          <Suspense fallback={<Loading />}>
-            <NetWrok {...props} />
-          </Suspense>
-        ),
-      },
+      // 常用反馈页面
       ...resultPage,
+      // 常用组件
       ...expandComponent,
+      // 常用  hooks
+      ...inCommonUseHooks,
     ],
   },
   {

@@ -8,6 +8,7 @@
 - ✨ 新增(components): 新增导航栏布局模式 ([e0df959](https://github.com/2401345934/webpack-react-demo/commit/e0df959))
 - ✨ 新增(components): 新增全局组件支持搜索公告 ([efafb29](https://github.com/2401345934/webpack-react-demo/commit/efafb29))
 - ✨ 新增(components): 新增通用组件 底部悬浮 button ([b25496e](https://github.com/2401345934/webpack-react-demo/commit/b25496e))
+- ✨ 新增(components): 支持可选是否 tab 多页签 \& 页面层级归类 ([d2174da](https://github.com/2401345934/webpack-react-demo/commit/d2174da))
 - ✨ 新增(config): 拆分 config 新增 @globalConfig 快捷引入 ([aff7172](https://github.com/2401345934/webpack-react-demo/commit/aff7172))
 - ✨ 新增(hook): 新增常用 hooks ([933f631](https://github.com/2401345934/webpack-react-demo/commit/933f631))
 - ✨ 新增(hook): hooks 格式修改 新增缓存函数 hooks ([3897e77](https://github.com/2401345934/webpack-react-demo/commit/3897e77))

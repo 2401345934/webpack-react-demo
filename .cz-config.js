@@ -19,7 +19,7 @@ module.exports = {
     { name: 'pages' },
     { name: 'tsconfig' },
     { name: 'components' },
-    { name: 'package' },
+    { name: 'router' },
     { name: 'request' },
     { name: 'utils' },
     { name: 'hook' },
