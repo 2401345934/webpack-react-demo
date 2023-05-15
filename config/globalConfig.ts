@@ -4,6 +4,7 @@ export type MENU_LAYOUT_LIST_TYPE = {
 }
 
 interface GlobalConfig {
+  IS_OPEN_TAB: boolean
   TAB_CATCH_OPEN: boolean
   UPDATE_SETTING_OPEN: boolean
   UPDATE_THEME_OPEN: boolean
@@ -16,6 +17,8 @@ interface GlobalConfig {
 }
 
 const GLOBAL_CONFIG: GlobalConfig = {
+  // 是否开启多页签
+  IS_OPEN_TAB: true,
   // 是否开启 TAB 切换记忆功能
   TAB_CATCH_OPEN: false,
   // 是否开启全局配置功能

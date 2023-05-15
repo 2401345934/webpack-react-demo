@@ -4,6 +4,7 @@ import styles from './styles.module.less'
 import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons'
 import utils from '@/utils'
 import { CLEAR_CATCH_TAB, DELETE_CATCH_TAB } from '../cacheTabHelper'
+import GLOBAL_CONFIG from '@globalConfig'
 
 type PropsType = {
   children?: React.ReactNode
@@ -89,30 +90,41 @@ const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
   return (
     <Fragment>
       <div className={styles.warpComponent} {...rest}>
-        <Tabs
-          type="editable-card"
-          hideAdd
-          onChange={onChange}
-          onEdit={onEdit}
-          activeKey={activeKey}
-          items={items.map(item => {
-            return {
-              ...item,
-              children: item.children({
-                onTabEdit: onEdit,
-                onTabChange: onChange,
-                onTabRemoveAll: removeAll,
-              }),
-            }
-          })}
-        />
-        {/* 全屏功能 */}
-        <div
-          className={styles.fullscreenOutlined}
-          onClick={() => toggleFullScreen()}
-        >
-          {fullscreenFlag ? <FullscreenExitOutlined /> : <FullscreenOutlined />}
-        </div>
+        {GLOBAL_CONFIG.IS_OPEN_TAB ? (
+          <>
+            {/* 标签页 */}
+            <Tabs
+              type="editable-card"
+              hideAdd
+              onChange={onChange}
+              onEdit={onEdit}
+              activeKey={activeKey}
+              items={items.map(item => {
+                return {
+                  ...item,
+                  children: item.children({
+                    onTabEdit: onEdit,
+                    onTabChange: onChange,
+                    onTabRemoveAll: removeAll,
+                  }),
+                }
+              })}
+            />
+            {/* 全屏功能 */}
+            <div
+              className={styles.fullscreenOutlined}
+              onClick={() => toggleFullScreen()}
+            >
+              {fullscreenFlag ? (
+                <FullscreenExitOutlined />
+              ) : (
+                <FullscreenOutlined />
+              )}
+            </div>
+          </>
+        ) : (
+          <Outlet></Outlet>
+        )}
       </div>
     </Fragment>
   )

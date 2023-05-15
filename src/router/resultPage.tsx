@@ -2,22 +2,18 @@ import { Suspense } from 'react'
 import Loading from '@/components/Loading'
 import { RouterType } from './index'
 import { AlertTwoTone } from '@ant-design/icons'
+import IncludesSubmenusWarp from '@/components/IncludesSubmenusWarp'
 const NotPage403 = lazy(() => import('@/pages/403'))
 const NotPage500 = lazy(() => import('@/pages/500'))
 const NotPage513 = lazy(() => import('@/pages/513'))
 const NotPage = lazy(() => import('@/pages/404'))
-const BaseLayout = lazy(() => import('@/index'))
 
 const initRouter: RouterType[] = [
   {
     path: 'result',
     icon: <AlertTwoTone />,
     label: '常见反馈页面',
-    element: () => (
-      <Suspense fallback={<Loading />}>
-        <BaseLayout />
-      </Suspense>
-    ),
+    element: () => <IncludesSubmenusWarp />,
     children: [
       {
         path: '403',

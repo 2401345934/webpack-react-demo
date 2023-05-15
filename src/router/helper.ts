@@ -1,3 +1,4 @@
+import utils from '@/utils'
 import { RouterType } from './index'
 /**
  * 生成路由项的 key 和 path 属性
@@ -6,6 +7,7 @@ import { RouterType } from './index'
  * @returns {RouterType[]} 更新后的路由项列表
  */
 export const generateRouterItemKey = (list: RouterType[]): RouterType[] => {
+  const deepList = utils.deepClone(list)
   /**
    * 递归生成路由项的 key 和 path 属性
    *
@@ -19,6 +21,29 @@ export const generateRouterItemKey = (list: RouterType[]): RouterType[] => {
       item.key = item.path
       // 是否需要带上 上一级别菜单的 label
       // item.menuLabel = parent ? `${parent.label}-${item.label}` : item.label
+      if (item.children) {
+        deepGenerate(item.children, item)
+      }
+    })
+  }
+  deepGenerate(deepList)
+  return deepList
+}
+
+// 递归执行路由的 children 属性中的函数
+export const generateRouterItemFnc = (list: any[]): any[] => {
+  /**
+   * 递归生成路由项的 key 和 path 属性
+   *
+   * @param {RouterType[]} arr 路由项列表
+   * @param {RouterType | undefined} parent 父级路由项
+   * @returns {void}
+   */
+  function deepGenerate(arr: any[], parent?: RouterType): void {
+    arr.forEach((item: any) => {
+      if (item.element) {
+        item.element = item.element()
+      }
       if (item.children) {
         deepGenerate(item.children, item)
       }

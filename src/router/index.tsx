@@ -2,11 +2,14 @@ import { ReactNode, Suspense } from 'react'
 import { createHashRouter } from 'react-router-dom'
 import Loading from '@/components/Loading'
 import IncludesSubmenusWarp from '@/components/IncludesSubmenusWarp'
-import { generateRouterItemKey, flattenRouter } from './helper'
+import {
+  generateRouterItemKey,
+  flattenRouter,
+  generateRouterItemFnc,
+} from './helper'
 import {
   AlertTwoTone,
   BuildTwoTone,
-  SafetyCertificateTwoTone,
   SoundTwoTone,
   TagsTwoTone,
 } from '@ant-design/icons'
@@ -16,10 +19,7 @@ const BaseLayout = lazy(() => import('@/index'))
 const Wecome = lazy(() => import('@/pages/Wecome'))
 const NotPage = lazy(() => import('@/pages/404'))
 const Todo = lazy(() => import('@/pages/Todo'))
-const AntdTable = lazy(() => import('@/pages/AntdTable'))
 const Cms = lazy(() => import('@/pages/Cms'))
-const QueryTable = lazy(() => import('@/pages/QueryTable'))
-const Tree = lazy(() => import('@/pages/Tree'))
 const NetWrok = lazy(() => import('@/pages/NetWrok'))
 
 const initRoute: RouterType = {
@@ -92,16 +92,7 @@ const initRouter: RouterType[] = [
           },
         ],
       },
-      {
-        path: 'antdTable',
-        label: '表格',
-        icon: <SafetyCertificateTwoTone />,
-        element: props => (
-          <Suspense fallback={<Loading />}>
-            <AntdTable {...props} />
-          </Suspense>
-        ),
-      },
+
       {
         path: 'cms',
         label: 'CMS内容中心',
@@ -112,26 +103,7 @@ const initRouter: RouterType[] = [
           </Suspense>
         ),
       },
-      {
-        path: 'queryTable',
-        label: 'QueryTable',
-        icon: <SafetyCertificateTwoTone />,
-        element: props => (
-          <Suspense fallback={<Loading />}>
-            <QueryTable {...props} />
-          </Suspense>
-        ),
-      },
-      {
-        path: 'tree',
-        label: 'Tree',
-        icon: <BuildTwoTone />,
-        element: props => (
-          <Suspense fallback={<Loading />}>
-            <Tree {...props} />
-          </Suspense>
-        ),
-      },
+
       {
         path: 'network',
         label: 'network',
@@ -152,17 +124,13 @@ const initRouter: RouterType[] = [
   },
 ]
 
-// 生成路由
-const router = createHashRouter(
-  initRouter.map((route: any) => ({
-    ...route,
-    element: route.element(),
-  })),
-)
 // 生成路由key段列表
 const routerList: any[] = generateRouterItemKey(initRouter[0].children || [])
 // 扁平化路由
 const deepFlatRouter: any[] = flattenRouter(routerList)
+const routesMap = generateRouterItemFnc(initRouter)
+// 生成路由
+const router = createHashRouter(routesMap)
 // 一级路由
 const firstRouterList: any[] =
   routerList.map((route: RouterType) => ({

@@ -53,6 +53,8 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
   const [key, setKey] = useState<string[]>([`wecome`])
   //  默认选中的 path
   const initTabPath = currentPath ? currentPath.split('/')[0] : ''
+  const [fullscreenFlag, setFullscreenFlag] = useState<boolean>(false)
+
   // 对外暴露 routerChange 方法
   useImperativeHandle(ref, () => ({
     findRouterPath,
@@ -188,7 +190,6 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
               </div>
             </>
           )}
-
           {/* 切换主题色 */}
           <div className={styles.theme}>
             <Button onClick={() => handleOpen()}>切换主题</Button>

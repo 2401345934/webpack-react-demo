@@ -1,8 +1,9 @@
-## <small>1.6.10 (2023-05-14)</small>
+## 1.7.0 (2023-05-15)
 
 - ♻️ 重构(pages): 优化代码结构 ([89a7221](https://github.com/2401345934/webpack-react-demo/commit/89a7221))
 - ✨ 新增(components): 抽离优化多页签缓存方法 ([7399b7e](https://github.com/2401345934/webpack-react-demo/commit/7399b7e))
 - ✨ 新增(components): 导航栏多种模式支持 代码待优化 ([e9565d1](https://github.com/2401345934/webpack-react-demo/commit/e9565d1))
+- ✨ 新增(components): 搜索组件开发 \& 支持搜索全部页面 \& 部分页面 ([3704c46](https://github.com/2401345934/webpack-react-demo/commit/3704c46))
 - ✨ 新增(components): 新增百万级数据量 tree 组件 ([b6eed4f](https://github.com/2401345934/webpack-react-demo/commit/b6eed4f))
 - ✨ 新增(components): 新增导航栏布局模式 ([e0df959](https://github.com/2401345934/webpack-react-demo/commit/e0df959))
 - ✨ 新增(components): 新增全局组件支持搜索公告 ([efafb29](https://github.com/2401345934/webpack-react-demo/commit/efafb29))
