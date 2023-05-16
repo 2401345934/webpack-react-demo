@@ -6,7 +6,7 @@
   "scripts": {
     "version": "# 修改 version  \n zx bump.mjs",
     "create": "node template/index.js",
-    "commit": "npm run version && npm run changelog && git add . && git cz ",
+    "commit": "tsc --noEmit && npm run version && npm run changelog && git add . && git cz ",
     "push": "npm run commit && git push origin HEAD",
     "start": "npm run dev",
     "dev": "npx webpack-dev-server --hot --mode=development --progress",
@@ -32,7 +32,11 @@
     "parser": "babel-eslint"
   },
   "lint-staged": {
-    "src/**/*.{js,ts}": [
+    "src/**/*.ts?(x)": [
+      "tsc --noEmit",
+      "git add"
+    ],
+    "src/**/*.js": [
       "prettier --config .prettierrc.js --write",
       "eslint --fix",
       "git add"
@@ -41,9 +45,6 @@
       "prettier --config .prettierrc.js --write",
       "stylelint --fix --allow-empty-input",
       "git add"
-    ],
-    "src/**/*.ts?(x)": [
-      "tsc --noEmit"
     ]
   },
   "devDependencies": {

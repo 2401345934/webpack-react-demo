@@ -1,3 +1,5 @@
+import PageWarp from '@/components/BusinessComponent/PageWarp'
+
 const Component: React.FC = (): JSX.Element => {
   const navigate = useNavigate()
   const handleGoHome = () => {
