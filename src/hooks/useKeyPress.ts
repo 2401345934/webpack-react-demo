@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react'
-
 function useKeyPress(key: string): boolean {
   const [isKeyPressed, setIsKeyPressed] = useState(false)
 

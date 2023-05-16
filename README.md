@@ -21,7 +21,7 @@
 - [x] 通过命令生成模版函数 npm run create
   - [x] 生成页面模版
   - [ ] 生成组件模版
-  - [ ] 生成 hooks 模版
+  - [x] 生成 hooks 模版
   - [x] 生成 crud(qyerytable) 页面模版
 - [ ] 主题色搭配
   - [ ] 3 套主题色

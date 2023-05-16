@@ -1,4 +1,4 @@
-import { useState, useEffect, RefObject } from 'react'
+import { RefObject } from 'react'
 
 interface IntersectionObserverOptions {
   root?: Element | null

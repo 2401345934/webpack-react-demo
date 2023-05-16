@@ -1,5 +1,3 @@
-import { useCallback, useState } from 'react'
-
 type Callback = (...args: any[]) => any // 定义一个类型 Callback，它是一个函数类型，接受任意类型的参数并返回任意类型的结果
 
 function useCachedCallback<T extends Callback>(

@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react'
-
 function useOnlineStatus(): boolean {
   const [isOnline, setIsOnline] = useState(navigator.onLine)
 

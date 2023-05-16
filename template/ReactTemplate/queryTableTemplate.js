@@ -1,6 +1,7 @@
 module.exports = ({}) => {
   return `import QueryTable from '@/components/BusinessComponent/QueryTable'
   import PageWarp from '@/components/BusinessComponent/PageWarp'
+  import styles from './index.module.less'
   
   const dataSource = [
     {
@@ -183,7 +184,9 @@ module.exports = ({}) => {
   
     return (
       <PageWarp>
-        <QueryTable {...config}></QueryTable>
+        <div className={styles.wrap}>
+          <QueryTable {...config}></QueryTable>
+        </div>
       </PageWarp>
     )
   }
