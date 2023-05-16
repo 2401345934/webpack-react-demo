@@ -14,7 +14,7 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   overrides: [
     {
-      files: ['*.js', '*.jsx'],
+      files: ['*.js', '*.jsx', '*.tsx', '*.ts'],
       rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
       },

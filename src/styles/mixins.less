@@ -22,7 +22,6 @@
   margin-left: -(@width / 2);
 }
 
-
 /* 浮动（主要针对PC端了...） */
 .float(@side: left) {
   _display: inline;
@@ -52,11 +51,10 @@
   text-overflow: ellipsis;
 }
 
-
 /* 设置透明度 */
 .opacity(@val) {
   opacity: @val / 100;
-  filter: alpha(opacity=@val);
+  filter: alpha(opacity= @val);
 }
 
 /* 不可用状态 */

@@ -37,6 +37,7 @@
 - 🐛 修复(pages): router ([2045786](https://github.com/2401345934/webpack-react-demo/commit/2045786))
 - 💄 格式(pages): 样式修复 ([95fa998](https://github.com/2401345934/webpack-react-demo/commit/95fa998))
 - 📝 文档(custom): 更新后续开发 todo ([844f7a5](https://github.com/2401345934/webpack-react-demo/commit/844f7a5))
+- 🔧 工具(custom): 新增 styleslint ([52b1270](https://github.com/2401345934/webpack-react-demo/commit/52b1270))
 - 🔧 工具(package): 新增自动引入 antd react react-router-dom ([93114d1](https://github.com/2401345934/webpack-react-demo/commit/93114d1))
 - init ([d7ddb87](https://github.com/2401345934/webpack-react-demo/commit/d7ddb87))
 - not auth plubsh ([cdfce05](https://github.com/2401345934/webpack-react-demo/commit/cdfce05))

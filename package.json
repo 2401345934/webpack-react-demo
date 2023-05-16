@@ -17,7 +17,7 @@
     "build:qa": "npx webpack --mode=production --progress ",
     "build:prod": "npx webpack --mode=production --progress",
     "lint": "npm run lint:js && npm run lint:style",
-    "lint:js": "eslint --ext .jsx ./src --fix",
+    "lint:js": "eslint ./src/**/*.tsx --fix",
     "lint:style": "stylelint src/**/*.less --fix",
     "changelog": "conventional-changelog -p custom-config -i CHANGELOG.md -s -r 0",
     "prepare": "husky install"
@@ -32,15 +32,19 @@
     "parser": "babel-eslint"
   },
   "lint-staged": {
-    "src/**/*.{js,ts,wxs}": [
+    "src/**/*.{js,ts}": [
       "prettier --config .prettierrc.js --write",
       "eslint --fix",
       "git add"
     ],
-    "src/**/*.{wxss,scss}": [
+    "src/**/*.{less}": [
       "prettier --config .prettierrc.js --write",
       "stylelint --fix --allow-empty-input",
       "git add"
+    ],
+    "**/*.ts?(x)": [
+      "eslint --fix",
+      "tsc --noEmit"
     ]
   },
   "devDependencies": {
