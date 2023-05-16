@@ -41,7 +41,7 @@ jobs:
 
       # 如果缓存没有命中，安装依赖
       - name: Install dependencies
-        run: yarn install
+        run: npm install
 
       # 运行构建脚本
       - name: Build
