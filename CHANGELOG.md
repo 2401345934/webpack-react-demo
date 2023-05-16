@@ -1,4 +1,4 @@
-## <small>1.7.4 (2023-05-16)</small>
+## <small>1.7.5 (2023-05-16)</small>
 
 - ♻️ 重构(pages): 优化代码结构 ([89a7221](https://github.com/2401345934/webpack-react-demo/commit/89a7221))
 - ✨ 新增(components): 抽离优化多页签缓存方法 ([7399b7e](https://github.com/2401345934/webpack-react-demo/commit/7399b7e))
@@ -41,5 +41,9 @@
 - 📝 文档(custom): 更新后续开发 todo ([844f7a5](https://github.com/2401345934/webpack-react-demo/commit/844f7a5))
 - 🔧 工具(custom): 新增 styleslint ([52b1270](https://github.com/2401345934/webpack-react-demo/commit/52b1270))
 - 🔧 工具(package): 新增自动引入 antd react react-router-dom ([93114d1](https://github.com/2401345934/webpack-react-demo/commit/93114d1))
+- 增加校验格式 ([f07a949](https://github.com/2401345934/webpack-react-demo/commit/f07a949))
+- 增加校验格式-test ([1d102dd](https://github.com/2401345934/webpack-react-demo/commit/1d102dd))
+- 增加校验格式-test ([6e4b9ec](https://github.com/2401345934/webpack-react-demo/commit/6e4b9ec))
+- 增加校验格式-test ([b0fdab8](https://github.com/2401345934/webpack-react-demo/commit/b0fdab8))
 - init ([d7ddb87](https://github.com/2401345934/webpack-react-demo/commit/d7ddb87))
 - not auth plubsh ([cdfce05](https://github.com/2401345934/webpack-react-demo/commit/cdfce05))

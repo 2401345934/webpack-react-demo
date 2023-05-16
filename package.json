@@ -1,6 +1,6 @@
 {
   "name": "webpack-react-test",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -30,11 +30,6 @@
   "eslintConfig": {
     "extends": "airbnb-base",
     "parser": "babel-eslint"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "src/**/*.ts?(x)": [

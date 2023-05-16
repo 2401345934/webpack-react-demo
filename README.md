@@ -4,7 +4,7 @@
 
 ## <a id="实现功能">实现功能</a>
 
-- [x] npm run commit 提交代码强校验格式
+- [x] npm run commit 提交代码强校验格式 & git commit 也会提前校验钩子
 - [x] slide 3 两种模式
   - [x] slide
   - [x] menu
