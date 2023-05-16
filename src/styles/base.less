@@ -38,14 +38,13 @@ ol {
 input {
   padding-top: 0;
   padding-bottom: 0;
-  font-family: 'SimSun', '宋体';
 }
 
 select,
 input,
 textarea {
-  font-size: 12px;
   margin: 0;
+  font-size: 12px;
 }
 
 textarea {
@@ -60,12 +59,12 @@ body {
   font-size: 12px;
 }
 
-.clearfix:after {
-  content: '.';
+.clearfix::after {
   display: block;
+  clear: both;
   height: 0;
   visibility: hidden;
-  clear: both;
+  content: '.';
 }
 
 .clearfix {
