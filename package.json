@@ -46,7 +46,7 @@
       "eslint --fix",
       "git add"
     ],
-    "src/**/*.{less}": [
+    "src/**/*.less": [
       "prettier --config .prettierrc.js --write",
       "stylelint --fix --allow-empty-input",
       "git add"
