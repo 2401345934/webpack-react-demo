@@ -21,12 +21,14 @@ const createReactTemplate = ({ template_name }) => {
 const createQueryTable = require('./queryTableTemplate.js')
 const createUseHooks = require('./useHooks.js')
 const createModuleLess = require('./createModuleLess.js')
+const createComponent = require('./createComponent.js')
 
 const exportsConfig = {
   createReactTemplate,
   createQueryTable,
   createUseHooks,
   createModuleLess,
+  createComponent,
 }
 
 module.exports = exportsConfig

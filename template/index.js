@@ -26,7 +26,7 @@ const create = () => {
         type: 'list',
         name: 'types',
         message: '请选择要创建模版类型',
-        choices: ['hooks', 'page', 'components'],
+        choices: ['hooks', 'pages', 'components'],
         default: 'hooks',
       },
       {
@@ -39,10 +39,10 @@ const create = () => {
         type: 'list',
         name: 'type',
         message: '请选择React模版',
-        choices: ['hooks', new inquirer.Separator(), 'QueryTable'],
-        default: 'hooks',
+        choices: ['hooksPage', new inquirer.Separator(), 'QueryTable'],
+        default: 'hooksPage',
         when: function (answers) {
-          return answers.types === 'page'
+          return answers.types === 'pages'
         },
       },
     ])
@@ -57,105 +57,67 @@ const create = () => {
 // 创建模版处理函数
 const createTemplate = options => {
   const { template_name, types } = options
-  console.log('types', types)
-
-  if (types === 'hooks') {
-    FS.readFile(`src/hooks/${template_name}.ts`, function (err, data) {
-      if (data) {
-        inquirer
-          .prompt([
-            {
-              type: 'confirm',
-              name: 'iscover',
-              message: '该文件已存在, 是否要覆盖该文件',
-            },
-          ])
-          .then(({ iscover }) => {
-            if (iscover) {
-              writeFs(options, 'writeFile')
-              successLog()
-            } else {
-              errorLog('请重新创建')
-            }
-          })
-          .catch(error => {
-            errorLog(error)
-          })
-      } else {
-        writeFs(options, 'writeFileSync')
-        successLog()
-      }
-    })
-  } else if (types === 'components') {
-    FS.readFile(
-      `src/components/${template_name}/index.tsx`,
-      function (err, data) {
-        if (data) {
-          inquirer
-            .prompt([
-              {
-                type: 'confirm',
-                name: 'iscover',
-                message: '该文件已存在, 是否要覆盖该文件',
-              },
-            ])
-            .then(({ iscover }) => {
-              if (iscover) {
-                writeFs(options, 'writeFile')
-                successLog()
-              } else {
-                errorLog('请重新创建')
-              }
-            })
-            .catch(error => {
-              errorLog(error)
-            })
-        } else {
-          FS.mkdirSync(`src/components/${template_name}`)
-          writeFs(options, 'writeFileSync')
-          successLog()
-        }
-      },
-    )
-  } else {
-    FS.readFile(`src/pages/${template_name}/index.tsx`, function (err, data) {
-      if (data) {
-        inquirer
-          .prompt([
-            {
-              type: 'confirm',
-              name: 'iscover',
-              message: '该文件已存在, 是否要覆盖该文件',
-            },
-          ])
-          .then(({ iscover }) => {
-            if (iscover) {
-              writeFs(options, 'writeFile')
-              successLog()
-            } else {
-              errorLog('请重新创建')
-            }
-          })
-          .catch(error => {
-            errorLog(error)
-          })
-      } else {
-        FS.mkdirSync(`src/pages/${template_name}`)
-        writeFs(options, 'writeFileSync')
-        successLog()
-      }
-    })
-  }
+  helperFile(`src/${types}/${template_name}.ts`, () => {
+    if (types !== 'hooks') {
+      FS.mkdirSync(`src/${types}/${template_name}`)
+    }
+    writeFs(options, 'writeFileSync')
+    successLog()
+  })
 }
 
-// 检验文件目标目录是否存在
-const checkDirExist = dir => {
-  try {
-    FS.accessSync(dir, FS.constants.F_OK)
-  } catch (e) {
-    return false
+// 创建菜单
+const helperFile = (url, cb) => {
+  FS.readFile(url, function (err, data) {
+    if (data) {
+      inquirer
+        .prompt([
+          {
+            type: 'confirm',
+            name: 'iscover',
+            message: '该文件已存在, 是否要覆盖该文件',
+          },
+        ])
+        .then(({ iscover }) => {
+          if (iscover) {
+            writeFs(options, 'writeFile')
+            successLog()
+          } else {
+            errorLog('请重新创建')
+          }
+        })
+        .catch(error => {
+          errorLog(error)
+        })
+    } else {
+      cb && cb()
+    }
+  })
+}
+
+const helperTypeMap = {
+  QueryTable: ReactTemplate.createQueryTable,
+  hooksPage: ReactTemplate.createReactTemplate,
+  components: ReactTemplate.createComponent,
+  hooks: ReactTemplate.createUseHooks,
+  less: ReactTemplate.createModuleLess,
+}
+
+// 辅助生成模版
+const helperCreateTemplate = ({
+  url,
+  type,
+  writeFileType,
+  addConfig,
+  lessUrl,
+}) => {
+  // 生成页面组件
+  FS[writeFileType](url, helperTypeMap[type](addConfig))
+  // 如果需要就生成对应 less
+  if (lessUrl) {
+    FS[writeFileType](lessUrl, helperTypeMap['less'](addConfig))
   }
-  return true
+  console.log(`点我进去新创建的页面 ------------------      ../${url}`)
 }
 
 // 创建 template 函数
@@ -166,41 +128,38 @@ const writeFs = (options, writeFileType) => {
     type,
     types,
   }
+  // 创建 自定义 hooks
   if (types === 'hooks') {
-    FS[writeFileType](
-      `src/hooks/${template_name}.ts`,
-      ReactTemplate.createUseHooks(addConfig),
-    )
-
-    console.log(
-      `点我进去新创建的页面 ------------------      ../src/hooks/${template_name}.ts`,
-    )
+    helperCreateTemplate({
+      url: `src/${types}/${template_name}.ts`,
+      type: types,
+      writeFileType,
+      addConfig,
+    })
     return
   }
-  switch (type) {
-    case 'QueryTable':
-      FS[writeFileType](
-        `src/pages/${template_name}/index.tsx`,
-        ReactTemplate.createQueryTable(addConfig),
-      )
-      FS[writeFileType](
-        `src/pages/${template_name}/index.module.less`,
-        ReactTemplate.createModuleLess(addConfig),
-      )
-      break
-    default:
-      FS[writeFileType](
-        `src/pages/${template_name}/index.tsx`,
-        ReactTemplate.createReactTemplate(addConfig),
-      )
-      FS[writeFileType](
-        `src/pages/${template_name}/index.module.less`,
-        ReactTemplate.createModuleLess(addConfig),
-      )
+  // 创建组件
+  if (types === 'components') {
+    helperCreateTemplate({
+      url: `src/${types}/${template_name}/index.tsx`,
+      lessUrl: `src/${types}/${template_name}/index.module.less`,
+      type: types,
+      writeFileType,
+      addConfig,
+    })
+    return
   }
-  console.log(
-    `点我进去新创建的页面 ------------------      ../src/pages/${template_name}/index.tsx`,
-  )
+
+  // 创建页面
+  if (type) {
+    helperCreateTemplate({
+      url: `src/${types}/${template_name}/index.tsx`,
+      lessUrl: `src/${types}/${template_name}/index.module.less`,
+      type,
+      writeFileType,
+      addConfig,
+    })
+  }
 }
 
 create()
