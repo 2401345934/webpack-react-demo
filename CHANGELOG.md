@@ -39,6 +39,7 @@
 - 🐛 修复(components): pagewarp 修复 ([2ca8760](https://github.com/2401345934/webpack-react-demo/commit/2ca8760))
 - 🐛 修复(pages): router ([2045786](https://github.com/2401345934/webpack-react-demo/commit/2045786))
 - 💄 格式(pages): 样式修复 ([95fa998](https://github.com/2401345934/webpack-react-demo/commit/95fa998))
+- 📝 文档(custom): 更新 readme 文档 ([bde8af5](https://github.com/2401345934/webpack-react-demo/commit/bde8af5))
 - 📝 文档(custom): 更新后续开发 todo ([844f7a5](https://github.com/2401345934/webpack-react-demo/commit/844f7a5))
 - 🔧 工具(custom): 新增 styleslint ([52b1270](https://github.com/2401345934/webpack-react-demo/commit/52b1270))
 - 🔧 工具(custom): 新增可以生成 hooks component 组件模版 ([4934f90](https://github.com/2401345934/webpack-react-demo/commit/4934f90))

@@ -1,8 +1,11 @@
 # webpack-react-demo
 
-使用 webpack 搭建 简易 react 开发环境
+使用 webpack 搭建 react 企业级开发环境
+ui 库 antd 5
+webpack 5
+cms (待完善)
 
-## <a id="实现功能">实现功能</a>
+## <a id="支持功能">支持功能</a>
 
 - [x] npm run commit 提交代码强校验格式 & git commit 也会提前校验钩子
 - [x] slide 3 两种模式
