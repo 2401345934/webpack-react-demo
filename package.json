@@ -1,10 +1,11 @@
 {
   "name": "webpack-react-test",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "version": "# 修改 version  \n zx bump.mjs",
+    "create": "node template/index.js",
     "commit": "npm run version && npm run changelog && git add . && git cz ",
     "push": "npm run commit && git push origin HEAD",
     "start": "npm run dev",
@@ -110,6 +111,7 @@
     "history": "^5.3.0",
     "html-webpack-plugin": "^5.5.1",
     "image-webpack-loader": "^8.1.0",
+    "inquirer": "8.2.3",
     "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
     "react-dom": "^18.2.0",
