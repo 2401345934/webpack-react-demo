@@ -41,6 +41,7 @@
 - 💄 格式(pages): 样式修复 ([95fa998](https://github.com/2401345934/webpack-react-demo/commit/95fa998))
 - 📝 文档(custom): 更新后续开发 todo ([844f7a5](https://github.com/2401345934/webpack-react-demo/commit/844f7a5))
 - 🔧 工具(custom): 新增 styleslint ([52b1270](https://github.com/2401345934/webpack-react-demo/commit/52b1270))
+- 🔧 工具(custom): 新增可以生成 hooks component 组件模版 ([4934f90](https://github.com/2401345934/webpack-react-demo/commit/4934f90))
 - 🔧 工具(package): 新增自动引入 antd react react-router-dom ([93114d1](https://github.com/2401345934/webpack-react-demo/commit/93114d1))
 - 增加校验格式 ([f07a949](https://github.com/2401345934/webpack-react-demo/commit/f07a949))
 - 增加校验格式-test ([1d102dd](https://github.com/2401345934/webpack-react-demo/commit/1d102dd))
