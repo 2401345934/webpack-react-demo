@@ -1,4 +1,4 @@
-## <small>1.7.6 (2023-05-16)</small>
+## <small>1.7.7 (2023-05-16)</small>
 
 - ♻️ 重构(pages): 优化代码结构 ([89a7221](https://github.com/2401345934/webpack-react-demo/commit/89a7221))
 - ✨ 新增(components): 抽离优化多页签缓存方法 ([7399b7e](https://github.com/2401345934/webpack-react-demo/commit/7399b7e))
@@ -28,6 +28,7 @@
 - ✨ 新增(pages): 新增 hooks 模版 支持生成 module less 文件 生成代码文件待优化 ([5f769f9](https://github.com/2401345934/webpack-react-demo/commit/5f769f9))
 - ✨ 新增(pages): 修复引入 react ([c7b5e74](https://github.com/2401345934/webpack-react-demo/commit/c7b5e74))
 - ✨ 新增(pages): 优化代码增加全局配置开关 ([a0a173a](https://github.com/2401345934/webpack-react-demo/commit/a0a173a))
+- ✨ 新增(pages): 优化 cms 页面样式 ([0b7a770](https://github.com/2401345934/webpack-react-demo/commit/0b7a770))
 - ✨ 新增(pages): 原生简单拖拽实现排序 ([f8818de](https://github.com/2401345934/webpack-react-demo/commit/f8818de))
 - ✨ 新增(pages): 注释补充 ([22210be](https://github.com/2401345934/webpack-react-demo/commit/22210be))
 - ✨ 新增(pages): package 更新 ([5213118](https://github.com/2401345934/webpack-react-demo/commit/5213118))
