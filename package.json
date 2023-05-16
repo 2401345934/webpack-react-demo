@@ -1,6 +1,6 @@
 {
   "name": "webpack-react-test",
-  "version": "1.7.8",
+  "version": "1.7.9",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -54,6 +54,7 @@
     "@babel/preset-typescript": "^7.21.5",
     "@commitlint/config-conventional": "^17.6.3",
     "@statoscope/webpack-plugin": "^5.26.2",
+    "@types/lodash": "^4.14.194",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
     "autoprefixer": "^10.4.14",
@@ -116,7 +117,6 @@
     "html-webpack-plugin": "^5.5.1",
     "image-webpack-loader": "^8.1.0",
     "inquirer": "8.2.3",
-    "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
     "react-dom": "^18.2.0",
     "react-resizable": "^3.0.5",

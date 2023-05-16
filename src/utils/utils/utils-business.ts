@@ -54,28 +54,23 @@ const toggleFullscreen = ({
 function uuid() {
   return URL.createObjectURL(new Blob()).substr(-36)
 }
-/**
- * 深拷贝一个对象
- * @param obj 要拷贝的对象
- * @returns 拷贝后的新对象
- */
-function deepClone<T extends Record<string, any>>(obj: any): any {
-  // 如果是 null 或者不是对象、数组等复杂类型，直接返回
-  if (obj === null || typeof obj !== 'object') {
-    return obj
-  }
-
-  // 根据原始对象的类型创建新的对象
-  const clone: any = Array.isArray(obj) ? [] : {}
-
-  // 遍历对象的所有属性，并递归调用 deepClone 方法拷贝它们
-  for (let key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      clone[key] = deepClone(obj[key])
+function deepClone(value: any): any {
+  if (Array.isArray(value)) {
+    // 处理数组
+    return value.map(item => deepClone(item))
+  } else if (typeof value === 'object' && value !== null) {
+    // 处理对象
+    const result: any = {}
+    for (const key in value) {
+      if (Object.hasOwnProperty.call(value, key)) {
+        result[key] = deepClone(value[key])
+      }
     }
+    return result
+  } else {
+    // 处理原始值和函数
+    return value
   }
-
-  return clone
 }
 
 export default {

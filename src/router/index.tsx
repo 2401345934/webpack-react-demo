@@ -11,6 +11,7 @@ import { AlertTwoTone, SoundTwoTone, TagsTwoTone } from '@ant-design/icons'
 import resultPage from './resultPage'
 import expandComponent from './expandComponent'
 import inCommonUseHooks from './inCommonUseHooks'
+import utils from '@/utils'
 const BaseLayout = lazy(() => import('@/index'))
 const Wecome = lazy(() => import('@/pages/Wecome'))
 const NotPage = lazy(() => import('@/pages/404'))
@@ -119,9 +120,16 @@ const initRouter: RouterType[] = [
 ]
 
 // 生成路由key段列表
-const routerList: any[] = generateRouterItemKey(initRouter[0].children || [])
+const routerList: any[] = generateRouterItemKey(initRouter[0].children || [], {
+  isAuthCode: false,
+})
 // 扁平化路由
-const deepFlatRouter: any[] = flattenRouter(routerList)
+const deepFlatRouter: any[] = flattenRouter(
+  generateRouterItemKey(initRouter[0].children || [], {
+    isBacktrackParanet: true,
+  }),
+)
+// 生成的路由 map
 const routesMap = generateRouterItemFnc(initRouter)
 // 生成路由
 const router = createHashRouter(routesMap)

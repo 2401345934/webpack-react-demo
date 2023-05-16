@@ -1,5 +1,6 @@
-## <small>1.7.8 (2023-05-16)</small>
+## <small>1.7.9 (2023-05-16)</small>
 
+- ♻️ 重构(custom): 权限处理 ([e86b748](https://github.com/2401345934/webpack-react-demo/commit/e86b748))
 - ♻️ 重构(pages): 优化代码结构 ([89a7221](https://github.com/2401345934/webpack-react-demo/commit/89a7221))
 - ✨ 新增(components): 抽离优化多页签缓存方法 ([7399b7e](https://github.com/2401345934/webpack-react-demo/commit/7399b7e))
 - ✨ 新增(components): 导航栏多种模式支持 代码待优化 ([e9565d1](https://github.com/2401345934/webpack-react-demo/commit/e9565d1))

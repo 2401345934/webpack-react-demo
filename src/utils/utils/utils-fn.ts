@@ -23,10 +23,6 @@ function batch(fn: Function) {
 const daysBetween = (date1: number, date2: number) =>
   Math.ceil(Math.abs(date1 - date2) / (1000 * 60 * 60 * 24))
 
-// 判断是否是空对象
-const isEmptyObject = (obj: Object) =>
-  Reflect.ownKeys(obj).length === 0 && obj.constructor === Object
-
 // 随机数范围
 function random(min: number, max: number) {
   if (arguments.length === 2) {
@@ -35,10 +31,15 @@ function random(min: number, max: number) {
   return null
 }
 
+// 判断是不是一个函数
+function isFunction(value: any): boolean {
+  return typeof value === 'function'
+}
+
 export default {
   continous,
   batch,
   daysBetween,
-  isEmptyObject,
   random,
+  isFunction,
 }

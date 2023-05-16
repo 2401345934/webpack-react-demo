@@ -4,9 +4,17 @@ import { RouterType, deepFlatRouter } from './index'
  * 生成路由项的 key 和 path 属性
  *
  * @param {RouterType[]} list 路由项列表
+ * @param {} isBacktrackParanet 是否需要回溯上级列表参数
+ * @param {} isAuthCode 是否需要权限code
  * @returns {RouterType[]} 更新后的路由项列表
  */
-export const generateRouterItemKey = (list: RouterType[]): RouterType[] => {
+export const generateRouterItemKey = (
+  list: any[],
+  {
+    isBacktrackParanet = false,
+    isAuthCode = true,
+  }: { isBacktrackParanet?: boolean; isAuthCode?: boolean },
+): RouterType[] => {
   const deepList = utils.deepClone(list)
   /**
    * 递归生成路由项的 key 和 path 属性
@@ -19,12 +27,18 @@ export const generateRouterItemKey = (list: RouterType[]): RouterType[] => {
     arr.forEach((item: RouterType) => {
       item.path = parent ? `${parent.path}/${item.path}` : item.path
       item.key = item.path
-      // 回溯上一级的label
-      const label = Array.isArray(item.label) ? item.label : [item.label]
-      // 回溯上一级的path
-      const path = Array.isArray(item.path) ? item.path : [item.path]
-      item.labelList = parent ? [parent?.label, ...label] : [item.label]
-      item.pathList = parent ? [parent.path, ...path] : [item.path]
+      if (isBacktrackParanet) {
+        // 回溯上一级的label
+        const label = Array.isArray(item.label) ? item.label : [item.label]
+        // 回溯上一级的path
+        const path = Array.isArray(item.path) ? item.path : [item.path]
+        item.labelList = parent ? [parent?.label, ...label] : [item.label]
+        item.pathList = parent ? [parent.path, ...path] : [item.path]
+      }
+      if (!isAuthCode) {
+        delete item.authCode
+      }
+
       if (item.children) {
         deepGenerate(item.children, item)
       }
@@ -46,7 +60,9 @@ export const generateRouterItemFnc = (list: any[]): any[] => {
   function deepGenerate(arr: any[], parent?: RouterType): void {
     arr.forEach((item: any) => {
       if (item.element) {
-        item.element = item.element()
+        item.element = utils.isFunction(item.element)
+          ? item.element()
+          : item.element
       }
       if (item.children) {
         deepGenerate(item.children, item)
@@ -78,7 +94,5 @@ export const flattenRouter = (arr: RouterType[]): RouterType[] => {
  * @return {RouterType | undefined} - The router object that matches the location, or undefined if no match is found.
  */
 export const findCurrentRouter = (key: string): any => {
-  return (
-    deepFlatRouter.find((route: RouterType) => `/${route.path}` === key) || {}
-  )
+  return deepFlatRouter.find((route: RouterType) => `/${route.path}` === key)
 }

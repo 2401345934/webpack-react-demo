@@ -68,7 +68,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
     ) {
       navigate(`/result/403`)
     }
-    setDefaultOpenKeys(currentRouter.pathList)
+    setDefaultOpenKeys(currentRouter?.pathList)
     setCurrentPath(location.pathname.slice(1) || initRoute.path)
     ADD_CATCH_TAB(location)
     // component 触发 header 切换
