@@ -1,4 +1,4 @@
-## 1.7.0 (2023-05-15)
+## <small>1.7.1 (2023-05-16)</small>
 
 - ♻️ 重构(pages): 优化代码结构 ([89a7221](https://github.com/2401345934/webpack-react-demo/commit/89a7221))
 - ✨ 新增(components): 抽离优化多页签缓存方法 ([7399b7e](https://github.com/2401345934/webpack-react-demo/commit/7399b7e))
@@ -27,6 +27,7 @@
 - ✨ 新增(pages): 原生简单拖拽实现排序 ([f8818de](https://github.com/2401345934/webpack-react-demo/commit/f8818de))
 - ✨ 新增(pages): 注释补充 ([22210be](https://github.com/2401345934/webpack-react-demo/commit/22210be))
 - ✨ 新增(pages): package 更新 ([5213118](https://github.com/2401345934/webpack-react-demo/commit/5213118))
+- ✨ 新增(router): 路由层级变更 ([2e759f6](https://github.com/2401345934/webpack-react-demo/commit/2e759f6))
 - ✨ 新增(router): 修改路由模式 修改为函数渲染 ([692c0e0](https://github.com/2401345934/webpack-react-demo/commit/692c0e0))
 - ✨ 新增(utils): localdataManage 新增加密功能 ([14abcbf](https://github.com/2401345934/webpack-react-demo/commit/14abcbf))
 - ✨ 新增(webpack): 增加自动引入 react-router react ([8011a3d](https://github.com/2401345934/webpack-react-demo/commit/8011a3d))
