@@ -9,7 +9,7 @@
 
 - [x] npm run commit 提交代码强校验格式 & git commit 也会提前校验钩子
 - [x] 权限
-  - [ ] menu 展示路由
+  - [x] menu 展示路由
   - [x] 路由权限
   - [x] 按钮权限 AuthButton
 - [x] slide 3 两种模式

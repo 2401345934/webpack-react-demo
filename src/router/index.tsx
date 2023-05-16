@@ -120,9 +120,10 @@ const initRouter: RouterType[] = [
 ]
 
 // 生成路由key段列表
-const routerList: any[] = generateRouterItemKey(initRouter[0].children || [], {
-  isAuthCode: false,
-})
+const routerList: any[] = generateRouterItemKey(
+  initRouter[0].children || [],
+  {},
+)
 // 扁平化路由
 const deepFlatRouter: any[] = flattenRouter(
   generateRouterItemKey(initRouter[0].children || [], {

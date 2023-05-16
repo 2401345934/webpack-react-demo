@@ -13,6 +13,7 @@
 - ✨ 新增(config): 拆分 config 新增 @globalConfig 快捷引入 ([aff7172](https://github.com/2401345934/webpack-react-demo/commit/aff7172))
 - ✨ 新增(custom): 更新 remader \& 更新 package 最新依赖 ([2541fec](https://github.com/2401345934/webpack-react-demo/commit/2541fec))
 - ✨ 新增(custom): 强制校验 git 提交 增加钩子 ([4c8a091](https://github.com/2401345934/webpack-react-demo/commit/4c8a091))
+- ✨ 新增(custom): 完善修复路由权限限制 bug ([5e9ee94](https://github.com/2401345934/webpack-react-demo/commit/5e9ee94))
 - ✨ 新增(custom): 新增命令行生成模版 目前支持 页面模版 card 模版 ([e3a78a2](https://github.com/2401345934/webpack-react-demo/commit/e3a78a2))
 - ✨ 新增(hook): 新增常用 hooks ([933f631](https://github.com/2401345934/webpack-react-demo/commit/933f631))
 - ✨ 新增(hook): hooks 格式修改 新增缓存函数 hooks ([3897e77](https://github.com/2401345934/webpack-react-demo/commit/3897e77))

@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import Sider from 'antd/lib/layout/Sider'
 import { routerList } from '@/router'
+import { filterRoutesByAuthCode } from '@/components/Auth/helperAuth'
 
 type PropsType = {
   collapsed: boolean
@@ -22,7 +23,10 @@ const WarpMenu = (props: PropsType): JSX.Element => {
     menuLayout,
     childrenRouterList,
   } = props
-
+  const [routerLists, setRouterLists] = useState<any>([])
+  useMount(() => {
+    setRouterLists(filterRoutesByAuthCode(routerList))
+  })
   //  路由跳转
   const onOpenChange = (openKeys: string[]) => {
     setDefaultOpenKeys(openKeys)
@@ -47,7 +51,7 @@ const WarpMenu = (props: PropsType): JSX.Element => {
             mode="inline"
             defaultOpenKeys={defaultOpenKeys}
             selectedKeys={[currentPath]}
-            items={routerList}
+            items={routerLists}
           />
         )}
         {menuLayout === 'slideAndHeader' && (

@@ -11,6 +11,7 @@ import { MENU_MODE, initialThemeValueList } from '@/dictionary/layoutDict'
 import { RouterType, firstRouterList, routerList } from '@/router'
 import UpdateTheme from '../UpdateTheme'
 import GLOBAL_CONFIG from '@globalConfig'
+import { filterRoutesByAuthCode } from '@/components/Auth/helperAuth'
 
 const { Header } = Layout
 
@@ -49,11 +50,12 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
   }>(null)
   //  是否展开全局设置
   const [open, setOpen] = useState<boolean>(false)
+  const [routerLists, setRouterLists] = useState<any>([])
+  const [firstRouterLists, setFirstRouterLists] = useState<any>(firstRouterList)
   //  当前选中的 key
   const [key, setKey] = useState<string[]>([`wecome`])
   //  默认选中的 path
   const initTabPath = currentPath ? currentPath.split('/')[0] : ''
-  const [fullscreenFlag, setFullscreenFlag] = useState<boolean>(false)
 
   // 对外暴露 routerChange 方法
   useImperativeHandle(ref, () => ({
@@ -62,6 +64,8 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
 
   useMount(() => {
     const initValues: TypeObjStr = {}
+    setRouterLists(filterRoutesByAuthCode(routerList))
+    setFirstRouterLists(filterRoutesByAuthCode(firstRouterList))
     initialThemeValueList.forEach(item => {
       initValues[item.key] = item.initColor
     })
@@ -75,7 +79,7 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
     const key: string =
       location.pathname.slice(1, location.pathname.length) || ''
     const keyList: string[] = key.split('/')
-    const itemRouter: RouterType = routerList.find(
+    const itemRouter: RouterType = routerLists.find(
       (item: RouterType) => item.key === keyList[0],
     )!
     setKey([keyList[0]])
@@ -116,7 +120,7 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
   const handleChangeMenu = (strArr: string[]) => {
     if (!strArr.length) return
     setKey(strArr)
-    const itemRouter: RouterType = routerList.find(
+    const itemRouter: RouterType = routerLists.find(
       (item: RouterType) => item.key === strArr[0],
     )!
     if (itemRouter) {
@@ -135,66 +139,70 @@ const WarpHeader = forwardRef((props: PropsType, ref): JSX.Element => {
   return (
     <div className="layout-warp-header">
       <Header className="site-layout-Header">
-        {menuLayout === MENU_MODE.SLIDEANDHEADER && (
-          <>
-            <Menu
-              theme="light"
-              inlineCollapsed={collapsed}
-              onOpenChange={handleChangeMenu}
-              mode="horizontal"
-              triggerSubMenuAction="click"
-              selectedKeys={key.length ? key : [initTabPath]}
-              items={firstRouterList}
-            />
-          </>
-        )}
-        {menuLayout === MENU_MODE.HEADER && (
-          <>
-            <div className="logo"></div>
-            <Menu
-              theme="light"
-              openKeys={defaultOpenKeys}
-              onOpenChange={onOpenChange}
-              inlineCollapsed={collapsed}
-              onClick={goRouter}
-              mode="horizontal"
-              defaultOpenKeys={defaultOpenKeys}
-              selectedKeys={[currentPath]}
-              items={routerList}
-            />
-          </>
-        )}
-        {menuLayout === MENU_MODE.SLIDE && (
-          <div className={styles.layoutHeaderWarp}>
-            <Space>
-              {GLOBAL_CONFIG.IS_OPEN_MENU_TOGGLE_ACTIVE && (
-                <>
-                  {React.createElement(
-                    collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-                    {
-                      className: 'trigger',
-                      onClick: () => setCollapsed(!collapsed),
-                    },
-                  )}
-                </>
-              )}
-            </Space>
-          </div>
-        )}
-        <Space className={styles.actionsWrap}>
-          {GLOBAL_CONFIG.IS_OPEN_GLOBAL_SEARCH && (
+        <div className={styles.layoutHeader}>
+          {/* logo */}
+          {menuLayout === MENU_MODE.HEADER && <div className="logo"></div>}
+
+          {menuLayout === MENU_MODE.SLIDEANDHEADER && (
+            <div className={styles.layoutHeaderMenu}>
+              <Menu
+                theme="light"
+                onOpenChange={handleChangeMenu}
+                mode="horizontal"
+                triggerSubMenuAction="click"
+                selectedKeys={key.length ? key : [initTabPath]}
+                items={firstRouterLists}
+              />
+            </div>
+          )}
+          {menuLayout === MENU_MODE.HEADER && (
             <>
-              {/* 搜索 */}
-              <div className={styles.search}>
-                <SearchOutlined onClick={handleOpenSearch} />
+              <div className={styles.layoutHeaderMenu}>
+                <Menu
+                  theme="light"
+                  openKeys={defaultOpenKeys}
+                  onOpenChange={onOpenChange}
+                  onClick={goRouter}
+                  mode="horizontal"
+                  defaultOpenKeys={defaultOpenKeys}
+                  selectedKeys={[currentPath]}
+                  items={routerLists}
+                />
               </div>
             </>
           )}
-          {/* 切换主题色 */}
-          <div className={styles.theme}>
-            <Button onClick={() => handleOpen()}>切换主题</Button>
-          </div>
-        </Space>
+          {menuLayout === MENU_MODE.SLIDE && (
+            <div className={styles.layoutHeaderWarp}>
+              <Space>
+                {GLOBAL_CONFIG.IS_OPEN_MENU_TOGGLE_ACTIVE && (
+                  <>
+                    {React.createElement(
+                      collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+                      {
+                        className: 'trigger',
+                        onClick: () => setCollapsed(!collapsed),
+                      },
+                    )}
+                  </>
+                )}
+              </Space>
+            </div>
+          )}
+          <Space className={styles.actionsWrap}>
+            {GLOBAL_CONFIG.IS_OPEN_GLOBAL_SEARCH && (
+              <>
+                {/* 搜索 */}
+                <div className={styles.search}>
+                  <SearchOutlined onClick={handleOpenSearch} />
+                </div>
+              </>
+            )}
+            {/* 切换主题色 */}
+            <div className={styles.theme}>
+              <Button onClick={() => handleOpen()}>切换主题</Button>
+            </div>
+          </Space>
+        </div>
       </Header>
       {/* 修改主题色 */}
       {GLOBAL_CONFIG.UPDATE_THEME_OPEN && (
