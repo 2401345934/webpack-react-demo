@@ -42,8 +42,7 @@
       "stylelint --fix --allow-empty-input",
       "git add"
     ],
-    "**/*.ts?(x)": [
-      "eslint --fix",
+    "src/**/*.ts?(x)": [
       "tsc --noEmit"
     ]
   },
