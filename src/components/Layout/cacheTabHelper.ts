@@ -1,4 +1,5 @@
 import { RouterType, deepFlatRouter, initTabItem } from '@/router'
+import { findCurrentRouter } from '@/router/helper'
 import localDataManagement from '@/utils/localDataManagement'
 import GLOBAL_CONFIG from '@globalConfig'
 
@@ -19,9 +20,7 @@ export const GET_CATCH_TAB = () => {
   const originItems: any = []
   if (routerList.length) {
     routerList.forEach((item: any) => {
-      const routerItem = deepFlatRouter.find(
-        (route: RouterType) => route.path === item.key,
-      )
+      const routerItem = findCurrentRouter(item.key)
       originItems.push({
         key: routerItem.key,
         label: routerItem.menuLabel || routerItem.label,
@@ -36,9 +35,7 @@ export const GET_CATCH_TAB = () => {
 export const ADD_CATCH_TAB = (location: LocationType) => {
   if (!GLOBAL_CONFIG.TAB_CATCH_OPEN) return
   const uuid: string = location.pathname + location.search
-  const routerItem: RouterType = deepFlatRouter.find(
-    (route: RouterType) => `/${route.path}` === location.pathname,
-  )
+  const routerItem: RouterType = findCurrentRouter(location.pathname)
   const routerList: any[] = JSON.parse(
     localDataManagement.getItem('routerList') || '[]',
   )

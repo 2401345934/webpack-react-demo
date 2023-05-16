@@ -1,10 +1,12 @@
 import { Fragment } from 'react'
-import { deepFlatRouter, RouterType, initTabItem } from '@/router'
+import { initTabItem } from '@/router'
 import styles from './styles.module.less'
 import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons'
 import utils from '@/utils'
 import { CLEAR_CATCH_TAB, DELETE_CATCH_TAB } from '../cacheTabHelper'
 import GLOBAL_CONFIG from '@globalConfig'
+import { findCurrentRouter } from '@/router/helper'
+import { isHavePermission } from '@/components/Auth/helperAuth'
 
 type PropsType = {
   children?: React.ReactNode
@@ -36,10 +38,10 @@ const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
   //  路由变化
   const routerChange = () => {
     const key = location.pathname
-    const routerItem = deepFlatRouter.find(
-      (route: RouterType) => `/${route.path}` === key,
-    )
+    const routerItem = findCurrentRouter(key)
     if (!routerItem) return
+    // 判断是否拥有权限
+    if (routerItem.authCode && !isHavePermission(routerItem.authCode)) return
     setActiveKey(routerItem.key)
     if (getItems().find(route => `/${route.key}` === key)) return
     setItems(val => {
@@ -131,3 +133,6 @@ const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
 })
 
 export default memo(WarpComponent)
+function navigate(arg0: string) {
+  throw new Error('Function not implemented.')
+}

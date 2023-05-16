@@ -14,6 +14,8 @@ import {
 import { RouterType, deepFlatRouter, initRoute, initTabItem } from './router'
 import { MENU_MODE } from './dictionary/layoutDict'
 import GlobalSearch from './components/GlobalSearch'
+import { isHavePermission } from './components/Auth/helperAuth'
+import { findCurrentRouter } from './router/helper'
 
 const Component: React.FunctionComponent = (): JSX.Element => {
   const navigate = useNavigate()
@@ -56,6 +58,17 @@ const Component: React.FunctionComponent = (): JSX.Element => {
   const [initItems, setInitItems] = useState<any>(false)
 
   useEffect(() => {
+    // 获取当前路由信息
+    const currentRouter = findCurrentRouter(location.pathname)
+    // 判断是否拥有权限
+    if (
+      currentRouter &&
+      currentRouter.authCode &&
+      !isHavePermission(currentRouter.authCode)
+    ) {
+      navigate(`/result/403`)
+    }
+    setDefaultOpenKeys(currentRouter.pathList)
     setCurrentPath(location.pathname.slice(1) || initRoute.path)
     ADD_CATCH_TAB(location)
     // component 触发 header 切换
@@ -78,9 +91,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
     navigate(`${location.pathname}`)
     const initRouter = GET_CATCH_TAB()
     if (!initRouter.length) {
-      const routerItem = deepFlatRouter.find(
-        (route: RouterType) => `/${route.path}` === location.pathname,
-      )
+      const routerItem = findCurrentRouter(location.pathname)
       if (!routerItem) {
         setInitItems([initTabItem])
         return
@@ -100,7 +111,13 @@ const Component: React.FunctionComponent = (): JSX.Element => {
 
   // 路由跳转
   const goRouter = (e: { key: string; keyPath: string[] }): void => {
+    const routerItem = findCurrentRouter(`/${e.key}`)
+    // 判断是否拥有权限
     if (e.key === currentPath) return
+    if (routerItem.authCode && !isHavePermission(routerItem.authCode)) {
+      navigate(`/result/403`)
+      return
+    }
     setCurrentPath(e.key)
     navigate(e.key)
     setDefaultOpenKeys(e.keyPath)

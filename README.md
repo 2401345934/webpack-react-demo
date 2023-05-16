@@ -1,13 +1,16 @@
 # webpack-react-demo
 
-使用 webpack 搭建 react 企业级开发环境
-ui 库 antd 5
-webpack 5
-cms (待完善)
+1. 使用 webpack 搭建 react 企业级开发环境
+2. ui 库 antd 5
+3. webpack 5
+4. cms (待完善)
 
 ## <a id="支持功能">支持功能</a>
 
 - [x] npm run commit 提交代码强校验格式 & git commit 也会提前校验钩子
+- [ ] 权限
+  - [ ] 路由权限
+  - [x] 按钮权限 AuthButton
 - [x] slide 3 两种模式
   - [x] slide
   - [x] menu

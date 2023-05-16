@@ -43,7 +43,10 @@ const initTabItem = {
 export type RouterType = {
   path: string
   label?: string
+  authCode?: string
   redirect?: string
+  labelList?: string[]
+  pathList?: string[]
   key?: string
   menuLabel?: string
   element?: (props: any) => JSX.Element
@@ -71,6 +74,7 @@ const initRouter: RouterType[] = [
       },
       {
         path: 'todo',
+        authCode: '0001',
         label: '代办事项',
         icon: <TagsTwoTone />,
         element: () => <IncludesSubmenusWarp />,
@@ -78,6 +82,7 @@ const initRouter: RouterType[] = [
           {
             path: 'wecome2',
             label: '代办事项',
+            authCode: '0002',
             icon: <TagsTwoTone />,
             element: props => (
               <Suspense fallback={<Loading />}>
@@ -90,6 +95,7 @@ const initRouter: RouterType[] = [
 
       {
         path: 'cms',
+        authCode: '0003',
         label: 'CMS内容中心',
         icon: <SoundTwoTone />,
         element: props => (

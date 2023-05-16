@@ -1,5 +1,5 @@
 import utils from '@/utils'
-import { RouterType } from './index'
+import { RouterType, deepFlatRouter } from './index'
 /**
  * 生成路由项的 key 和 path 属性
  *
@@ -19,8 +19,12 @@ export const generateRouterItemKey = (list: RouterType[]): RouterType[] => {
     arr.forEach((item: RouterType) => {
       item.path = parent ? `${parent.path}/${item.path}` : item.path
       item.key = item.path
-      // 是否需要带上 上一级别菜单的 label
-      // item.menuLabel = parent ? `${parent.label}-${item.label}` : item.label
+      // 回溯上一级的label
+      const label = Array.isArray(item.label) ? item.label : [item.label]
+      // 回溯上一级的path
+      const path = Array.isArray(item.path) ? item.path : [item.path]
+      item.labelList = parent ? [parent?.label, ...label] : [item.label]
+      item.pathList = parent ? [parent.path, ...path] : [item.path]
       if (item.children) {
         deepGenerate(item.children, item)
       }
@@ -65,4 +69,16 @@ export const flattenRouter = (arr: RouterType[]): RouterType[] => {
       Array.isArray(next.children) ? flattenRouter(next.children) : next,
     )
   }, [])
+}
+
+/**
+ * Find the current router from the deepFlatRouter array that matches the given location object.
+ *
+ * @param {any} location - The location object to match against.
+ * @return {RouterType | undefined} - The router object that matches the location, or undefined if no match is found.
+ */
+export const findCurrentRouter = (key: string): any => {
+  return (
+    deepFlatRouter.find((route: RouterType) => `/${route.path}` === key) || {}
+  )
 }

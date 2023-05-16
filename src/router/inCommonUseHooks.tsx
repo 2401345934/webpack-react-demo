@@ -9,11 +9,13 @@ const initRouter: RouterType[] = [
   {
     path: 'hooks',
     icon: <AlertTwoTone />,
+    authCode: '0009',
     label: '常用hooks',
     element: () => <IncludesSubmenusWarp />,
     children: [
       {
         path: 'network',
+        authCode: '0010',
         label: 'network',
         icon: <BuildTwoTone />,
         element: props => (
