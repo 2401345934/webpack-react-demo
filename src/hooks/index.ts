@@ -11,9 +11,9 @@ import executeStrategy from './useExecuteStrategy'
 import network from './useNetwork'
 import useDebounce from './useDebouncet'
 import memoCallback from './useMemoCallback'
+import Dark from './useDrak'
 
 import intersectionObserver from './useIntersectionObserver'
-import keyPress from './useKeyPress'
 import onlineStatus from './useOnlineStatus'
 
 export const useAfter = after
@@ -31,5 +31,5 @@ export const useDebouncet = useDebounce
 export const useMemoCallback = memoCallback
 
 export const useIntersectionObserver = intersectionObserver
-export const useKeyPress = keyPress
 export const useOnlineStatus = onlineStatus
+export const useDark = Dark

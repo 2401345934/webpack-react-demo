@@ -1,4 +1,4 @@
-## <small>1.7.9 (2023-05-16)</small>
+## <small>1.7.10 (2023-05-19)</small>
 
 - ♻️ 重构(custom): 权限处理 ([e86b748](https://github.com/2401345934/webpack-react-demo/commit/e86b748))
 - ♻️ 重构(pages): 优化代码结构 ([89a7221](https://github.com/2401345934/webpack-react-demo/commit/89a7221))
@@ -36,6 +36,7 @@
 - ✨ 新增(pages): 原生简单拖拽实现排序 ([f8818de](https://github.com/2401345934/webpack-react-demo/commit/f8818de))
 - ✨ 新增(pages): 注释补充 ([22210be](https://github.com/2401345934/webpack-react-demo/commit/22210be))
 - ✨ 新增(pages): package 更新 ([5213118](https://github.com/2401345934/webpack-react-demo/commit/5213118))
+- ✨ 新增(pages): router 权限空 menu 菜单处理 ([0c26a37](https://github.com/2401345934/webpack-react-demo/commit/0c26a37))
 - ✨ 新增(pages): test ([09bfded](https://github.com/2401345934/webpack-react-demo/commit/09bfded))
 - ✨ 新增(router): 路由层级变更 ([2e759f6](https://github.com/2401345934/webpack-react-demo/commit/2e759f6))
 - ✨ 新增(router): 修改路由模式 修改为函数渲染 ([692c0e0](https://github.com/2401345934/webpack-react-demo/commit/692c0e0))

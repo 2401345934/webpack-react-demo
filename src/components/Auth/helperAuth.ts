@@ -5,7 +5,7 @@ export const getUserAuthCode = (): string[] => {
 }
 
 export const isHavePermission = (code: string): boolean => {
-  return getUserAuthCode().includes(code)
+  // return getUserAuthCode().includes(code)
   return true
 }
 
@@ -17,19 +17,16 @@ export const isHavePermission = (code: string): boolean => {
  * @return {any[]} - 符合给定 authCode 的新路由数组。
  */
 
-const filteredRoutesFn = (
-  routes: any[],
-  authCodes: string[] = getUserAuthCode(),
-): any[] => {
+const filteredRoutesFn = (routes: any[]): any[] => {
   const filteredRoutes: any[] = []
 
   for (const route of routes) {
     if (route.authCode) {
       // 如果路由有 authCode 字段，则检查它是否匹配提供的 authCode 数组中的任何一个。
-      if (authCodes.includes(route.authCode)) {
+      if (isHavePermission(route.authCode)) {
         if (route.children) {
           // 如果路由有子路由，则递归筛选子路由。
-          route.children = filteredRoutesFn(route.children, authCodes)
+          route.children = filteredRoutesFn(route.children)
         }
         filteredRoutes.push(route)
       }
@@ -41,10 +38,7 @@ const filteredRoutesFn = (
   return filteredRoutes
 }
 
-export function filterRoutesByAuthCode(
-  routes: any[],
-  authCodes: string[] = getUserAuthCode(),
-): any[] {
-  const list = filteredRoutesFn(routes, authCodes)
+export function filterRoutesByAuthCode(routes: any[]): any[] {
+  const list = filteredRoutesFn(routes)
   return utils.deletePropFromObjects(list, 'authCode')
 }
