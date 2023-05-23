@@ -1,6 +1,6 @@
 {
   "name": "webpack-react-test",
-  "version": "1.7.10",
+  "version": "1.8.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -131,6 +131,7 @@
     "stylelint-order": "^6.0.3",
     "typed.js": "^2.0.132",
     "unplugin-auto-import": "^0.15.3",
-    "webpack-dev-server": "^4.15.0"
+    "webpack-dev-server": "^4.15.0",
+    "zustand": "^4.3.8"
   }
 }

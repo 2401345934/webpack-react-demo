@@ -2,8 +2,9 @@
 
 1. 使用 webpack 搭建 react 企业级开发环境
 2. ui 库 antd 5
-3. webpack 5
-4. cms (待完善)
+3. zustand 状态管理
+4. webpack 5
+5. cms (待完善)
 
 ## <a id="支持功能">支持功能</a>
 
