@@ -1,4 +1,4 @@
-## 1.8.0 (2023-05-23)
+## <small>1.8.1 (2023-06-02)</small>
 
 - ♻️ 重构(custom): 权限处理 ([e86b748](https://github.com/2401345934/webpack-react-demo/commit/e86b748))
 - ♻️ 重构(pages): 优化代码结构 ([89a7221](https://github.com/2401345934/webpack-react-demo/commit/89a7221))
@@ -11,6 +11,7 @@
 - ✨ 新增(components): 新增通用组件 底部悬浮 button ([b25496e](https://github.com/2401345934/webpack-react-demo/commit/b25496e))
 - ✨ 新增(components): 支持可选是否 tab 多页签 \& 页面层级归类 ([d2174da](https://github.com/2401345934/webpack-react-demo/commit/d2174da))
 - ✨ 新增(config): 拆分 config 新增 @globalConfig 快捷引入 ([aff7172](https://github.com/2401345934/webpack-react-demo/commit/aff7172))
+- ✨ 新增(config): zustand 接入 创建 store 文件 ([11064c2](https://github.com/2401345934/webpack-react-demo/commit/11064c2))
 - ✨ 新增(custom): 更新 remader \& 更新 package 最新依赖 ([2541fec](https://github.com/2401345934/webpack-react-demo/commit/2541fec))
 - ✨ 新增(custom): 强制校验 git 提交 增加钩子 ([4c8a091](https://github.com/2401345934/webpack-react-demo/commit/4c8a091))
 - ✨ 新增(custom): 删除多余 hooks 新增 hooks 获取当前暗夜模式 ([c679f81](https://github.com/2401345934/webpack-react-demo/commit/c679f81))
