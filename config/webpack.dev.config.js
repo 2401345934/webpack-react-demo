@@ -2,9 +2,8 @@
 const TerserPlugin = require('terser-webpack-plugin')
 module.exports = {
   devtool: 'source-map',
-  // 最小化监听
   watchOptions: {
-    ignored: /node_modules/,
+    ignored: /node_modules|package\.json/,
   },
   devServer: {
     hot: true,

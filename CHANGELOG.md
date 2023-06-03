@@ -1,4 +1,4 @@
-## <small>1.8.2 (2023-06-03)</small>
+## <small>1.8.3 (2023-06-03)</small>
 
 - ♻️ 重构(custom): 权限处理 ([e86b748](https://github.com/2401345934/webpack-react-demo/commit/e86b748))
 - ♻️ 重构(pages): 优化代码结构 ([89a7221](https://github.com/2401345934/webpack-react-demo/commit/89a7221))
@@ -28,6 +28,7 @@
 - ✨ 新增(pages): 缓存多页签 ([c2b5ad5](https://github.com/2401345934/webpack-react-demo/commit/c2b5ad5))
 - ✨ 新增(pages): 路由\&按钮权限控制 todo: menu 菜单展示过滤处理 ([e69addd](https://github.com/2401345934/webpack-react-demo/commit/e69addd))
 - ✨ 新增(pages): 去掉多余的 import 导入 都走 auto import ([b4864bc](https://github.com/2401345934/webpack-react-demo/commit/b4864bc))
+- ✨ 新增(pages): 删除 hooks usenetork page ([26ed4e5](https://github.com/2401345934/webpack-react-demo/commit/26ed4e5))
 - ✨ 新增(pages): 新增 pages 异常页面返回首页功能 ([0d82af0](https://github.com/2401345934/webpack-react-demo/commit/0d82af0))
 - ✨ 新增(pages): 新增 typed ([2cc37f7](https://github.com/2401345934/webpack-react-demo/commit/2cc37f7))
 - ✨ 新增(pages): 新增常见反馈页面 ([c46776e](https://github.com/2401345934/webpack-react-demo/commit/c46776e))
