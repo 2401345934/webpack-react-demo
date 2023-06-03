@@ -1,4 +1,4 @@
-## <small>1.8.1 (2023-06-02)</small>
+## <small>1.8.2 (2023-06-03)</small>
 
 - ♻️ 重构(custom): 权限处理 ([e86b748](https://github.com/2401345934/webpack-react-demo/commit/e86b748))
 - ♻️ 重构(pages): 优化代码结构 ([89a7221](https://github.com/2401345934/webpack-react-demo/commit/89a7221))
@@ -17,6 +17,7 @@
 - ✨ 新增(custom): 删除多余 hooks 新增 hooks 获取当前暗夜模式 ([c679f81](https://github.com/2401345934/webpack-react-demo/commit/c679f81))
 - ✨ 新增(custom): 完善修复路由权限限制 bug ([5e9ee94](https://github.com/2401345934/webpack-react-demo/commit/5e9ee94))
 - ✨ 新增(custom): 新增命令行生成模版 目前支持 页面模版 card 模版 ([e3a78a2](https://github.com/2401345934/webpack-react-demo/commit/e3a78a2))
+- ✨ 新增(custom): 整理 package json 依赖 ([f637d55](https://github.com/2401345934/webpack-react-demo/commit/f637d55))
 - ✨ 新增(hook): 新增常用 hooks ([933f631](https://github.com/2401345934/webpack-react-demo/commit/933f631))
 - ✨ 新增(hook): hooks 格式修改 新增缓存函数 hooks ([3897e77](https://github.com/2401345934/webpack-react-demo/commit/3897e77))
 - ✨ 新增(hook): useNetowrk ([8972cff](https://github.com/2401345934/webpack-react-demo/commit/8972cff))
