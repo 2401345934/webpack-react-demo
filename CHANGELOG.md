@@ -1,4 +1,4 @@
-## <small>1.8.5 (2023-06-04)</small>
+## <small>1.8.6 (2023-06-04)</small>
 
 - ♻️ 重构(custom): 权限处理 ([e86b748](https://github.com/2401345934/webpack-react-demo/commit/e86b748))
 - ♻️ 重构(pages): 优化代码结构 ([89a7221](https://github.com/2401345934/webpack-react-demo/commit/89a7221))
@@ -50,6 +50,7 @@
 - 🐛 修复(components): pagewarp 修复 ([2ca8760](https://github.com/2401345934/webpack-react-demo/commit/2ca8760))
 - 🐛 修复(pages): router ([2045786](https://github.com/2401345934/webpack-react-demo/commit/2045786))
 - 🐛 修复(webpack): watchoptions 策略 不监听 package.json 导致提交代码修改 version 报错 ([fd698e8](https://github.com/2401345934/webpack-react-demo/commit/fd698e8))
+- 💄 格式(custom): 代码格式修复 ([bc48dfe](https://github.com/2401345934/webpack-react-demo/commit/bc48dfe))
 - 💄 格式(pages): 样式修复 ([95fa998](https://github.com/2401345934/webpack-react-demo/commit/95fa998))
 - 📝 文档(custom): 更新 readme 文档 ([bde8af5](https://github.com/2401345934/webpack-react-demo/commit/bde8af5))
 - 📝 文档(custom): 更新后续开发 todo ([844f7a5](https://github.com/2401345934/webpack-react-demo/commit/844f7a5))

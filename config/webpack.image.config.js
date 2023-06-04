@@ -1,6 +1,6 @@
 module.exports = [
   {
-    test: /\.(gif|png|jpe?g|svg)$/i,
+    test: /\.(gif|png|jpe?g)$/i,
     // type 属性适用于 Webpack5，旧版本可使用 file-loader
     exclude: /node_modules/,
     type: 'asset/resource',
@@ -31,7 +31,7 @@ module.exports = [
     ],
   },
   {
-    test: /\.svg$/i,
-    use: ['raw-loader'],
+    test: /\.svg$/,
+    use: 'file-loader',
   },
 ]

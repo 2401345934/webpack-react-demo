@@ -1,27 +1,22 @@
-import WarpComponent from '@/components/Layout/WarpComponent'
-import WarpMenu from '@/components/Layout/WarpMenu'
-import WarpHeader from '@/components/Layout/WarpHeader'
+import WarpComponent from '@/Layout/WarpComponent'
+import WarpMenu from '@/Layout/WarpMenu'
+import WarpHeader from '@/Layout/WarpHeader'
 import utils from '@/utils'
 import zhCN from 'antd/locale/zh_CN'
 import { Locale } from 'antd/es/locale'
 import GlobalSetting from './components/GlobalSetting'
 import GLOBAL_CONFIG from '@globalConfig'
 // import request from '@/request'
-import {
-  ADD_CATCH_TAB,
-  GET_CATCH_TAB,
-} from './components/Layout/cacheTabHelper'
+import { ADD_CATCH_TAB, GET_CATCH_TAB } from './Layout/cacheTabHelper'
 import { initRoute, initTabItem } from './router'
 import { MENU_MODE } from './dictionary/layoutDict'
 import GlobalSearch from './components/GlobalSearch'
 import { isHavePermission } from './components/Auth/helperAuth'
 import { findCurrentRouter } from './router/helper'
-import { useThemeMode } from './hooks'
 
 const Component: React.FunctionComponent = (): JSX.Element => {
   const navigate = useNavigate()
   const location = useLocation()
-  useThemeMode()
   const componentRef = useRef<{
     routerChange: () => void
   }>(null)
@@ -90,7 +85,10 @@ const Component: React.FunctionComponent = (): JSX.Element => {
 
   // 处理刷新页面重定向 menu key
   useMount(() => {
-    utils.initSetTheme()
+    // 开启了自动切换才切换
+    if (GLOBAL_CONFIG.IS_DARK_AUDO_CHANGE) {
+      utils.initSetTheme()
+    }
     navigate(`${location.pathname}`)
     const initRouter = GET_CATCH_TAB()
     if (!initRouter.length) {

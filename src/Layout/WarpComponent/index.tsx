@@ -7,6 +7,7 @@ import { CLEAR_CATCH_TAB, DELETE_CATCH_TAB } from '../cacheTabHelper'
 import GLOBAL_CONFIG from '@globalConfig'
 import { findCurrentRouter } from '@/router/helper'
 import { isHavePermission } from '@/components/Auth/helperAuth'
+import { Watermark } from 'antd'
 
 type PropsType = {
   children?: React.ReactNode
@@ -91,43 +92,45 @@ const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
 
   return (
     <div className="globalComponent">
-      <div className={styles.warpComponent} {...rest}>
-        {GLOBAL_CONFIG.IS_OPEN_TAB ? (
-          <>
-            {/* 标签页 */}
-            <Tabs
-              type="editable-card"
-              hideAdd
-              onChange={onChange}
-              onEdit={onEdit}
-              activeKey={activeKey}
-              items={items.map(item => {
-                return {
-                  ...item,
-                  children: item.children({
-                    onTabEdit: onEdit,
-                    onTabChange: onChange,
-                    onTabRemoveAll: removeAll,
-                  }),
-                }
-              })}
-            />
-            {/* 全屏功能 */}
-            <div
-              className={styles.fullscreenOutlined}
-              onClick={() => toggleFullScreen()}
-            >
-              {fullscreenFlag ? (
-                <FullscreenExitOutlined />
-              ) : (
-                <FullscreenOutlined />
-              )}
-            </div>
-          </>
-        ) : (
-          <Outlet></Outlet>
-        )}
-      </div>
+      <Watermark content="Alan Xiao">
+        <div className={styles.warpComponent} {...rest}>
+          {GLOBAL_CONFIG.IS_OPEN_TAB ? (
+            <>
+              {/* 标签页 */}
+              <Tabs
+                type="editable-card"
+                hideAdd
+                onChange={onChange}
+                onEdit={onEdit}
+                activeKey={activeKey}
+                items={items.map(item => {
+                  return {
+                    ...item,
+                    children: item.children({
+                      onTabEdit: onEdit,
+                      onTabChange: onChange,
+                      onTabRemoveAll: removeAll,
+                    }),
+                  }
+                })}
+              />
+              {/* 全屏功能 */}
+              <div
+                className={styles.fullscreenOutlined}
+                onClick={() => toggleFullScreen()}
+              >
+                {fullscreenFlag ? (
+                  <FullscreenExitOutlined />
+                ) : (
+                  <FullscreenOutlined />
+                )}
+              </div>
+            </>
+          ) : (
+            <Outlet></Outlet>
+          )}
+        </div>
+      </Watermark>
     </div>
   )
 })

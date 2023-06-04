@@ -4,6 +4,7 @@ export type MENU_LAYOUT_LIST_TYPE = {
 }
 
 interface GlobalConfig {
+  IS_DARK_AUDO_CHANGE: boolean
   IS_OPEN_TAB: boolean
   TAB_CATCH_OPEN: boolean
   UPDATE_SETTING_OPEN: boolean
@@ -17,6 +18,8 @@ interface GlobalConfig {
 }
 
 const GLOBAL_CONFIG: GlobalConfig = {
+  // 是否开启黑夜模式和白天模式切换
+  IS_DARK_AUDO_CHANGE: true,
   // 是否开启多页签
   IS_OPEN_TAB: true,
   // 是否开启 TAB 切换记忆功能

@@ -2,7 +2,6 @@ import { SettingTwoTone } from '@ant-design/icons'
 import styles from './index.module.less'
 import GLOBAL_CONFIG from '@globalConfig'
 import utils from '@/utils'
-import { useThemeMode } from '@/hooks'
 
 type PropsType = {
   menuLayout: string
