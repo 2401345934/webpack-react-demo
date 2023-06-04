@@ -11,15 +11,17 @@ import {
   ADD_CATCH_TAB,
   GET_CATCH_TAB,
 } from './components/Layout/cacheTabHelper'
-import { RouterType, deepFlatRouter, initRoute, initTabItem } from './router'
+import { initRoute, initTabItem } from './router'
 import { MENU_MODE } from './dictionary/layoutDict'
 import GlobalSearch from './components/GlobalSearch'
 import { isHavePermission } from './components/Auth/helperAuth'
 import { findCurrentRouter } from './router/helper'
+import { useThemeMode } from './hooks'
 
 const Component: React.FunctionComponent = (): JSX.Element => {
   const navigate = useNavigate()
   const location = useLocation()
+  useThemeMode()
   const componentRef = useRef<{
     routerChange: () => void
   }>(null)
@@ -88,6 +90,7 @@ const Component: React.FunctionComponent = (): JSX.Element => {
 
   // 处理刷新页面重定向 menu key
   useMount(() => {
+    utils.initSetTheme()
     navigate(`${location.pathname}`)
     const initRouter = GET_CATCH_TAB()
     if (!initRouter.length) {

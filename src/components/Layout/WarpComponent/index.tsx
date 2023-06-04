@@ -90,7 +90,7 @@ const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
   }
 
   return (
-    <Fragment>
+    <div className="globalComponent">
       <div className={styles.warpComponent} {...rest}>
         {GLOBAL_CONFIG.IS_OPEN_TAB ? (
           <>
@@ -128,11 +128,8 @@ const WarpComponent = forwardRef((props: PropsType, ref): JSX.Element => {
           <Outlet></Outlet>
         )}
       </div>
-    </Fragment>
+    </div>
   )
 })
 
 export default memo(WarpComponent)
-function navigate(arg0: string) {
-  throw new Error('Function not implemented.')
-}

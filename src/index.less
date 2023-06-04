@@ -25,15 +25,12 @@
   }
 }
 
+
 .global-setting {
   position: fixed;
   right: 30px;
   bottom: 200px;
   z-index: 999;
-}
-
-body {
-  color: var(--textMainColor);
 }
 
 .warp {
@@ -62,4 +59,24 @@ body {
   .ant-layout-header {
     padding: 0;
   }
+}
+
+.warpComponent {
+  position: relative;
+  height: calc(100vh - 64px - 40px);
+  background-color: #fff;
+  padding-right: 20px;
+}
+
+.ant-tabs {
+  background: #fff;
+}
+
+.globalComponent {
+  background: #fff;
+  height: calc(100vh - 64px);
+}
+
+.dark {
+  filter: invert(1);
 }

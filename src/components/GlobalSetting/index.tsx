@@ -2,7 +2,7 @@ import { SettingTwoTone } from '@ant-design/icons'
 import styles from './index.module.less'
 import GLOBAL_CONFIG from '@globalConfig'
 import utils from '@/utils'
-import { useDark } from '@/hooks'
+import { useThemeMode } from '@/hooks'
 
 type PropsType = {
   menuLayout: string
@@ -11,15 +11,9 @@ type PropsType = {
 export default (props: PropsType) => {
   const { menuLayout, setMenuLayout } = props
   const [open, setOpen] = useState<boolean>(false)
-  // 当前是否是 黑夜模式
-  const { isDarkMode } = useDark()
   const handleToggleSetting = (): void => {
     setOpen(!open)
   }
-
-  useMount(() => {
-    console.log('111', isDarkMode)
-  })
 
   // 布局模式
   const [layoutMode, setLayoutMode] = useState<string>(

@@ -11,7 +11,7 @@ import executeStrategy from './useExecuteStrategy'
 import network from './useNetwork'
 import useDebounce from './useDebouncet'
 import memoCallback from './useMemoCallback'
-import Dark from './useDrak'
+import themeMode from './useThemeMode'
 
 import intersectionObserver from './useIntersectionObserver'
 import onlineStatus from './useOnlineStatus'
@@ -32,4 +32,4 @@ export const useMemoCallback = memoCallback
 
 export const useIntersectionObserver = intersectionObserver
 export const useOnlineStatus = onlineStatus
-export const useDark = Dark
+export const useThemeMode = themeMode
